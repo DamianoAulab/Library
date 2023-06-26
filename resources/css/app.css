@@ -1,2 +1,4 @@
 @import 'bootstrap';
 @import 'bootstrap-icons';
+@import './helper.css';
+@import './404.css';
