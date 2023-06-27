@@ -15,26 +15,57 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('macro');
             $table->timestamps();
 
         });
-
+        
         $categories =  [
-            'auto',
-            'moto',
-            'nautica',
-            'arredamento',
-            'case/appartamenti',
-            'terreni agricoli',
-            'abbigliamento',
-            'elettronica',
-            'collezionismo',
-            'sport'
+            [
+                'name'=>'auto',
+                'macro'=>'motori'
+            ],
+            [
+                'name'=>'moto',
+                'macro'=>'motori'
+            ],
+            [
+                'name'=>'nautica',
+                'macro'=>'motori'
+            ],
+            [
+                'name'=>'arredamento',
+                'macro'=>'immobili'
+            ],
+            [
+                'name'=>'case/appartamenti',
+                'macro'=>'immobili'
+            ],
+            [
+                'name'=>'terreni agricoli',
+                'macro'=>'immobili'
+            ],
+            [
+                'name'=>'abbigliamento',
+                'macro'=>'market'
+            ],
+            [
+                'name'=>'elettronica',
+                'macro'=>'market'
+            ],
+            [
+                'name'=>'collezionismo',
+                'macro'=>'market'
+            ],
+            [
+                'name'=>'sport',
+                'macro'=>'market'
+            ],
 
         ];
 
         foreach ($categories as $category) {
-            Category::create(['name' => $category]);
+            Category::create(['name'=>$category['name'], 'macro'=>$category['macro']]);
         }
     }
 
