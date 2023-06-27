@@ -1,3 +1,30 @@
+/* ! COLOR */
+.light-grey {
+    color: #cccccc !important;
+}
+
+.grey {
+    color: #333333 !important;
+}
+
+.light-orange {
+    color: #f7931e !important;
+}
+
+.orange {
+    color: #f15a24 !important;
+}
+
+.red {
+    color: #ed1c24 !important;
+}
+
+.dark-red {
+    color: #c1272d !important;
+}
+
+
+
 /* ! HEIGHT */
 .min-vh-84 {
     min-height: 84vh;

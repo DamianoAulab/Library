@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>{{ $title ?? '' }}</title>
 
-    <link rel="icon" type="image/x-icon" href="\img\img.ico">
+    <link rel="icon" type="image/x-icon" href="\img\presto.it_favicon.ico">
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 @livewireStyles

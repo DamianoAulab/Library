@@ -2,3 +2,8 @@
 @import 'bootstrap-icons';
 @import './helper.css';
 @import './404.css';
+
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
