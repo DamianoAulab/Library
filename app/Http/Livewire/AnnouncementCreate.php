@@ -13,7 +13,7 @@ class AnnouncementCreate extends Component
     use WithFileUploads;
     
     public $title, $price, $description, $img, $category_id;
-    public $categories;
+    
 
     
     protected $rules = [
