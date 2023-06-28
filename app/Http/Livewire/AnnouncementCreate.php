@@ -25,7 +25,7 @@ class AnnouncementCreate extends Component
 
         $category = Category::find($this->category_id);
 
-         $category->announcements()->create([
+        $announcement = $category->announcements()->create([
             'title' => $this->title,
             'price' => $this->price,
             'description' => $this->description,
@@ -37,7 +37,7 @@ class AnnouncementCreate extends Component
         //vedere messaggio success 
         $this->reset('title', 'description', 'price', 'img', 'category_id');
         session()->flash('announcement', 'Annuncio creato!');
-        return redirect(route('announcements.show', ['announcement'=>$this->id]));
+        return redirect()->route('announcements.show', ['announcement'=>$announcement->id]);
     }
 
     public function updated($propertyName) {
