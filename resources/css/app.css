@@ -7,3 +7,25 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+
+/* ! NAVBAR */
+
+#hamburger-list, #hamburger-list:focus, #hamburger-list:focus-visible{
+    outline: none;
+    box-shadow: none;
+    font-size: 2.5rem;
+}
+
+.btn-close:focus, .btn-close:focus-visible {
+    outline: none;
+    box-shadow: none;
+}
+
+.nav-link {
+    font-size: 1.2rem;
+}
+
+.dropdown-menu.show {
+    display: block !important;
+}

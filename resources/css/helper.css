@@ -1,31 +1,50 @@
 /* ! COLOR */
-.light-grey {
-    color: #cccccc !important;
+:root {
+    --light-grey: #cccccc;
+    --grey: #333333;
+    --light-orange: #f7931e;
+    --orange: #f15a24;
+    --red: #ed1c24;
+    --dark-red: #c1272d;
+    
 }
 
-.grey {
-    color: #333333 !important;
+/* ! BUTTON */
+.btn-red {
+    color: white;
+    background-color: var(--red);
+}
+.btn-red:hover {
+    color: white;
+    background-color: var(--dark-red);
 }
 
-.light-orange {
-    color: #f7931e !important;
+.btn-orange {
+    color: white;
+    background-color: var(--orange);
+}
+.btn-orange:hover {
+    color: white;
+    background-color: var(--red);
 }
 
-.orange {
-    color: #f15a24 !important;
+.btn-light-orange {
+    color: white;
+    background-color: var(--light-orange);
+}
+.btn-light-orange:hover {
+    color: white;
+    background-color: var(--orange);
 }
 
-.red {
-    color: #ed1c24 !important;
-}
 
-.dark-red {
-    color: #c1272d !important;
+/* ! TEXT */
+.capitalize {
+    text-transform: capitalize;
 }
-
 
 
 /* ! HEIGHT */
 .min-vh-84 {
-    min-height: 84vh;
+    min-height: 83.4vh;
 }

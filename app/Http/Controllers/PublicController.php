@@ -13,7 +13,7 @@ class PublicController extends Controller
 
     public function homepage() {
         $categories = Category::all();
-        return view('welcome', compact('categories'));
+        return view('homepage', compact('categories'));
     }
 
     //storage img profilo ??
