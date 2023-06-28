@@ -6,6 +6,7 @@ use App\Models\User;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
+use App\Models\Announcement;
 
 class PublicController extends Controller
 {
@@ -13,7 +14,15 @@ class PublicController extends Controller
 
     public function homepage() {
         $categories = Category::all();
-        return view('homepage', compact('categories'));
+        $announcements = Announcement::take(4)->get()->sortByDesc('created_at');
+        return view('homepage', compact('categories', 'announcements'));
+    }
+
+    public function search(Request $request) 
+    {
+        $announcement_search = Announcement::where('title', $request->search_announcement)->get();
+
+        return view('announcements.index', ['announcements' => $announcement_search]);
     }
 
     //storage img profilo ??

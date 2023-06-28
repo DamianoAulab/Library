@@ -3,10 +3,11 @@
     --light-grey: #cccccc;
     --grey: #333333;
     --light-orange: #f7931e;
+    --light-dark-orange: #d87a1d;
     --orange: #f15a24;
+    --dark-orange: #ce4a21;
     --red: #ed1c24;
     --dark-red: #c1272d;
-    
 }
 
 /* ! BUTTON */
@@ -25,7 +26,7 @@
 }
 .btn-orange:hover {
     color: white;
-    background-color: var(--red);
+    background-color: var(--dark-orange);
 }
 
 .btn-light-orange {
@@ -34,7 +35,7 @@
 }
 .btn-light-orange:hover {
     color: white;
-    background-color: var(--orange);
+    background-color: var(--light-dark-orange);
 }
 
 
@@ -43,8 +44,31 @@
     text-transform: capitalize;
 }
 
+/* ! IMG */
+.position-center {
+    background-position: center;
+}
+
 
 /* ! HEIGHT */
 .min-vh-84 {
     min-height: 83.4vh;
+}
+
+.max-vh-3 {
+    max-height: 3vh;
+}
+
+.max-vh-4 {
+    max-height: 4vh;
+}
+
+/* ! POSITION */
+
+.start-25 {
+    left: 25%;
+}
+
+.bottom-75 {
+    bottom: 75%;
 }

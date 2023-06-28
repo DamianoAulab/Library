@@ -11,45 +11,57 @@
                   <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
-                    <ul class="navbar-nav ms-auto mb-2 mb-sm-0 flex-col-reverse flex-md-row-reverse">
+                    <ul class="navbar-nav ms-auto mb-2 mb-sm-0 flex-col-reverse flex-lg-row-reverse">
     
                     @auth
-                        <li class="nav-item dropdown fs-5 pe-3">
-                            <a class="nav-link dropdown-toggle text-white fw-semibold" href="" role="button"
+                        <li class="nav-item dropdown fs-5 pe-0 pe-md-3 mx-auto">
+                            <a class="nav-link text-white fw-semibold d-flex align-items-center d-none d-md-flex " href="" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                {{ Auth::user()->name }} <img class="card-img max-vh-3 ms-0 rounded-circle" style="clip-path: circle(50%)"
-                                src="" alt="">
+                                {{ Auth::user()->name }} <img class="card-img max-vh-3 ms-2 rounded-circle w-auto" style="clip-path: circle(50%)"
+                                src="https://unsplash.it/500" alt="">
                             </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item fw-bold d-flex justify-content-between" href="">
+                            <ul class="dropdown-menu dropdown-menu-end d-block d-md-none mb-4">
+                                <li><a class="dropdown-item fw-bold d-flex justify-content-between fs-5 d-none d-md-flex" href="">
                                     Profilo <i class="bi bi-person-circle"></i></a></li>
+                                <li>
+                                <li><a class="dropdown-item fw-bold d-flex justify-content-between fs-5 d-block d-md-none" href="">
+                                    {{ Auth::user()->name }} <img class="card-img max-vh-4 mt-1 rounded-circle w-auto" style="clip-path: circle(50%)"
+                                src="https://unsplash.it/500" alt=""></a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li><a class="dropdown-item" href="">
+                                <li><a class="dropdown-item fw-semibold" href="">
                                     <i class="bi bi-tags me-2"></i>I miei Annunci</a></li>
                                 </li>
-                                <li class="px-2">
+                                <li class="px-2 mt-2"><a class="btn btn-light-orange w-100 fw-semibold" href="{{ route('announcements.create') }}">
+                                    <i class="bi bi-plus-square"></i> Annuncio</a>
+                                </li>
+                                <li class="px-2 mt-2">
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
-                                        <button class="btn btn-danger w-100 fw-bold"
+                                        <button class="btn btn-red w-100 fw-bold"
                                             onclick="event.preventDefault(); this.closest('form').submit();">Esci</button>
                                     </form>
                                 </li>
                             </ul>
+                        </li>
+                        <li class="nav-item me-0 me-lg-4">
+                            <a class="nav-link text-center d-none d-md-block fw-semibold" href="{{ route('announcements.create') }}">
+                                <i class="bi bi-plus-square"></i> Inserisci Annuncio
+                            </a>
                         </li>
                     @else
                     <ul class="navbar-nav justify-content-evenly flex-row mb-4 mb-md-0">
                         <li class="nav-item mt-1">
                             <a href="{{ route('login') }}" class="btn btn-light text-black px-4 fw-bold">Accedi</a>
                         </li>
-                        <li class="nav-item mt-1 ms-md-2">
+                        <li class="nav-item mt-1 ms-md-3">
                             <a href="{{ route('register') }}" class="btn btn-red px-4 fw-bold">Registrati</a>
                         </li>
                     </ul>
                     @endauth
     
-                    <li class="dropdown me-0 me-lg-5">
+                    <li class="dropdown me-0 me-lg-4">
                         <a class="nav-link dropdown-toggle text-center d-none d-md-block fw-semibold" href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                           Categorie
                         </a>

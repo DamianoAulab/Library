@@ -30,7 +30,7 @@
       <div class="mb-3">
         <label for="img" class="form-label">Immagine</label>
         <input class="form-control" id="img" wire:model="img" type="file">
-        @error('description')
+        @error('img')
         <span class="error text-danger">{{$message}}</span>
         @enderror
       </div>
@@ -39,7 +39,7 @@
         <option selected>Seleziona categoria</option>
         @foreach($categories as $category)
         <option value="{{$category->id}}">
-          {{$category->macro}} -  {{$category->name}}
+          {{$category->name}}
         </option>
         @endforeach
       </select>
