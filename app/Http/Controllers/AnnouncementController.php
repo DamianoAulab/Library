@@ -38,8 +38,9 @@ class AnnouncementController extends Controller
      */
     public function show(Announcement $announcement)
     {
+        $announcements = Announcement::orderBy('created_at', 'desc')->take(4)->get();
         $users = User::all();
-        return view('announcements.show', compact('announcement'), compact('users'));
+        return view('announcements.show', compact('announcement', 'users', 'announcements'));
     }
 
     /**
