@@ -44,9 +44,18 @@
     text-transform: capitalize;
 }
 
+.text-justify {
+    text-align: justify;
+}
+
 /* ! IMG */
 .position-center {
     background-position: center;
+}
+
+/* ! CARD */
+.fit-content {
+    width: fit-content;
 }
 
 

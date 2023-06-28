@@ -27,7 +27,7 @@
     
                             <p>La pagina che stai cercando non è disponibile!</p>
     
-                            <a href="" class="link_404 rounded shadow">Torna alla Home</a>
+                            <a href="{{ route('homepage') }}" class="link_404 rounded shadow">Torna alla Home</a>
                         </div>
                     </div>
                 </div>
