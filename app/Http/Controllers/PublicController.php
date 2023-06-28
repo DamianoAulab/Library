@@ -20,9 +20,11 @@ class PublicController extends Controller
 
     public function search(Request $request) 
     {
-        $announcement_search = Announcement::where('title', $request->search_announcement)->get();
+        $announcement_search = Announcement::where('title', 'like', '%'.$request->search_announcement.'%')->get();
+        
+        $category_search = Announcement::where('category_id', $request->search_category)->get();
 
-        return view('announcements.index', ['announcements' => $announcement_search]);
+        return view('announcements.index', ['announcements' => $announcement_search, $category_search]);
     }
 
     //storage img profilo ??

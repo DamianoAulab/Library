@@ -6,7 +6,9 @@
         @csrf
 
         <input class="form-control rounded-start" id="search_announcement" name="search_announcement" type="search" placeholder="Cosa cerchi?">
+        <input class="form-control rounded-start" id="search_category" name="search_category" type="search" placeholder="Categoria">
         <button class="input-group-text btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
+
     </form>
 
     <div class="row g-5 text-center align-items-center my-5">
