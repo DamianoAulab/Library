@@ -49,6 +49,11 @@
     background-position: center;
 }
 
+/* ! CARD */
+.fit-content {
+    width: fit-content;
+}
+
 
 /* ! HEIGHT */
 .min-vh-84 {

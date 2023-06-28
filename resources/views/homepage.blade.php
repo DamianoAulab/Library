@@ -51,8 +51,9 @@
                         <img src="https://unsplash.it/500" alt="" class="card-img-top object-fit-cover position-center" height="180rem">
                         <div class="card-body">
                             <h5 class="fs-3 fw-bold mb-5">{{ $announcement->title }}</h5>
-                            <p class=" position-absolute bottom-0 fs-4 fw-semibold" style="color: var(--grey)">€ {{ $announcement->price }},00</p>
-                            <a class="btn @if ($announcement->category->macro == 'motori') btn-light-orange @elseif ($announcement->category->macro == 'immobili') btn-orange @elseif ($announcement->category->macro == 'market') btn-red @endif text-white position-absolute bottom-0 end-0 mb-3 me-3 shadow" href=""><i class="bi bi-search"></i></a>
+                            <p class=" position-absolute bottom-0 fs-4 fw-semibold" style="color: var(--grey);">€ {{ $announcement->price }}</p>
+                            <a class="btn @if ($announcement->category->macro == 'motori') btn-light-orange @elseif ($announcement->category->macro == 'immobili') btn-orange @elseif ($announcement->category->macro == 'market') btn-red @endif text-white position-absolute bottom-0 end-0 mb-3 me-3 shadow"
+                                href="{{ route('announcements.show', ['announcement' => $announcement->id]) }}"><i class="bi bi-search"></i></a>
                         </div>
                     </div>
                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Announcement;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AnnouncementController extends Controller
@@ -37,7 +38,8 @@ class AnnouncementController extends Controller
      */
     public function show(Announcement $announcement)
     {
-        //
+        $users = User::all();
+        return view('announcements.show', compact('announcement'), compact('users'));
     }
 
     /**
