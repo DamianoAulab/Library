@@ -15,10 +15,7 @@ class AnnouncementCreate extends Component
     public $title, $price, $description, $img, $category_id;
     public $categories;
 
-    public function mount(){
-        $this->categories = Category::all();
-    }
-
+    
     protected $rules = [
         'title' => 'required|max:100',
         'price' => 'required|numeric',
