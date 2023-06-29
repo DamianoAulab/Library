@@ -37,8 +37,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-         $announcements = Announcement::orderBy('created_at', 'desc')->get();
-        return view('categories.show', compact('category', 'announcements'));
+        return view('categories.show', compact('category'));
     }
 
     /**

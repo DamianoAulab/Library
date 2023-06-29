@@ -28,7 +28,7 @@ class PublicController extends Controller
     }
 
     public function macro($macro) {
-        $categories = Category::all();
+        $categories = Category::orderBy('name', 'asc')->get();
         $announcements = Announcement::orderBy('created_at', 'desc')->get();
         return view('macro', compact('categories', 'announcements', 'macro'));
     }

@@ -8,7 +8,7 @@
         @foreach ($categories as $category)
         @if ($category->macro == $macro)
         <div class="col-12 col-md-auto mb-2">
-            <a href="{{ route('categories.show', ['category' => $category->id]) }}" class="btn @if ($macro == 'motori') btn-outline-light-orange @elseif ($macro == 'immobili') btn-outline-orange @elseif ($macro == 'market') btn-outline-red @endif  fw-bold text-white shadow text-uppercase w-100">{{ $category->name }}</a>
+            <a href="{{ route('categories.show', ['category' => $category->id]) }}" class="btn @if ($macro == 'motori') btn-outline-light-orange @elseif ($macro == 'immobili') btn-outline-orange @elseif ($macro == 'market') btn-outline-red @endif  fw-bold text-white shadow capitalize w-100">{{ $category->name }}</a>
         </div>
         @endif
         @endforeach
