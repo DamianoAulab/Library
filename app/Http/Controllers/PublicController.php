@@ -20,12 +20,9 @@ class PublicController extends Controller
 
     public function search(Request $request) 
     {
-        $announcement_search = Announcement::where('title', 'like', '%'.$request->search_announcement.'%')->get();
+        $announcement_search = Announcement::where('title', 'like', '%'.$request->search_announcement.'%')->where('category_id', $request->search_category)->get();
         
-        $category_search = Announcement::where('category_id', $request->search_category)->get();
-
-        return view('announcements.index', ['announcements' => $announcement_search, 'categories' => $category_search]);
-
+        return view('announcements.index', ['announcements' => $announcement_search]);
     }
 
     public function macro($macro) {
