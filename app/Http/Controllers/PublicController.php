@@ -27,6 +27,12 @@ class PublicController extends Controller
         return view('announcements.index', ['announcements' => $announcement_search, $category_search]);
     }
 
+    public function macro($macro) {
+        $categories = Category::all();
+        $announcements = Announcement::orderBy('created_at', 'desc')->get();
+        return view('macro', compact('categories', 'announcements', 'macro'));
+    }
+
     //storage img profilo ??
     public function store(Request $request) {
         $path_image='';

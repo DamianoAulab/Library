@@ -1,8 +1,9 @@
 <x-main>
     <x-slot name="title">Presto.it | {{ $announcement->title }}</x-slot>
 
+    <x-session />
 
-    <div class="row g-5 mt-2 mb-5">
+    <div class="row g-5 mt-md-2 mb-5">
         <div class="col-12 col-md-6">
             <div class="card border-0 shadow">
                 <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
@@ -49,7 +50,7 @@
 
                         {{ $announcement->category->name }}</a>
 
-                    <p class="mb-0 fw-semibold fs-5 mt-5">Prezzo</p>
+                    <p class="mb-0 fw-semibold fs-5 mt-3 mt-md-5">Prezzo</p>
                     <p class="mb-0 fw-bold fs-2" style="color: var(--grey); margin-top: -0.5rem;">€
                         {{ $announcement->price }}</p>
                 </div>
@@ -59,14 +60,14 @@
 
                     <div class="card border-0 shadow px-4 py-3">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-12 col-md-6">
                                 <p class="fs-4 fw-semibold mb-1"><img class="card-img max-vh-4 mx-2 rounded-circle w-auto"
                                         style="clip-path: circle(50%)" src="https://unsplash.it/500" alt="">
                                     <span class="fw-bold d-inline-block"> {{ $announcement->user->name }}</span>
                                 </p>
-                                <p class="fs-5 ms-3 mb-0"><span class="fw-bold fs-4 me-2">12</span> Annunci Online</p>
+                                <p class="fs-5 ms-3 mb-3 mb-md-0"><span class="fw-bold fs-4 me-1"> {{ $announcement->user->id }} </span> Annunci Online</p>
                             </div>
-                            <div class="col-6 d-flex align-items-center justify-content-end">
+                            <div class="col-12 col-md-6 d-flex align-items-center justify-content-end">
                                 <a class="btn btn-lg btn-primary shadow fw-semibold w-100"
                                     href="tel:{{ $announcement->user->phone }}">Contatta <i
                                         class="bi bi-telephone"></i></a>
@@ -78,7 +79,7 @@
         </div>
     </div>
     <h2 class="text-center fw-bold mt-4 mb-0 fs-1">Descrizione</h2>
-    <p class="text-justify px-5 mx-5 my-3">{{ $announcement->description }}</p>
+    <p class="text-justify px-md-5 mx-md-5 my-3">{{ $announcement->description }}</p>
 
 
     <h2 class="text-center fw-bold mt-5 mb-0 fs-2">Ultimi Annunci</h2>

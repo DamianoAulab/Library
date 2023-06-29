@@ -66,22 +66,22 @@
                           Categorie
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end d-block d-md-none px-2 text-center">
-                            <li><a class="btn btn-light-orange w-100 fw-bold fs-5" href="">Motori</a></li>
+                            <li><a class="btn btn-light-orange w-100 fw-bold fs-5" href="{{ route('macro', ['macro' => 'motori']) }}">Motori</a></li>
                             @foreach ($categories as $category)
                                 @if ($category->macro == 'motori')
-                                <li><a class="dropdown-item capitalize fw-semibold" href="">{{ $category->name }}</a></li>
+                                <li><a class="dropdown-item capitalize fw-semibold" href="{{ route('categories.show', ['category' => $category->id]) }}">{{ $category->name }}</a></li>
                                 @endif
                             @endforeach
-                            <li class="mt-3"><a class="btn btn-orange w-100 fw-bold fs-5" href="">Immobili</a></li>
+                            <li class="mt-3"><a class="btn btn-orange w-100 fw-bold fs-5" href="{{ route('macro', ['macro' => 'immobili']) }}">Immobili</a></li>
                             @foreach ($categories as $category)
                                 @if ($category->macro == 'immobili')
-                                <li><a class="dropdown-item capitalize fw-semibold" href="">{{ $category->name }}</a></li>
+                                <li><a class="dropdown-item capitalize fw-semibold" href="{{ route('categories.show', ['category' => $category->id]) }}">{{ $category->name }}</a></li>
                                 @endif
                             @endforeach
-                            <li class="mt-3"><a class="btn btn-red w-100 fw-bold fs-5" href="">Market</a></li>
+                            <li class="mt-3"><a class="btn btn-red w-100 fw-bold fs-5" href="{{ route('macro', ['macro' => 'market']) }}">Market</a></li>
                             @foreach ($categories as $category)
                                 @if ($category->macro == 'market')
-                                <li><a class="dropdown-item capitalize fw-semibold" href="">{{ $category->name }}</a></li>
+                                <li><a class="dropdown-item capitalize fw-semibold" href="{{ route('categories.show', ['category' => $category->id]) }}">{{ $category->name }}</a></li>
                                 @endif
                             @endforeach
                         </ul>

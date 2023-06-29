@@ -25,5 +25,7 @@ Route::get('/annunci/{announcement}/modifica', [AnnouncementController::class, '
 Route::get('/annunci/{announcement}/dettagli', [AnnouncementController::class, 'show'])->name('announcements.show');
 Route::get('/annunci', [AnnouncementController::class, 'index'])->name('announcements.index');
 
-Route::get('/categorie/{category}/dettagli', [CategoryController::class, 'show'])->name('categories.show');
+Route::get('/categorie/{category}', [CategoryController::class, 'show'])->name('categories.show');
+
+Route::get('/{macro}', [PublicController::class, 'macro'])->name('macro');
 

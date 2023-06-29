@@ -38,6 +38,41 @@
     background-color: var(--light-dark-orange);
 }
 
+/* ! OUTLINE BUTTON */
+
+.btn-outline-red {
+    color: var(--red) !important;
+    background-color: transparent !important;
+    border: 2px solid var(--red);
+}
+.btn-outline-red:hover {
+    color: white !important;
+    background-color: var(--dark-red) !important;
+    border-color: var(--dark-red) !important;
+}
+
+.btn-outline-orange {
+    color: var(--orange) !important;
+    background-color: transparent !important;
+    border: 2px solid var(--orange);
+}
+.btn-outline-orange:hover {
+    color: white !important;
+    background-color: var(--dark-orange) !important;
+    border-color: var(--dark-orange) !important;
+}
+
+.btn-outline-light-orange {
+    color: var(--light-orange) !important;
+    background-color: transparent !important;
+    border: 2px solid var(--light-orange);
+}
+.btn-outline-light-orange:hover {
+    color: white !important;
+    background-color: var(--light-dark-orange) !important;
+    border-color: var(--light-dark-orange) !important;
+}
+
 
 /* ! TEXT */
 .capitalize {

@@ -1,11 +1,11 @@
 <x-main>
-    <x-slot name="title">LIBRARY | Register</x-slot>
+    <x-slot name="title">Presto.it | Registrati</x-slot>
 
-    <div class="container my-5">
-        <h1 class="text-center mb-4">Registration</h1>
+    <div class="container py-md-5">
+        <h1 class="text-center mb-4 fw-bold">Registrati</h1>
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
-                <form class="p-5 shadow" action="{{ route('register') }}" method="POST">
+                <form class="p-4 p-md-5 shadow rounded" action="{{ route('register') }}" method="POST">
                     @method('POST')
                     @csrf
 
@@ -19,18 +19,18 @@
                     @enderror
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="number" name="phone" class="form-control" id="phone" value="{{ old('phone') }}" placeholder="numero di telefono" required>
-                        <label for="phone" class="form-label">Telefono</label>
-                        @error('phone')
+                        <input type="email" name="email" class="form-control" id="email" value="{{ old('email') }}" placeholder="Email" required>
+                        <label for="email" class="form-label">Email</label>
+                        @error('email')
                         <span class="text-danger">
                             {{ $message }}
                         </span>
                     @enderror
                     </div>
                     <div class="form-floating mb-3">
-                        <input type="email" name="email" class="form-control" id="email" value="{{ old('email') }}" placeholder="Email" required>
-                        <label for="email" class="form-label">Email</label>
-                        @error('email')
+                        <input type="text" name="phone" class="form-control" id="phone" value="{{ old('phone') }}" placeholder="numero di telefono" required>
+                        <label for="phone" class="form-label">Telefono</label>
+                        @error('phone')
                         <span class="text-danger">
                             {{ $message }}
                         </span>
@@ -47,7 +47,7 @@
                     </div>
                     <div class="form-floating mb-3">
                         <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" value="{{ old('confirm_password') }}" placeholder="Confirm Password" required>
-                        <label for="password_confirmation" class="form-label">Confirm password</label>
+                        <label for="password_confirmation" class="form-label">Conferma password</label>
                         @error('password_confirmation')
                             <span class="text-danger">
                                 {{ $message }}
@@ -61,7 +61,7 @@
                             <option value="Female">Femmina</option>
                             <option value="Non-binary">Non binario</option>
                         </select>
-                        <label for="gender">Gender</label>
+                        <label for="gender">Genere</label>
                         @error('gender')
                             <span class="text-danger">
                                 {{ $message }}
@@ -78,16 +78,6 @@
                             </span>
                         @enderror
                     </div>
-
-                    <div class="form mb-3">
-                        <label for="img">Immagine profilo</label>
-                        <input class="form-control" id="img" name="img" type="file" value="{{ old('img') }}" placeholder="Image User">
-                        @error('img')
-                            <span class="text-danger">
-                                {{ $message }}
-                            </span>
-                        @enderror
-                    </div>
     
                     @if ($errors->any())
                         <div class="alert alert-danger">
@@ -99,9 +89,11 @@
                         </div>
                     @endif
 
-                    <button type="submit" class="btn btn-primary btn-lg px-5">Registrati</button>
-                    <a href="{{ route('login') }}" class="btn btn-outline-dark btn-lg px-5">AccediP</a>
+                    <button type="submit" class="btn btn-red btn-lg px-5 w-100 fw-semibold">Registrati</button>
                 </form>
+                <p class="text-center mt-2">Hai già un account? 
+                    <a href="{{route('login')}}" class="text-decoration-none fw-semibold" style="color: var(--red)">Accedi</a>
+                </p>
             </div>
         </div>
     </div>

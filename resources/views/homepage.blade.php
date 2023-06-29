@@ -1,22 +1,43 @@
 <x-main>
     <x-slot name="title">Presto.it | Homepage</x-slot>
 
-    <form class="d-flex w-50 mx-auto mb-5 input-group" action="{{ route('search')}}" method="POST">
-        @method('POST')
-        @csrf
+    <div class="row">
+        <div class="col-12 col-md-8 pe-md-4">
+            <form class="d-flex mx-auto mb-5 input-group" action="{{ route('search')}}" method="POST">
+                @method('POST')
+                @csrf
+        
+                <input class="form-control rounded border-0 shadow w-auto mx-2 mx-md-0" id="search_announcement" name="search_announcement" type="search" placeholder="Cosa cerchi?" list="datalistOptions">
+                <datalist id="datalistOptions">
+                    @foreach ($announcements as $announcement)
+                        <option value="{{$announcement->title}}"></option>
+                    @endforeach
+                </datalist>
+                <select class="form-select rounded border-0 shadow my-2 my-md-0 mx-2 mx-md-3 capitalize" aria-label="Search Category" id="search_category" name="search_category" type="search">
+                    <option selected>Tutte le categorie</option>
+                    @foreach($categories as $category)
+                    <option value="{{$category->id}}" class="capitalize">
+                      {{$category->name}}
+                    </option>
+                    @endforeach
+                </select>
+                <button class="input-group-text btn btn-red rounded fw-semibold shadow px-4 my-2 my-md-0 me-2 me-md-0 w-auto" type="submit">Cerca<i class="bi bi-search ms-2"></i></button>
+        
+            </form>
+        </div>
+        <div class="col-12 col-md-4 px-md-5">
+            <a href="{{ route('announcements.create') }}" class="btn btn-light-orange w-100 fw-semibold shadow"><i class="bi bi-plus-square"></i> Inserisci Annuncio</a>
+        </div>
+    </div>
 
-        <input class="form-control rounded-start" id="search_announcement" name="search_announcement" type="search" placeholder="Cosa cerchi?">
-        <input class="form-control rounded-start" id="search_category" name="search_category" type="search" placeholder="Categoria">
-        <button class="input-group-text btn btn-primary" type="submit"><i class="bi bi-search"></i></button>
 
-    </form>
 
-    <div class="row g-5 text-center align-items-center my-5">
+    <div class="row g-5 text-center align-items-center mt-4 mb-5">
         <div class="col-12 col-md-4">
             <div class="card pb-4 border-0 shadow">
                 <img src="\img\macro_motori.png" class="card-img-top position-absolute w-50 bottom-50 start-25" alt="">
                 <div class="card-body mt-5 pt-5">
-                  <a href="" class="btn btn-lg btn-light-orange fw-bold text-white mt-5 shadow">Cerca in Motori</a>
+                  <a href="{{ route('macro', ['macro' => 'motori']) }}" class="btn btn-lg btn-light-orange fw-semibold text-white mt-5 shadow">Cerca in Motori</a>
                 </div>
               </div>
         </div>
@@ -24,7 +45,7 @@
             <div class="card pb-4 border-0 shadow">
                 <img src="\img\macro_immobili.png" class="card-img-top position-absolute w-50 bottom-50 start-25" alt="">
                 <div class="card-body mt-5 pt-5">
-                  <a href="" class="btn btn-lg btn-orange fw-bold text-white mt-5 shadow">Cerca in Immobili</a>
+                  <a href="{{ route('macro', ['macro' => 'immobili']) }}" class="btn btn-lg btn-orange fw-semibold text-white mt-5 shadow">Cerca in Immobili</a>
                 </div>
               </div>
         </div>
@@ -32,7 +53,7 @@
             <div class="card pb-4 border-0 shadow">
                 <img src="\img\macro_market.png" class="card-img-top position-absolute w-50 bottom-50 start-25" alt="">
                 <div class="card-body mt-5 pt-5">
-                  <a href="" class="btn btn-lg btn-red fw-bold text-white mt-5 shadow">Cerca in Market</a>
+                  <a href="{{ route('macro', ['macro' => 'market']) }}" class="btn btn-lg btn-red fw-semibold text-white mt-5 shadow">Cerca in Market</a>
                 </div>
               </div>
         </div>
