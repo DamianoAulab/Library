@@ -101,10 +101,12 @@
 
 .max-vh-3 {
     max-height: 3vh;
+    max-width: 3vh;
 }
 
 .max-vh-4 {
     max-height: 4vh;
+    max-width: 4vh;
 }
 
 /* ! POSITION */

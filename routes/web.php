@@ -28,6 +28,6 @@ Route::get('/annunci', [AnnouncementController::class, 'index'])->name('announce
 
 Route::get('/categorie/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
-Route::get('/profilo/{profile}', [UserController::class, 'show'])->name('users.show');
-Route::get('/profilo/{profile}/modifica', [UserController::class, 'edit'])->name('users.edit');
-Route::put('/profilo/{profile}/update', [UserController::class, 'update'])->name('users.update');
+Route::get('/profilo/{user}', [UserController::class, 'show'])->name('users.show');
+Route::get('/profilo/{user}/modifica', [UserController::class, 'edit'])->name('users.edit');
+Route::put('/profilo/{user}/update', [UserController::class, 'update'])->name('users.update');

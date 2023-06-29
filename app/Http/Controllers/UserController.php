@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,7 +31,7 @@ class UserController extends Controller
         return view('users.edit', compact('user'));
     }
 
-    public function update(Request $request, User $user){
+    public function update(UserRequest $request, User $user){
         $path_image=Auth::user()->img;
         if($request->hasFile('img') && $request->file('img')->isValid()){
             $path_name=$request->file('img')->getClientOriginalName();
@@ -46,6 +47,6 @@ class UserController extends Controller
             'phone' => $request->phone,
         ]);
 
-        return redirect()->route('users.show', ['user_id' => Auth::user()->id]);
+        return redirect()->route('users.show', ['user' => Auth::user()->id]);
     }
 }
