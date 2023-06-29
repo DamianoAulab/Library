@@ -37,23 +37,23 @@ class PublicController extends Controller
         return view('macro', compact('categories', 'announcements', 'macro'));
     }
 
-    //storage img profilo ??
-    public function store(Request $request) {
-        $path_image='';
-        if($request->hasFile('img') && $request->file('img')->isValid()){
-            $path_name=$request->file('img')->getClientOriginalName();
-            $path_image=$request->file('img')->storeAs('public/images/profile',$path_name);
-        }
+    // // //storage img profilo ??
+    // // public function store(Request $request) {
+    // //     $path_image='';
+    // //     if($request->hasFile('img') && $request->file('img')->isValid()){
+    // //         $path_name=$request->file('img')->getClientOriginalName();
+    // //         $path_image=$request->file('img')->storeAs('public/images/profile',$path_name);
+    // //     }
         
-        User::create([
-            'name'=>$request->name,
-            'email'=>$request->email,
-            'gender'=>$request->gender,
-            'phone'=>$request->phone,
-            'img'=>$path_image,
-            'birthday'=>$request->birthday,
-        ]);
+    // //     User::create([
+    // //         'name'=>$request->name,
+    // //         'email'=>$request->email,
+    // //         'gender'=>$request->gender,
+    // //         'phone'=>$request->phone,
+    // //         'img'=>$path_image,
+    // //         'birthday'=>$request->birthday,
+    // //     ]);
 
-        return redirect()->route('homepage')->with('success', 'Sei un utente!');
-    }
+    //     return redirect()->route('homepage')->with('success', 'Sei un utente!');
+    // }
 }
