@@ -14,7 +14,7 @@
                     </div>
                 @endif
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="title" wire:model="title" placeholder="Titolo">
+                    <input type="text" class="form-control" id="title" wire:model="announcement.title" placeholder="Titolo">
                     <label for="title" class="form-label">Titolo</label>
                     @error('title')
                         <span class="error text-danger">{{ $message }}</span>
@@ -22,7 +22,7 @@
                 </div>
                 <select class="form-select mb-3 capitalize" aria-label="Default select example" id="category_id"
                 wire:model="category_id">
-                <option selected>Seleziona categoria</option>
+                <option selected> da inserire </option>
                 @foreach ($categories as $category)
                     <option value="{{ $category->id }}" class="capitalize">
                         {{ $category->name }}
@@ -30,14 +30,14 @@
                 @endforeach
             </select>
                 <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="description" wire:model="description" placeholder="Descrizione">
+                    <input type="text" class="form-control" id="description" wire:model="announcement.description" placeholder="Descrizione">
                     <label for="description" class="form-label">Descrizione</label>
                     @error('description')
                         <span class="error text-danger">{{ $message }}</span>
                     @enderror
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="price" wire:model="price" placeholder="Prezzo">
+                    <input type="number" class="form-control" id="price" wire:model="announcement.price" placeholder="Prezzo">
                     <label for="price" class="form-label">Prezzo</label>
                     @error('price')
                         <span class="error text-danger">{{ $message }}</span>
@@ -45,7 +45,7 @@
                 </div>
                 <div class="mb-3">
                   <label for="img" class="form-label">Inserisci un'immagine</label>
-                    <input class="form-control" id="img" wire:model="img" type="file" placeholder="img">
+                    <input class="form-control" id="img" wire:model="announcement.img" type="file" placeholder="img">
                     @error('img')
                         <span class="error text-danger">{{ $message }}</span>
                     @enderror

@@ -41,10 +41,10 @@
             <div class="card border-0 d-flex h-100 justify-content-between">
                 @if (Auth::user() !== null && Auth::user()->id == $announcement->user_id)
                     <a class="btn btn-dark text-white position-absolute top-0 end-0 mt-2 me-0 shadow opacity-50 px-2 py-1"
-                        href=""><i class="bi bi-pencil"></i></a>
+                        href="{{ route('announcements.edit', ['announcement' => $announcement]) }}"><i class="bi bi-pencil"></i></a>
                 @endif
                 <div>
-                    <h2 class="fw-bold fs-1 w-75">{{ $announcement->title }}</h2>
+                    <h2 class="fw-bold fs-1 w-75 mb-3">{{ $announcement->title }}</h2>
                     <a class="btn @if ($announcement->category->macro == 'motori') btn-light-orange @elseif ($announcement->category->macro == 'immobili') btn-orange @elseif ($announcement->category->macro == 'market') btn-red @endif fit-content text-capitalize fw-semibold text-white shadow"
                         href="{{ route('categories.show', ['category' => $announcement->category_id]) }}">
 
@@ -65,7 +65,7 @@
                                         style="clip-path: circle(50%)" src="https://unsplash.it/500" alt="">
                                     <span class="fw-bold d-inline-block"> {{ $announcement->user->name }}</span>
                                 </p>
-                                <p class="fs-5 ms-3 mb-3 mb-md-0"><span class="fw-bold fs-4 me-1"> {{ $announcement->user->id }} </span> Annunci Online</p>
+                                <p class="fs-5 ms-3 mb-3 mb-md-0"><span class="fw-bold fs-4 me-1"> {{ $announcement->user->announcementCount() }} </span> Annunci Online</p>
                             </div>
                             <div class="col-12 col-md-6 d-flex align-items-center justify-content-end">
                                 <a class="btn btn-lg btn-primary shadow fw-semibold w-100"
@@ -93,7 +93,7 @@
                         {{ $announcement->category->name }}</a>
                     @if (Auth::user() !== null && Auth::user()->id == $announcement->user_id)
                         <a class="btn btn-dark text-white position-absolute top-0 end-0 mt-3 me-3 shadow opacity-50 px-2 py-1"
-                            href=""><i class="bi bi-pencil"></i></a>
+                            href="{{ route('announcements.edit', ['announcement' => $announcement]) }}"><i class="bi bi-pencil"></i></a>
                     @endif
                     <img src="https://unsplash.it/500" alt=""
                         class="card-img-top object-fit-cover position-center" height="180rem">

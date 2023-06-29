@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Announcement;
 use Livewire\Component;
 use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
@@ -10,31 +11,22 @@ class AnnouncementEdit extends Component
 {   
 
     public $title, $price, $description, $img, $category_id;
-    
 
-    
+    public Announcement $announcement;
+
     protected $rules = [
-        'title' => 'required|max:100',
-        'price' => 'required|numeric',
-        'description' => 'required',
-        'img' => 'image|max:1024',
+        'announcement.title' => 'required|max:100',
+        'announcement.price' => 'required|numeric',
+        'announcement.description' => 'required',
+        'announcement.img' => 'image|max:1024',
     ];
 
     public function update() {
         
-        $category = Category::find($this->category_id);
+        $this->announcement->save();
 
-        $announcement = $category->announcements()->update([
-            'title' => $this->title,
-            'price' => $this->price,
-            'description' => $this->description,
-            'img' => $this->img,
-            'user_id' => Auth::user()->id,
-        ]);
-
-        $this->reset('title', 'description', 'price', 'img', 'category_id');
-        session()->flash('success', 'Annuncio modificato!');
-        return redirect()->route('announcements.show', ['announcement'=>$announcement->id]);
+        session()->flash('edit', 'Annuncio modificato!');
+        return redirect()->route('announcements.show', ['announcement' => $this->announcement->id]);
     }
 
     public function updated($propertyName) {

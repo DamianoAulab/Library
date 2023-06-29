@@ -70,7 +70,7 @@
                              href="{{ route('categories.show', ['category' => $announcement->category_id]) }}">
                             {{ $announcement->category->name }}</a>
                         @if (Auth::user() !== null && Auth::user()->id == $announcement->user_id)
-                            <a class="btn btn-dark text-white position-absolute top-0 end-0 mt-3 me-3 shadow opacity-50 px-2 py-1" href=""><i class="bi bi-pencil"></i></a>
+                            <a class="btn btn-dark text-white position-absolute top-0 end-0 mt-3 me-3 shadow opacity-50 px-2 py-1" href="{{ route('announcements.edit', ['announcement' => $announcement]) }}"><i class="bi bi-pencil"></i></a>
                         @endif
                         <img src="https://unsplash.it/500" alt="" class="card-img-top object-fit-cover position-center" height="180rem">
                         <div class="card-body">
