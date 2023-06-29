@@ -46,7 +46,7 @@
                 <div>
                     <h2 class="fw-bold fs-1 w-75">{{ $announcement->title }}</h2>
                     <a class="btn @if ($announcement->category->macro == 'motori') btn-light-orange @elseif ($announcement->category->macro == 'immobili') btn-orange @elseif ($announcement->category->macro == 'market') btn-red @endif fit-content text-capitalize fw-semibold text-white shadow"
-                        href="">
+                        href="{{ route('categories.show', ['category' => $announcement->category_id]) }}">
 
                         {{ $announcement->category->name }}</a>
 
@@ -89,7 +89,7 @@
             <div class="col-12 col-md-3">
                 <div class="card border-0 shadow h-100">
                     <a class="btn @if ($announcement->category->macro == 'motori') btn-light-orange @elseif ($announcement->category->macro == 'immobili') btn-orange @elseif ($announcement->category->macro == 'market') btn-red @endif text-capitalize fw-semibold text-white position-absolute mt-3 ms-3 shadow"
-                        href="">
+                        href="{{ route('categories.show', ['category' => $announcement->category_id]) }}">
                         {{ $announcement->category->name }}</a>
                     @if (Auth::user() !== null && Auth::user()->id == $announcement->user_id)
                         <a class="btn btn-dark text-white position-absolute top-0 end-0 mt-3 me-3 shadow opacity-50 px-2 py-1"

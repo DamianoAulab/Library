@@ -53,10 +53,10 @@
                     @else
                     <ul class="navbar-nav justify-content-evenly flex-row mb-4 mb-md-0">
                         <li class="nav-item mt-1">
-                            <a href="{{ route('login') }}" class="btn btn-light text-black px-4 fw-bold">Accedi</a>
+                            <a href="{{ route('login') }}" class="btn btn-light text-black px-4 fw-semibold">Accedi</a>
                         </li>
                         <li class="nav-item mt-1 ms-md-3">
-                            <a href="{{ route('register') }}" class="btn btn-red px-4 fw-bold">Registrati</a>
+                            <a href="{{ route('register') }}" class="btn btn-red px-4 fw-semibold">Registrati</a>
                         </li>
                     </ul>
                     @endauth
