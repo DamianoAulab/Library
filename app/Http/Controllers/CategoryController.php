@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -36,7 +37,8 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        return view('categories.show', compact('category'));
+         $announcements = Announcement::orderBy('created_at', 'desc')->get();
+        return view('categories.show', compact('category', 'announcements'));
     }
 
     /**
