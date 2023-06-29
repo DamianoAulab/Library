@@ -24,7 +24,8 @@ class PublicController extends Controller
         
         $category_search = Announcement::where('category_id', $request->search_category)->get();
 
-        return view('announcements.index', ['announcements' => $announcement_search, $category_search]);
+        return view('announcements.index', ['announcements' => $announcement_search, 'categories' => $category_search]);
+
     }
 
     public function macro($macro) {
