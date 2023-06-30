@@ -1,7 +1,7 @@
 <x-main>
     <x-slot name="title">Presto.it | Homepage</x-slot>
 
-    <div class="row">
+    <div class="row justify-content-center">
         <div class="col-12 col-md-8 pe-md-4">
             <form class="d-flex mx-auto mb-5 input-group" action="{{ route('search')}}" method="POST">
                 @method('POST')
@@ -25,9 +25,11 @@
         
             </form>
         </div>
-        <div class="col-12 col-md-4 px-md-5">
-            <a href="{{ route('announcements.create') }}" class="btn btn-light-orange w-100 fw-semibold shadow"><i class="bi bi-plus-square"></i> Inserisci Annuncio</a>
-        </div>
+        @auth
+            <div class="col-12 col-md-4 px-md-5">
+                <a href="{{ route('announcements.create') }}" class="btn btn-light-orange w-100 fw-semibold shadow"><i class="bi bi-plus-square"></i> Inserisci Annuncio</a>
+            </div>
+        @endauth
     </div>
 
 
