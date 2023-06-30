@@ -37,7 +37,7 @@
                     @enderror
                 </div>
                 <div class="form-floating mb-3">
-                    <input type="number" class="form-control" id="price" wire:model="price" placeholder="Prezzo">
+                    <input type="number" class="form-control" step="0.01" id="price" wire:model="price" placeholder="Prezzo">
                     <label for="price" class="form-label">Prezzo</label>
                     @error('price')
                         <span class="error text-danger">{{ $message }}</span>
