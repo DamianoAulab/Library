@@ -17,17 +17,27 @@ class AnnouncementCreate extends Component
 
     
     protected $rules = [
-        'title' => 'required|max:100',
+        'title' => 'required|max:100|min:5',
         'price' => 'required|numeric',
         'description' => 'required',
         'img' => 'image|max:1024',
     ];
 
+    protected $messages = [
+        'required' => 'Il campo :attribute è richiesto',
+        'max' => 'Il campo :attribute è troppo lungo',
+        'min' => 'Il campo :attribute è troppo corto',
+        
+
+    ];
+
+    
+
     public function store(){
 
         $category = Category::find($this->category_id);
 
-        $announcement = $category->announcements()->create([
+         $category->announcements()->create([
             'title' => $this->title,
             'price' => $this->price,
             'description' => $this->description,
