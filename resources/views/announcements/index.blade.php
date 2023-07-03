@@ -1,5 +1,5 @@
 <x-main>
-    <x-slot name="title">Presto.it | Annunci</x-slot>
+    <x-slot name="title">Presto.it | Lista Annunci</x-slot>
 
     <div class="row">
         <div class="col-12 pe-md-4">
