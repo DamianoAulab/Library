@@ -22,24 +22,24 @@ class RevisorController extends Controller
     public function acceptAnnouncement(Announcement $announcement)
     {
         $announcement->setAccepted(true);
-        return redirect()->back()->with('message', 'Annuncio accettato!');
+        return redirect()->back()->with('success', 'Annuncio accettato!');
     }
 
     public function rejectAnnouncement(Announcement $announcement)
     {
         $announcement->setAccepted(false);
-        return redirect()->back()->with('message', 'Annuncio rifiutato!');
+        return redirect()->back()->with('delete', 'Annuncio rifiutato!');
     }
 
     public function becomeRevisor()
     {
         Mail::to('admin@presto.it')->send(new BecomeRevisor(Auth::user()));
-        return redirect()->back()->with('message', 'Hai chiesto di diventare revisore');
+        return redirect()->back()->with('success', 'Hai chiesto di diventare revisore!');
     }
 
     public function makeRevisor(User $user)
     {
         Artisan::call('presto:makeUserRevisor', ["email"=>$user->email]);
-        return redirect('/')->with('message', 'L\'utente è diventato revisore');
+        return redirect('/')->with('success', 'L\'utente è diventato revisore!');
     }
 }

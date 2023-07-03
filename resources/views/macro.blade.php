@@ -14,6 +14,7 @@
         @endforeach
     </div>
 
+    <x-session />
 
     <div class="row g-4 mt-1">
         @forelse ($announcements as $announcement)

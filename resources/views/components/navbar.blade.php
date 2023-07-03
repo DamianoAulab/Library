@@ -45,9 +45,19 @@
                                 <li><a class="dropdown-item fw-semibold" href="{{ route('users.show', ['user' => Auth::user()->id]) }}/#my-annunci">
                                     <i class="bi bi-tags me-2"></i>I miei Annunci</a></li>
                                 </li>
+                                @if (Auth::user()->is_revisor)
+                                    <li><a class="dropdown-item fw-semibold" href="{{ route('revisor.index') }}">
+                                        <i class="bi bi-shield-lock me-2"></i>Zona Revisore</a></li>
+                                    </li>                          
+                                @endif
                                 <li class="px-2 mt-2"><a class="btn btn-light-orange w-100 fw-semibold" href="{{ route('announcements.create') }}">
                                     <i class="bi bi-plus-square"></i> Annuncio</a>
                                 </li>
+                                @if (!Auth::user()->is_revisor)
+                                    <li class="px-2 mt-2"><a class="btn btn-green w-100 fw-semibold px-0" href="{{ route('become.revisor') }}">
+                                        <i class="bi bi-shield-lock"></i> Lavora con Noi</a>
+                                    </li>
+                                @endif
                                 <li class="px-2 mt-2">
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf

@@ -5,7 +5,7 @@
         <div class="@if ($category->macro == 'motori') btn-light-orange @elseif ($category->macro == 'immobili') btn-orange @elseif ($category->macro == 'market') btn-red @endif fw-bold text-white mb-4 shadow text-uppercase fit-content fs-1 px-5 py-2 rounded">{{ $category->name }}</div>
     </div>
    
-
+    <x-session />
 
     <div class="row g-4 mt-1">
         @forelse ($category->announcements as $announcement)

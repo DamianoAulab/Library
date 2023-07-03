@@ -5,15 +5,6 @@
         <div class="col-12 col-md-8">
             <form class="p-4 p-md-5 shadow rounded" wire:submit.prevent="store" enctype="multipart/form-data">
                 @csrf
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="title" wire:model="title" placeholder="Titolo">
                     <label for="title" class="form-label">Titolo</label>
@@ -51,6 +42,16 @@
                         <span class="error text-danger">{{ $message }}</span>
                     @enderror
                 </div>
+
+                @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
 
                 <button type="submit" class="btn btn-red btn-lg px-5 w-100 fw-semibold">Crea Annuncio</button>
             </form>

@@ -8,6 +8,8 @@
     --dark-orange: #ce4a21;
     --red: #ed1c24;
     --dark-red: #c1272d;
+    --green: #39b54a;
+    --dark-green: #009245;
 }
 
 /* ! BUTTON */
@@ -37,6 +39,17 @@
     color: white;
     background-color: var(--light-dark-orange);
 }
+
+
+.btn-green {
+    color: white;
+    background-color: var(--green);
+}
+.btn-green:hover {
+    color: white;
+    background-color: var(--dark-green);
+}
+
 
 /* ! OUTLINE BUTTON */
 
@@ -86,6 +99,13 @@
 /* ! IMG */
 .position-center {
     background-position: center;
+}
+
+.bg-zona-revisore {
+    background-image: url(../../public/img/bg-zona-revisore.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 /* ! CARD */

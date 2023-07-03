@@ -1,6 +1,8 @@
 <x-main>
     <x-slot name="title">Presto.it | Homepage</x-slot>
 
+    <x-session />
+
     <div class="row justify-content-center">
         <div class="col-12 col-md-8 pe-md-4">
             <form class="d-flex mx-auto mb-5 input-group" action="{{ route('search') }}" method="POST">

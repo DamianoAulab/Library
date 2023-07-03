@@ -20,7 +20,7 @@ class AnnouncementCreate extends Component
         'title' => 'required|max:100|min:5',
         'price' => 'required|numeric',
         'description' => 'required',
-        'img' => 'image|max:1024',
+        'img' => 'image|max:1024|nullable',
     ];
 
     protected $messages = [

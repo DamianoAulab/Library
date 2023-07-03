@@ -91,7 +91,7 @@
     <h2 class="text-center fw-bold mt-5 mb-0 fs-2">Ultimi Annunci</h2>
 
     <div class="row g-4 mt-1">
-        @foreach ($announcements as $announcement)
+        @forelse ($announcements as $announcement)
             <div class="col-12 col-md-3">
                 <div class="card border-0 shadow h-100">
                     <a class="btn @if ($announcement->category->macro == 'motori') btn-light-orange @elseif ($announcement->category->macro == 'immobili') btn-orange @elseif ($announcement->category->macro == 'market') btn-red @endif text-capitalize fw-semibold text-white position-absolute mt-3 ms-3 shadow"
@@ -113,7 +113,9 @@
                     </div>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <div class="text-center mt-4 text-dark text-opacity-75"><em>Nessun annuncio trovato...</em></div>
+        @endforelse
 
     </div>
 
