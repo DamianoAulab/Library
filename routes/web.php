@@ -20,7 +20,7 @@ use App\Http\Controllers\RevisorController;
 
 //Rotte generali
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
-Route::get('/{macro}', [PublicController::class, 'macro'])->name('macro');
+Route::get('/macrocategoria/{macro}', [PublicController::class, 'macro'])->name('macro');
 Route::post('/annunci/cerca', [PublicController::class, 'search'])->name('search');
 
 //Rotte categorie
