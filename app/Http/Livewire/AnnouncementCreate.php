@@ -27,7 +27,7 @@ class AnnouncementCreate extends Component
 
         $category = Category::find($this->category_id);
 
-        $announcement = $category->announcements()->create([
+        $category->announcements()->create([
             'title' => $this->title,
             'price' => $this->price,
             'description' => $this->description,
@@ -36,7 +36,6 @@ class AnnouncementCreate extends Component
         ]);
 
 
-        //vedere messaggio success 
         $this->reset('title', 'description', 'price', 'img', 'category_id');
         session()->flash('success', 'Annuncio creato!');
         return redirect()->route('announcements.create');

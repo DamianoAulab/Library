@@ -62,7 +62,13 @@
                         <div class="row">
                             <div class="col-12 col-md-6">
                                 <p class="fs-4 fw-semibold mb-1"><img class="card-img max-vh-4 mx-2 rounded-circle w-auto"
-                                        style="clip-path: circle(50%)" src="https://unsplash.it/500" alt="">
+                                        style="clip-path: circle(50%)" src="@if (Auth::user()->gender == 'Femmina') 
+                                        {{empty(Auth::user()->img) ? '/img/female-placeholder.jpg' : Storage::url(Auth::user()->img)}}
+                                    @elseif (Auth::user()->gender == 'Maschio') 
+                                        {{empty(Auth::user()->img) ? '/img/male-placeholder.jpeg' : Storage::url(Auth::user()->img)}}
+                                    @elseif (Auth::user()->gender == 'Non binario')
+                                        {{empty(Auth::user()->img) ? '/img/non-binary-placeholder.png' : Storage::url(Auth::user()->img)}}
+                                    @endif" alt="">
                                     <span class="fw-bold d-inline-block"> {{ $announcement->user->name }}</span>
                                 </p>
                                 <p class="fs-5 ms-3 mb-3 mb-md-0"><span class="fw-bold fs-4 me-1"> {{ $announcement->user->announcementCount() }} </span> Annunci Online</p>
@@ -79,7 +85,7 @@
         </div>
     </div>
     <h2 class="text-center fw-bold mt-4 mb-0 fs-1">Descrizione</h2>
-    <p class="text-justify px-md-5 mx-md-5 my-3">{{ $announcement->description }}</p>
+    <p class="text-center px-md-5 mx-md-5 my-3">{{ $announcement->description }}</p>
 
 
     <h2 class="text-center fw-bold mt-5 mb-0 fs-2">Ultimi Annunci</h2>

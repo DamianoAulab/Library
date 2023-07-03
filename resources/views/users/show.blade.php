@@ -57,7 +57,7 @@
                 </div>
             </div>
             @empty
-                <p class="text-center"><em>No books added to this author...</em></p>
+            <div class="text-center mt-4 text-dark text-opacity-75"><em>Nessun annuncio trovato...</em></div>
             @endforelse
         </div>
     </div>
