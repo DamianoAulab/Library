@@ -1,5 +1,6 @@
 <div class="container-fluid pb-4 pb-md-5">
     <h1 class="text-center mb-4 pt-md-5 fw-bold">Inserisci Annuncio</h1>
+    <x-session />
     <div class="row justify-content-center">
         <div class="col-12 col-md-8">
             <form class="p-4 p-md-5 shadow rounded" wire:submit.prevent="store" enctype="multipart/form-data">

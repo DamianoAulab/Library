@@ -39,7 +39,7 @@ class AnnouncementCreate extends Component
         //vedere messaggio success 
         $this->reset('title', 'description', 'price', 'img', 'category_id');
         session()->flash('success', 'Annuncio creato!');
-        return redirect()->route('announcements.show', ['announcement'=>$announcement->id]);
+        return redirect()->route('announcements.create');
     }
 
     public function updated($propertyName) {

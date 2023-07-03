@@ -16,4 +16,3 @@ setTimeout(function() {
 setTimeout(function() {
     sessionDelete.style.display = 'none';
 }, 3000);
-
