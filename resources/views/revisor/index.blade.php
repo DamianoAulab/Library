@@ -112,11 +112,6 @@
 
             <div class="col-12 d-flex my-5">
                 <div class="col-6 text-center">
-                    <form action="{{route('revisor.accept_announcement', ['announcement' => $announcement_to_check])}}" method="POST">
-                        @csrf
-                        @method('PATCH')
-                        <button type="submit" class="btn btn-green px-2 py-0 fs-4 mx-1"><i class="bi bi-check"></i></button>
-                        </form>
                     <button class="btn btn-lg btn-green w-75 fw-semibold shadow fs-1" data-bs-toggle="modal"
                         data-bs-target="#modalAccept"><i class="bi bi-patch-check"></i> ACCETTA</button>
                 </div>
@@ -132,21 +127,38 @@
     <x-footer />
 
     {{-- ! MODAL ACCEPT --}}
-    {{-- <div class="modal fade" id="modalAccept" tabindex="-1" aria-labelledby="modaleAccept" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content border-0">
+    <div class="modal fade" id="modalAccept" tabindex="-1" aria-labelledby="modaleAccept" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content border-0 w-110">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5">Sei sicuro di voler accettare questo annuncio?</h1>
-                    <form action="{{route('revisor.accept_announcement', ['announcement' => $announcement_to_check])}}" method="POST">
+                    <h1 class="modal-title fs-5">Sei sicuro di voler <b>ACCETTARE</b> questo annuncio?</h1>
+                    <form action="{{ Route('revisor.accept_announcement', ['announcement' => $announcement_to_check->id])}}" method="POST">
                     @csrf
                     @method('PATCH')
-                    <button type="submit" class="btn btn-green px-2 py-0 fs-4 mx-1"><i class="bi bi-check"></i></button>
+                    <button type="submit" class="btn btn-green px-2 py-0 fs-4"><i class="bi bi-check"></i></button>
                     </form>
-                    <button type="button" class="btn btn-red px-2 py-0 fs-4 mx-1" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
+                    <button type="button" class="btn btn-red px-2 py-0 fs-4" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
+
+    {{-- ! MODAL REJECT --}}
+    <div class="modal fade" id="modalReject" tabindex="-1" aria-labelledby="modalReject" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content border-0 w-110">
+                <div class="modal-header border-0">
+                    <h1 class="modal-title fs-5">Sei sicuro di voler <b>RIFIUTARE</b> questo annuncio?</h1>
+                    <form action="{{route('revisor.reject_announcement', ['announcement' => $announcement_to_check->id])}}" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <button type="submit" class="btn btn-green px-2 py-0 fs-4"><i class="bi bi-check"></i></button>
+                    </form>
+                    <button type="button" class="btn btn-red px-2 py-0 fs-4" data-bs-dismiss="modal" aria-label="Close"><i class="bi bi-x"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

@@ -39,7 +39,7 @@ class AnnouncementController extends Controller
      */
     public function show(Announcement $announcement)
     {
-        $announcements = Announcement::orderBy('created_at', 'desc')->take(4)->get();
+        $announcements = Announcement::orderBy('created_at', 'desc')->where('is_accepted', true)->take(4)->get();
         $users = User::all();
         if($announcement->is_accepted){
             $announcement = $announcement;

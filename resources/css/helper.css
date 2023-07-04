@@ -114,7 +114,7 @@
 }
 
 
-/* ! HEIGHT */
+/* ! HEIGHT - WIDTH */
 .min-vh-84 {
     min-height: 83.4vh;
 }
@@ -127,6 +127,10 @@
 .max-vh-4 {
     max-height: 4vh;
     max-width: 4vh;
+}
+
+.w-110 {
+    width: 120%;
 }
 
 /* ! POSITION */
