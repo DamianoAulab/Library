@@ -74,11 +74,17 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item me-0 me-lg-4">
+                        <li><form action="{{route('announcements.search')}}" method="GET" class="d-flex">
+                            <input name="searched" class="form-control me-2" type="search" placeholder="Cerca" aria-label="Cerca">
+                            <button class="btn btn-red" type="submit"><i class="bi bi-search"></i></button>
+                        </form>
+                        </li>
+
+                      {{--   <li class="nav-item me-0 me-lg-4">
                             <a class="nav-link text-center d-none d-md-block fw-semibold" href="{{ route('announcements.create') }}">
                                 <i class="bi bi-plus-square"></i> Inserisci Annuncio
                             </a>
-                        </li>
+                        </li> --}}
                     @else
                     <ul class="navbar-nav justify-content-evenly flex-row mb-4 mb-md-0">
                         <li class="nav-item mt-1">

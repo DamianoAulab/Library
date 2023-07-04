@@ -12,6 +12,13 @@ class PublicController extends Controller
 {
    
 
+  public function searchAnnouncements(Request $request){
+     $announcements= Announcement::search($request->searched)->where('is_accepted', true)->paginate(12);
+     return view('announcements.index', compact('announcements'));
+
+  }
+
+
     public function homepage() {
         $categories = Category::orderBy('name', 'asc')->get();
         $announcements = Announcement::orderBy('created_at', 'desc')->where('is_accepted', true)->take(4)->get();
