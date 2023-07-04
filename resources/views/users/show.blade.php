@@ -23,7 +23,7 @@
                     <p class="mb-3 fs-5 fw-semibold"><i class="bi bi-telephone me-2"></i>{{ $user->phone }}</p>
 
                     <p class="mt-2 fs-5 mb-1 fw-semibold"><i class="bi bi-gender-@if (Auth::user()->gender == 'Femmina')female @elseif (Auth::user()->gender == 'Maschio')male @elseif (Auth::user()->gender == 'Non binario')trans @endif me-2"></i>{{ $user->gender }}</p>
-                    <p class="mb-3 fs-5 fw-semibold"><i class="bi bi-calendar2-heart me-2"></i>{{ isset($user->birthday) ? $user->birthday->format('d-m-Y') : 'unknown' }}</p>
+                    <p class="mb-3 fs-5 fw-semibold"><i class="bi bi-calendar2-heart me-2"></i>{{ isset($user->birthday) ? $user->birthday->format('d-m-Y') : '- - -' }}</p>
 
                     <p class="mt-3 mb-2 text-dark text-opacity-75"><i class="bi bi-tags me-2"></i><em>{{ $user->announcementCount() }} Annunci Online</em></p>
 
@@ -41,6 +41,7 @@
 
     <div id="my-annunci" class="col-12 justify-content-center align-items-center mb-5">
         <h2 class="text-center fw-bold mt-5 mb-4 fs-2">I miei Annunci</h2>
+        <x-session />
         <div class="row g-3">
             @forelse ($user->announcements as $announcement)
             <div class="col-12 col-md-3">
@@ -49,7 +50,8 @@
                          href="{{ route('categories.show', ['category' => $announcement->category_id]) }}">
                         {{ $announcement->category->name }}</a>
                     @if (Auth::user() !== null && Auth::user()->id == $announcement->user_id && $announcement->is_accepted)
-                        <a class="btn btn-dark text-white position-absolute top-0 end-0 mt-3 me-3 shadow opacity-50 px-2 py-1" href="{{ route('announcements.edit', ['announcement' => $announcement]) }}"><i class="bi bi-pencil"></i></a>
+                        <a class="btn btn-dark text-white position-absolute top-0 end-15 mt-3 me-3 shadow opacity-75 px-2 py-1" href="{{ route('announcements.edit', ['announcement' => $announcement]) }}"><i class="bi bi-pencil"></i></a>
+                        <form action="{{ route('announcements.destroy', ['announcement' => $announcement]) }}" method="POST"> @csrf @method('DELETE')<button class="btn btn-red text-white position-absolute top-0 end-0 mt-3 me-3 shadow px-2 py-1"><i class="bi bi-trash"></i></button></form>
                     @endif
                     <img src="https://unsplash.it/500" alt="" class="card-img-top object-fit-cover position-center" height="180rem">
                     <div class="card-body">
