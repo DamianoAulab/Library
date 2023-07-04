@@ -26,7 +26,6 @@ return new class extends Migration
             'password' => Hash::make('12345678'),
             'gender' => 'Non binario',
             'phone' => 1234567890,
-            'is_revisor' => 1,
         ]);
     }
 
