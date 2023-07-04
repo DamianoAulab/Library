@@ -40,6 +40,12 @@ class AnnouncementController extends Controller
     {
         $announcements = Announcement::orderBy('created_at', 'desc')->take(4)->get();
         $users = User::all();
+        if($announcement->is_accepted){
+            $announcement = $announcement;
+        }
+        else {
+            abort(404);
+        }
         return view('announcements.show', compact('announcement', 'users', 'announcements'));
     }
 

@@ -28,6 +28,10 @@
                     <p class="mt-3 mb-2 text-dark text-opacity-75"><i class="bi bi-tags me-2"></i><em>{{ $user->announcementCount() }} Annunci Online</em></p>
 
                     <a href="{{ route('announcements.create') }}" class="btn btn-lg btn-light-orange w-100 fw-semibold shadow fs-3 py-3"><i class="bi bi-plus-square"></i> Inserisci Annuncio</a>
+                    
+                    @if (Auth::user()->is_revisor)
+                        <a href="{{ route('revisor.index') }}" class="btn btn-lg btn-success w-100 fw-semibold shadow fs-3 py-3 mt-3"><i class="bi bi-shield-lock"></i> Zona Revisore</a>              
+                    @endif
 
                 </div>
             </div>
@@ -40,19 +44,21 @@
         <div class="row g-3">
             @forelse ($user->announcements as $announcement)
             <div class="col-12 col-md-3">
-                <div class="card border-0 shadow h-100">
+                <div class="card border-0 shadow h-100 @if($announcement->is_accepted == null) opacity-50 @endif">
                     <a class="btn @if ($announcement->category->macro == 'motori') btn-light-orange @elseif ($announcement->category->macro == 'immobili') btn-orange @elseif ($announcement->category->macro == 'market') btn-red @endif text-capitalize fw-semibold text-white position-absolute mt-3 ms-3 shadow"
                          href="{{ route('categories.show', ['category' => $announcement->category_id]) }}">
                         {{ $announcement->category->name }}</a>
-                    @if (Auth::user() !== null && Auth::user()->id == $announcement->user_id)
+                    @if (Auth::user() !== null && Auth::user()->id == $announcement->user_id && $announcement->is_accepted)
                         <a class="btn btn-dark text-white position-absolute top-0 end-0 mt-3 me-3 shadow opacity-50 px-2 py-1" href="{{ route('announcements.edit', ['announcement' => $announcement]) }}"><i class="bi bi-pencil"></i></a>
                     @endif
                     <img src="https://unsplash.it/500" alt="" class="card-img-top object-fit-cover position-center" height="180rem">
                     <div class="card-body">
                         <h5 class="fs-3 fw-bold mb-5">{{ $announcement->title }}</h5>
-                        <p class=" position-absolute bottom-0 fs-4 fw-semibold" style="color: var(--grey);">€ {{ $announcement->price }}</p>
-                        <a class="btn @if ($announcement->category->macro == 'motori') btn-light-orange @elseif ($announcement->category->macro == 'immobili') btn-orange @elseif ($announcement->category->macro == 'market') btn-red @endif text-white position-absolute bottom-0 end-0 mb-3 me-3 shadow"
-                            href="{{ route('announcements.show', ['announcement' => $announcement->id]) }}"><i class="bi bi-search"></i></a>
+                        <p class=" position-absolute bottom-0 fs-4 fw-semibold" style="color: var(--grey);">€ {{ number_format($announcement->price, 2, ',', ' ') }}</p>
+                        @if ($announcement->is_accepted)
+                            <a class="btn @if ($announcement->category->macro == 'motori') btn-light-orange @elseif ($announcement->category->macro == 'immobili') btn-orange @elseif ($announcement->category->macro == 'market') btn-red @endif text-white position-absolute bottom-0 end-0 mb-3 me-3 shadow"
+                                href="{{ route('announcements.show', ['announcement' => $announcement->id]) }}"><i class="bi bi-search"></i></a>                          
+                        @endif
                     </div>
                 </div>
             </div>

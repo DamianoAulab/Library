@@ -47,7 +47,9 @@
                                 </li>
                                 @if (Auth::user()->is_revisor)
                                     <li><a class="dropdown-item fw-semibold" href="{{ route('revisor.index') }}">
-                                        <i class="bi bi-shield-lock me-2"></i>Zona Revisore</a></li>
+                                        <i class="bi bi-shield-lock me-2"></i>Zona Revisore
+                                        <span class="translate-middle badge rounded-pill bg-danger">2</span>
+                                        </a></li>
                                     </li>                          
                                 @endif
                                 <li class="px-2 mt-2"><a class="btn btn-light-orange w-100 fw-semibold" href="{{ route('announcements.create') }}">

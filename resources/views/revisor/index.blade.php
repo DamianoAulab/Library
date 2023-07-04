@@ -67,7 +67,7 @@
 
                             <p class="mb-0 fw-semibold fs-5 mt-3 mt-md-5">Prezzo</p>
                             <p class="mb-0 fw-bold fs-2" style="color: var(--grey); margin-top: -0.5rem;">€
-                                {{ $announcement_to_check->price }}</p>
+                                {{ number_format($announcement_to_check->price, 2, ',', ' ') }}</p>
                         </div>
 
                         <div>

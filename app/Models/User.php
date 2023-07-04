@@ -53,6 +53,6 @@ class User extends Authenticatable
     }
 
     public function announcementCount() {
-        return count(Announcement::where('user_id', $this->id)->get());
+        return Announcement::where('user_id', $this->id)->where('is_accepted', true)->count();
     }
 }
