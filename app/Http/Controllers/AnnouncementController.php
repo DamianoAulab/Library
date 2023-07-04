@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Announcement;
 use App\Models\User;
+use App\Models\Announcement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnnouncementController extends Controller
 {
