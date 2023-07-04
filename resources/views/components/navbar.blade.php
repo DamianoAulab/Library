@@ -4,7 +4,10 @@
                 height="50rem"></a>
         <button id="hamburger-list" class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasNavbar" aria-controls="offcavasNavbar" aria-expanded="false"
-            aria-label="Toggle navigation"><i class="bi bi-hash text-white"></i></button>
+            aria-label="Toggle navigation"><i class="bi bi-hash text-white"></i>
+            @if (Auth::user()->is_revisor && $announcements_to_check)
+            <span class="position-absolute top-0 end-0 translate-middle p-1 mt-4 me-2 rounded btn-green"></span>
+        @endif</button>
         <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
@@ -19,7 +22,7 @@
                     @auth
                         <li class="nav-item dropdown fs-5 pe-0 pe-md-3 mx-auto">
                             <a class="nav-link text-white fw-semibold d-flex align-items-center d-none d-md-flex position-relative"
-                                href="" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                href="{{ route('users.show', ['user' => Auth::user()->id]) }}" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ Auth::user()->name }} <img class="card-img max-vh-3 ms-2 rounded-circle w-auto"
                                     style="clip-path: circle(50%)"
                                     src="@if (Auth::user()->gender == 'Femmina') {{ empty(Auth::user()->img) ? '/img/female-placeholder.jpg' : Storage::url(Auth::user()->img) }}
@@ -39,7 +42,7 @@
                                         Profilo <i class="bi bi-person-circle"></i></a></li>
                                 <li>
                                 <li><a class="dropdown-item fw-bold d-flex justify-content-between fs-5 d-block d-md-none"
-                                        href="">
+                                        href="{{ route('users.show', ['user' => Auth::user()->id]) }}">
                                         {{ Auth::user()->name }} <img class="card-img max-vh-4 mt-1 rounded-circle w-auto"
                                             style="clip-path: circle(50%)"
                                             src="@if (Auth::user()->gender == 'Femmina') {{ empty(Auth::user()->img) ? '/img/female-placeholder.jpg' : Storage::url(Auth::user()->img) }}

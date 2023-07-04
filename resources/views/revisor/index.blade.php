@@ -93,13 +93,17 @@
                                                 {{ $announcement_to_check->user->announcementCount() }} </span> Annunci
                                             Online</p>
                                     </div>
-                                    <div class="col-12 col-md-7 d-flex align-items-center justify-content-end">
-                                        <a class="btn btn-lg btn-primary shadow fw-semibold w-100 mx-1"
+                                    <div class="col-12 col-md-7 d-flex align-items-center justify-content-end flex-wrap">
+                                        <div class="col-12 col-md-6 px-1 pb-2 pb-md-0">
+                                            <a class="btn btn-lg btn-primary shadow fw-semibold w-100 mx-1"
                                             href="tel:{{ $announcement_to_check->user->phone }}">Contatta <i
                                                 class="bi bi-telephone"></i></a>
-                                        <a class="btn btn-lg btn-primary shadow fw-semibold w-100 mx-1"
+                                        </div>
+                                        <div class="col-12 col-md-6 px-1">
+                                            <a class="btn btn-lg btn-primary shadow fw-semibold w-100 mx-1"
                                             href="mailto:{{ $announcement_to_check->user->email }}">Email <i
                                                 class="bi bi-envelope"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -110,12 +114,12 @@
             <h2 class="text-center fw-bold mt-4 mb-0 fs-1">Descrizione</h2>
             <p class="text-center px-md-5 mx-md-5 my-3">{{ $announcement_to_check->description }}</p>
 
-            <div class="col-12 d-flex my-5">
-                <div class="col-6 text-center">
+            <div class="row my-5">
+                <div class="col-12 col-md-6 text-center">
                     <button class="btn btn-lg btn-green w-75 fw-semibold shadow fs-1" data-bs-toggle="modal"
                         data-bs-target="#modalAccept"><i class="bi bi-patch-check"></i> ACCETTA</button>
                 </div>
-                <div class="col-6 text-center">
+                <div class="col-12 col-md-6 mt-2 mt-md-0 text-center">
                     <button class="btn btn-lg btn-red w-75 fw-semibold shadow fs-1" data-bs-toggle="modal"
                         data-bs-target="#modalReject"><i class="bi bi-x-octagon"></i> RIFIUTA</button>
                 </div>
