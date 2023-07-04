@@ -10,13 +10,23 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 
 class RevisorController extends Controller
 {
     public function index()
     {
         $announcement_to_check = Announcement::where('is_accepted', null)->first();
-        return view('revisor.index', compact('announcement_to_check'));
+
+        $categories = Category::orderBy('name', 'asc')->get();
+        $announcements = Announcement::orderBy('created_at', 'desc')->where('is_accepted', true)->take(4)->get();
+
+        if ($announcement_to_check == null) {
+            return view('homepage', compact('categories', 'announcements'));
+        }
+        else {
+            return view('revisor.index', compact('announcement_to_check'));
+        }
     }
 
     public function acceptAnnouncement(Announcement $announcement)
