@@ -20,7 +20,7 @@
         <x-session />
 
         @if (!$announcement_to_check)
-            <div class="text-center mt-4 text-dark text-opacity-75"><em>Nessun annuncio da revisionare...</em></div>
+            <div class="text-center mt-4 text-dark text-opacity-75 fs-2"><em>Nessun annuncio da revisionare...</em></div>
         @else
             <div class="row g-5 mt-md-2 mb-5">
                 <div class="col-12 col-md-6">

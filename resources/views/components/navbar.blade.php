@@ -15,7 +15,7 @@
     
                     @auth
                         <li class="nav-item dropdown fs-5 pe-0 pe-md-3 mx-auto">
-                            <a class="nav-link text-white fw-semibold d-flex align-items-center d-none d-md-flex " href="" role="button"
+                            <a class="nav-link text-white fw-semibold d-flex align-items-center d-none d-md-flex position-relative" href="" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ Auth::user()->name }} <img class="card-img max-vh-3 ms-2 rounded-circle w-auto" style="clip-path: circle(50%)"
                                 src="@if (Auth::user()->gender == 'Femmina') 
@@ -25,6 +25,9 @@
                             @elseif (Auth::user()->gender == 'Non binario')
                                 {{empty(Auth::user()->img) ? '/img/non-binary-placeholder.png' : Storage::url(Auth::user()->img)}}
                             @endif" alt="">
+                                @if (Auth::user()->is_revisor && $announcements_to_check)
+                                    <span class="position-absolute top-0 end-0 translate-middle p-1 mt-2 rounded btn-green"></span>
+                                @endif
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end d-block d-md-none mb-4">
                                 <li><a class="dropdown-item fw-bold d-flex justify-content-between fs-5 d-none d-md-flex" href="{{ route('users.show', ['user' => Auth::user()->id]) }}">
@@ -48,7 +51,9 @@
                                 @if (Auth::user()->is_revisor)
                                     <li><a class="dropdown-item fw-semibold" href="{{ route('revisor.index') }}">
                                         <i class="bi bi-shield-lock me-2"></i>Zona Revisore
-                                        <span class="translate-middle badge rounded-pill bg-danger">2</span>
+                                        @if ($announcements_to_check > 0)
+                                            <span class="badge btn-green">{{ $announcements_to_check }}</span>
+                                        @endif
                                         </a></li>
                                     </li>                          
                                 @endif

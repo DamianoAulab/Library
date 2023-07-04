@@ -30,7 +30,7 @@
                     <a href="{{ route('announcements.create') }}" class="btn btn-lg btn-light-orange w-100 fw-semibold shadow fs-3 py-3"><i class="bi bi-plus-square"></i> Inserisci Annuncio</a>
                     
                     @if (Auth::user()->is_revisor)
-                        <a href="{{ route('revisor.index') }}" class="btn btn-lg btn-success w-100 fw-semibold shadow fs-3 py-3 mt-3"><i class="bi bi-shield-lock"></i> Zona Revisore</a>              
+                        <a href="{{ route('revisor.index') }}" class="btn btn-lg btn-green w-100 fw-semibold shadow fs-3 py-3 mt-3"><i class="bi bi-shield-lock"></i> Zona Revisore @if ($user->toBeRevisionedCount() > 0) <span class="badge btn-red">{{ $user->toBeRevisionedCount() }}</span> @endif</a>              
                     @endif
 
                 </div>
