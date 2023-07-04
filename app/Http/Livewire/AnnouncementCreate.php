@@ -49,7 +49,7 @@ class AnnouncementCreate extends Component
 
 
         $this->reset('title', 'description', 'price', 'img', 'category_id');
-        session()->flash('success', 'Annuncio creato!');
+        session()->flash('success', 'Annuncio creato! Sarà pubblicato dopo la revisione');
         return redirect()->route('announcements.create');
     }
 
