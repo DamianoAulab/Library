@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Announcement;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AnnouncementController extends Controller
 {
@@ -54,6 +55,12 @@ class AnnouncementController extends Controller
      */
     public function edit(Announcement $announcement)
     {
+        if($announcement->user_id == Auth::user()->id ){
+            $announcement = $announcement;
+        }
+        else {
+            abort(404);
+        }
         return view('announcements.edit', compact('announcement'));
     }
 
