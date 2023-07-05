@@ -22,7 +22,7 @@ class RevisorController extends Controller
         $announcements = Announcement::orderBy('created_at', 'desc')->where('is_accepted', true)->take(4)->get();
 
         if ($announcement_to_check == null) {
-            return view('homepage', compact('categories', 'announcements'));
+            return redirect()->route('homepage', compact('categories', 'announcements'))->with('success', 'Non ci sono annunci da revisionare! Torna più tardi!');
         }
         else {
             return view('revisor.index', compact('announcement_to_check'));

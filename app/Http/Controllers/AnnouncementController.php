@@ -77,6 +77,12 @@ class AnnouncementController extends Controller
      */
     public function destroy(Announcement $announcement)
     {
-        //
+        if($announcement->user_id == Auth::user()->id ){
+            $announcement->delete(); 
+        }
+        else {
+            abort(404);
+        }
+        return redirect()->back()->with('delete', 'Annuncio eliminato');
     }
 }
