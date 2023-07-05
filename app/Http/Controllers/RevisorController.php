@@ -31,12 +31,16 @@ class RevisorController extends Controller
 
     public function acceptAnnouncement(Announcement $announcement)
     {
+        Auth::user()->wallet += 0.05;
+        Auth::user()->save();
         $announcement->setAccepted(true);
         return redirect()->back()->with('success', 'Annuncio accettato!');
     }
 
     public function rejectAnnouncement(Announcement $announcement)
     {
+        Auth::user()->wallet += 0.05;
+        Auth::user()->save();
         $announcement->setAccepted(false);
         return redirect()->back()->with('delete', 'Annuncio rifiutato!');
     }
@@ -54,6 +58,8 @@ class RevisorController extends Controller
     }
 
     public function undoAnnouncement(Announcement $announcement_to_undo) {
+        Auth::user()->wallet -= 0.05;
+        Auth::user()->save();
         $announcement_to_undo = Announcement::orderBy('updated_at', 'desc')->where('is_accepted', '!=', null)->where('user_id', '!=', Auth::user()->id)->first();
         $announcement_to_undo->setAccepted(null);
 
