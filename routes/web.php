@@ -38,9 +38,10 @@ Route::get('/profilo/{user}/modifica', [UserController::class, 'edit'])->name('u
 Route::put('/profilo/{user}/update', [UserController::class, 'update'])->name('users.update');
 
 //Rotte profilo revisore
-Route::get('/revisore/annunci', [RevisorController::class, 'index'])->middleware('isRevisor')->name('revisor.index');
+Route::get('/revisore/annunci', [RevisorController::class, 'index'])->middleware('auth', 'isRevisor')->name('revisor.index');
 Route::patch('/accetta/annuncio/{announcement}', [RevisorController::class, 'acceptAnnouncement'])->middleware('isRevisor')->name('revisor.accept_announcement');
 Route::patch('/rifiuta/annuncio/{announcement}', [RevisorController::class, 'rejectAnnouncement'])->middleware('isRevisor')->name('revisor.reject_announcement');
+Route::post('/revisore/anunncio-undo/{announcement}', [RevisorController::class, 'undoAnnouncement'])->middleware('isRevisor')->name('revisor.undo_announcement');
 
 //Rotte richiesta diventare revisore
 Route::get('/richiesta/revisore', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name('become.revisor');

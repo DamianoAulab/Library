@@ -44,6 +44,7 @@
         <x-session />
         <div class="row g-3">
             @forelse ($user->announcements as $announcement)
+                @if ($announcement->is_accepted || !isset($announcement->is_accepted) )
             <div class="col-12 col-md-3">
                 <div class="card border-0 shadow h-100 @if($announcement->is_accepted == null) opacity-50 @endif">
                     <a class="btn @if ($announcement->category->macro == 'motori') btn-light-orange @elseif ($announcement->category->macro == 'immobili') btn-orange @elseif ($announcement->category->macro == 'market') btn-red @endif text-capitalize fw-semibold text-white position-absolute mt-3 ms-3 shadow"
@@ -64,6 +65,8 @@
                     </div>
                 </div>
             </div>
+                                
+            @endif  
             @empty
             <div class="text-center mt-4 text-dark text-opacity-75"><em>Nessun annuncio trovato...</em></div>
             @endforelse
