@@ -20,7 +20,7 @@ class AnnouncementCreate extends Component
         'title' => 'required|max:100|min:5',
         'price' => 'required|numeric',
         'description' => 'required',
-        'img' => 'image|max:1024',
+        'img' => 'image|max:1024|nullable',
     ];
 
     protected $messages = [
@@ -49,7 +49,7 @@ class AnnouncementCreate extends Component
 
 
         $this->reset('title', 'description', 'price', 'img', 'category_id');
-        session()->flash('success', 'Annuncio creato!');
+        session()->flash('success', 'Annuncio creato! Sarà pubblicato dopo la revisione');
         return redirect()->route('announcements.create');
     }
 

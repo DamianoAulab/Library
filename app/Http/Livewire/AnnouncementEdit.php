@@ -24,9 +24,10 @@ class AnnouncementEdit extends Component
     public function update() {
         
         $this->announcement->save();
+        $this->announcement->setAccepted(null);
 
-        session()->flash('edit', 'Annuncio modificato!');
-        return redirect()->route('announcements.show', ['announcement' => $this->announcement->id]);
+        session()->flash('edit', 'Annuncio modificato! Sarà pubblicato dopo la revisione!');
+        return redirect()->route('users.show', ['user' => Auth::user()->id]);
     }
 
     public function updated($propertyName) {

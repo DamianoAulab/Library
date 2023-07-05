@@ -37,10 +37,14 @@ Route::get('/profilo/{user}/modifica', [UserController::class, 'edit'])->name('u
 Route::put('/profilo/{user}/update', [UserController::class, 'update'])->name('users.update');
 
 //Rotte profilo revisore
-Route::get('/revisore/home', [RevisorController::class, 'index'])->middleware('isRevisor')->name('revisor.index');
+Route::get('/revisore/annunci', [RevisorController::class, 'index'])->middleware('isRevisor')->name('revisor.index');
 Route::patch('/accetta/annuncio/{announcement}', [RevisorController::class, 'acceptAnnouncement'])->middleware('isRevisor')->name('revisor.accept_announcement');
 Route::patch('/rifiuta/annuncio/{announcement}', [RevisorController::class, 'rejectAnnouncement'])->middleware('isRevisor')->name('revisor.reject_announcement');
 
 //Rotte richiesta diventare revisore
 Route::get('/richiesta/revisore', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name('become.revisor');
 Route::get('/richiesta/revisore/{user}', [RevisorController::class, 'makeRevisor'])->middleware('auth')->name('make.revisor');
+
+
+//rotta per ricerca annunci
+Route::get('/ricerca/annuncio', [PublicController::class, 'searchAnnouncements'])->name('announcements.search');

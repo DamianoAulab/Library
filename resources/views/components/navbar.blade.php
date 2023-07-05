@@ -15,7 +15,7 @@
     
                     @auth
                         <li class="nav-item dropdown fs-5 pe-0 pe-md-3 mx-auto">
-                            <a class="nav-link text-white fw-semibold d-flex align-items-center d-none d-md-flex " href="" role="button"
+                            <a class="nav-link text-white fw-semibold d-flex align-items-center d-none d-md-flex position-relative" href="" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ Auth::user()->name }} <img class="card-img max-vh-3 ms-2 rounded-circle w-auto" style="clip-path: circle(50%)"
                                 src="@if (Auth::user()->gender == 'Femmina') 
@@ -25,6 +25,9 @@
                             @elseif (Auth::user()->gender == 'Non binario')
                                 {{empty(Auth::user()->img) ? '/img/non-binary-placeholder.png' : Storage::url(Auth::user()->img)}}
                             @endif" alt="">
+                                @if (Auth::user()->is_revisor && $announcements_to_check)
+                                    <span class="position-absolute top-0 end-0 translate-middle p-1 mt-2 rounded btn-green"></span>
+                                @endif
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end d-block d-md-none mb-4">
                                 <li><a class="dropdown-item fw-bold d-flex justify-content-between fs-5 d-none d-md-flex" href="{{ route('users.show', ['user' => Auth::user()->id]) }}">
@@ -45,9 +48,23 @@
                                 <li><a class="dropdown-item fw-semibold" href="{{ route('users.show', ['user' => Auth::user()->id]) }}/#my-annunci">
                                     <i class="bi bi-tags me-2"></i>I miei Annunci</a></li>
                                 </li>
+                                @if (Auth::user()->is_revisor)
+                                    <li><a class="dropdown-item fw-semibold" href="{{ route('revisor.index') }}">
+                                        <i class="bi bi-shield-lock me-2"></i>Zona Revisore
+                                        @if ($announcements_to_check > 0)
+                                            <span class="badge btn-green">{{ $announcements_to_check }}</span>
+                                        @endif
+                                        </a></li>
+                                    </li>                          
+                                @endif
                                 <li class="px-2 mt-2"><a class="btn btn-light-orange w-100 fw-semibold" href="{{ route('announcements.create') }}">
                                     <i class="bi bi-plus-square"></i> Annuncio</a>
                                 </li>
+                                @if (!Auth::user()->is_revisor)
+                                    <li class="px-2 mt-2"><a class="btn btn-green w-100 fw-semibold px-0" href="{{ route('become.revisor') }}">
+                                        <i class="bi bi-shield-lock"></i> Lavora con Noi</a>
+                                    </li>
+                                @endif
                                 <li class="px-2 mt-2">
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
@@ -57,11 +74,17 @@
                                 </li>
                             </ul>
                         </li>
-                        <li class="nav-item me-0 me-lg-4">
+                        <li><form action="{{route('announcements.search')}}" method="GET" class="d-flex">
+                            <input name="searched" class="form-control me-2" type="search" placeholder="Cerca" aria-label="Cerca">
+                            <button class="btn btn-red" type="submit"><i class="bi bi-search"></i></button>
+                        </form>
+                        </li>
+
+                      {{--   <li class="nav-item me-0 me-lg-4">
                             <a class="nav-link text-center d-none d-md-block fw-semibold" href="{{ route('announcements.create') }}">
                                 <i class="bi bi-plus-square"></i> Inserisci Annuncio
                             </a>
-                        </li>
+                        </li> --}}
                     @else
                     <ul class="navbar-nav justify-content-evenly flex-row mb-4 mb-md-0">
                         <li class="nav-item mt-1">

@@ -12,6 +12,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
+
     /**
      * The attributes that are mass assignable.
      *
@@ -53,6 +54,10 @@ class User extends Authenticatable
     }
 
     public function announcementCount() {
-        return count(Announcement::where('user_id', $this->id)->get());
+        return Announcement::where('user_id', $this->id)->where('is_accepted', true)->count();
+    }
+
+    public static function toBeRevisionedCount(){
+        return Announcement::where('is_accepted', null)->count();
     }
 }

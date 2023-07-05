@@ -12,9 +12,16 @@ class PublicController extends Controller
 {
    
 
+  public function searchAnnouncements(Request $request){
+     $announcements= Announcement::search($request->searched)->where('is_accepted', true)->paginate(12);
+     return view('announcements.index', compact('announcements'));
+
+  }
+
+
     public function homepage() {
         $categories = Category::orderBy('name', 'asc')->get();
-        $announcements = Announcement::orderBy('created_at', 'desc')->take(4)->get();
+        $announcements = Announcement::orderBy('created_at', 'desc')->where('is_accepted', true)->take(4)->get();
         return view('homepage', compact('categories', 'announcements'));
     }
 
@@ -22,10 +29,10 @@ class PublicController extends Controller
     {
         $announcement_search = '';
         if($request->search_category != 'Tutte le categorie') {
-            $announcement_search = Announcement::where('title', 'like', '%'.$request->search_announcement.'%')->where('category_id', $request->search_category)->get();
+            $announcement_search = Announcement::orderBy('created_at', 'desc')->where('title', 'like', '%'.$request->search_announcement.'%')->where('category_id', $request->search_category)->get();
         }
         else {
-            $announcement_search = Announcement::where('title', 'like', '%'.$request->search_announcement.'%')->get();
+            $announcement_search = Announcement::orderBy('created_at', 'desc')->where('title', 'like', '%'.$request->search_announcement.'%')->get();
         }
         
         return view('announcements.index', ['announcements' => $announcement_search]);

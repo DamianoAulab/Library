@@ -39,8 +39,14 @@ class AnnouncementController extends Controller
      */
     public function show(Announcement $announcement)
     {
-        $announcements = Announcement::orderBy('created_at', 'desc')->take(4)->get();
+        $announcements = Announcement::orderBy('created_at', 'desc')->where('is_accepted', true)->take(4)->get();
         $users = User::all();
+        if($announcement->is_accepted){
+            $announcement = $announcement;
+        }
+        else {
+            abort(404);
+        }
         return view('announcements.show', compact('announcement', 'users', 'announcements'));
     }
 
@@ -49,6 +55,12 @@ class AnnouncementController extends Controller
      */
     public function edit(Announcement $announcement)
     {
+        if($announcement->user_id == Auth::user()->id ){
+            $announcement = $announcement;
+        }
+        else {
+            abort(404);
+        }
         return view('announcements.edit', compact('announcement'));
     }
 
