@@ -28,7 +28,7 @@ Route::get('/lista-annunci', [AnnouncementController::class, 'index'])->name('an
 Route::get('/annunci/crea', [AnnouncementController::class, 'create'])->middleware('auth')->name('announcements.create');
 Route::get('/annunci/{announcement}/modifica', [AnnouncementController::class, 'edit'])->middleware('auth')->name('announcements.edit');
 Route::get('/annunci/{announcement}/dettagli', [AnnouncementController::class, 'show'])->name('announcements.show');
-Route::delete('annunci/{announcement}', [AnnouncementController::class, 'destroy'])->name('announcements.destroy');
+Route::delete('annunci/{announcement}', [AnnouncementController::class, 'destroy'])->middleware('auth')->name('announcements.destroy');
 
 Route::get('/categorie/{category}', [CategoryController::class, 'show'])->name('categories.show');
 

@@ -4,10 +4,7 @@
                 height="50rem"></a>
         <button id="hamburger-list" class="navbar-toggler border-0 p-0" type="button" data-bs-toggle="offcanvas"
             data-bs-target="#offcanvasNavbar" aria-controls="offcavasNavbar" aria-expanded="false"
-            aria-label="Toggle navigation"><i class="bi bi-hash text-white"></i>
-            @if (Auth::user()->is_revisor && $announcements_to_check)
-            <span class="position-absolute top-0 end-0 translate-middle p-1 mt-4 me-2 rounded btn-green"></span>
-        @endif</button>
+            aria-label="Toggle navigation"><i class="bi bi-hash text-white"></i></button>
         <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasNavbar"
             aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
