@@ -16,7 +16,7 @@ class RevisorController extends Controller
 {
     public function index()
     {
-        $announcement_to_check = Announcement::where('is_accepted', null)->first();
+        $announcement_to_check = Announcement::where('is_accepted', null)->where('user_id', '!=', Auth::user()->id)->first();
 
         $categories = Category::orderBy('name', 'asc')->get();
         $announcements = Announcement::orderBy('created_at', 'desc')->where('is_accepted', true)->take(4)->get();
@@ -31,12 +31,16 @@ class RevisorController extends Controller
 
     public function acceptAnnouncement(Announcement $announcement)
     {
+        Auth::user()->wallet += 0.05;
+        Auth::user()->save();
         $announcement->setAccepted(true);
         return redirect()->back()->with('success', 'Annuncio accettato!');
     }
 
     public function rejectAnnouncement(Announcement $announcement)
     {
+        Auth::user()->wallet += 0.05;
+        Auth::user()->save();
         $announcement->setAccepted(false);
         return redirect()->back()->with('delete', 'Annuncio rifiutato!');
     }
@@ -51,5 +55,15 @@ class RevisorController extends Controller
     {
         Artisan::call('presto:makeUserRevisor', ["email"=>$user->email]);
         return redirect('/')->with('success', 'L\'utente è diventato revisore!');
+    }
+
+    public function undoAnnouncement(Announcement $announcement_to_undo) {
+        Auth::user()->wallet -= 0.05;
+        Auth::user()->save();
+        $announcement_to_undo = Announcement::orderBy('updated_at', 'desc')->where('is_accepted', '!=', null)->where('user_id', '!=', Auth::user()->id)->first();
+        $announcement_to_undo->setAccepted(null);
+
+        return redirect()->back()->with('edit', 'Annuncio ripristinato! Revisionalo nuovamente!');
+
     }
 }

@@ -114,12 +114,19 @@
             <h2 class="text-center fw-bold mt-4 mb-0 fs-1">Descrizione</h2>
             <p class="text-center px-md-5 mx-md-5 my-3">{{ $announcement_to_check->description }}</p>
 
-            <div class="row my-5">
-                <div class="col-12 col-md-6 text-center">
+            <div class="row my-5 align-items-center">
+                <div class="col-12 col-md-5 text-center">
                     <button class="btn btn-lg btn-green w-75 fw-semibold shadow fs-1" data-bs-toggle="modal"
                         data-bs-target="#modalAccept"><i class="bi bi-patch-check"></i> ACCETTA</button>
                 </div>
-                <div class="col-12 col-md-6 mt-2 mt-md-0 text-center">
+                <div class="col-12 col-md-2 text-center">
+                    <form action="{{ Route('revisor.undo_announcement', ['announcement' => ' '])}}" method="POST">
+                        @csrf
+                        @method('POST')
+                        <button class="btn btn-lg btn-secondary fw-semibold shadow fs-3"><i class="bi bi-arrow-counterclockwise"></i></button>
+                    </form>
+                </div>
+                <div class="col-12 col-md-5 mt-2 mt-md-0 text-center">
                     <button class="btn btn-lg btn-red w-75 fw-semibold shadow fs-1" data-bs-toggle="modal"
                         data-bs-target="#modalReject"><i class="bi bi-x-octagon"></i> RIFIUTA</button>
                 </div>
