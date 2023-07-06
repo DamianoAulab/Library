@@ -1,12 +1,14 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\RevisorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AnnouncementController;
-use App\Http\Controllers\RevisorController;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,3 +52,34 @@ Route::get('/richiesta/revisore/{user}', [RevisorController::class, 'makeRevisor
 
 //rotta per ricerca annunci
 Route::get('/ricerca/annuncio', [PublicController::class, 'searchAnnouncements'])->name('announcements.search');
+
+
+
+Route::get('/auth/redirect', function () {
+    return Socialite::driver('google')->redirect();
+})->name('socialite.login.google');
+ 
+Route::get('/login/google/callback', function () {
+    $googleUser = Socialite::driver('google')->user();
+ 
+
+
+      $user = User::updateOrCreate(
+        [
+   
+        'name' => $googleUser->name,
+        'email' => $googleUser->email,
+        'gender' => 'Non binario',
+        'phone' => ' ' ,
+        'password' => bcrypt(''),
+        ]
+);
+ 
+    Auth::login($user);
+ 
+    return redirect('/');
+
+    
+});
+
+    

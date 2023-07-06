@@ -32,6 +32,7 @@
                 <p class="text-center mt-2">Non hai ancora un account? 
                     <a href="{{route('register')}}" class="text-decoration-none fw-semibold" style="color: var(--red)">Registrati</a>
                 </p>
+                <a href="{{route('socialite.login.google')}}" class="text-decoration-none fw-semibold" style="color: var(--red)">Accedi con Google</a>
             </div>
         </div>
     </div>
