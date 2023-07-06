@@ -7,6 +7,7 @@ use Closure;
 use App\Models\Category;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Auth;
 
 class Navbar extends Component
 {
@@ -16,7 +17,9 @@ class Navbar extends Component
     public function __construct()
     {
         $this->categories = Category::orderBy('name', 'asc')->get();
-        $this->announcements_to_check = Announcement::where('is_accepted', null)->count();
+        if (Auth::user() != null) {
+            $this->announcements_to_check = Announcement::where('is_accepted', null)->where('user_id', '!=', Auth::user()->id)->count();
+        }
     }
 
     /**

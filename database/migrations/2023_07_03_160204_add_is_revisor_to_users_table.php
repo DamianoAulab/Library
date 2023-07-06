@@ -1,6 +1,6 @@
 <?php
 
-use Illuminate\Foundation\Auth\User;
+use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
@@ -17,6 +17,13 @@ return new class extends Migration
             $table->boolean('is_revisor')->default(false);
         });
 
+        $admin = User::where('email', 'admin@mail.com')->first();
+
+        if ($admin) {
+            $admin->update([
+                'is_revisor' => true,
+            ]);
+        }
        
     }
 

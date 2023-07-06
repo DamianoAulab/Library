@@ -30,7 +30,14 @@
                     <a href="{{ route('announcements.create') }}" class="btn btn-lg btn-light-orange w-100 fw-semibold shadow fs-3 py-3"><i class="bi bi-plus-square"></i> Inserisci Annuncio</a>
                     
                     @if (Auth::user()->is_revisor)
-                        <a href="{{ route('revisor.index') }}" class="btn btn-lg btn-green w-100 fw-semibold shadow fs-3 py-3 mt-3"><i class="bi bi-shield-lock"></i> Zona Revisore @if ($user->toBeRevisionedCount() > 0) <span class="badge btn-red">{{ $user->toBeRevisionedCount() }}</span> @endif</a>              
+                        <div class="row">
+                            <div class="col-12 col-md-8">
+                                <a href="{{ route('revisor.index') }}" class="btn btn-lg btn-green w-100 fw-semibold shadow fs-3 py-3 mt-3"><i class="bi bi-shield-lock"></i> Zona Revisore @if ($user->toBeRevisionedCount() > 0) <span class="badge btn-red">{{ $user->toBeRevisionedCount() }}</span> @endif</a>
+                            </div>
+                            <div class="col-12 col-md-4">
+                                <div class="bg-primary text-center rounded text-white w-100 fw-semibold shadow fs-3 py-3 mt-3"><i class="bi bi-piggy-bank me-2 fs-3"></i>{{ number_format($user->wallet, 2, ',', ' ') }}€</div>      
+                            </div>
+                        </div>
                     @endif
 
                 </div>
@@ -44,6 +51,7 @@
         <x-session />
         <div class="row g-3">
             @forelse ($user->announcements as $announcement)
+                @if ($announcement->is_accepted || !isset($announcement->is_accepted) )
             <div class="col-12 col-md-3">
                 <div class="card border-0 shadow h-100 @if($announcement->is_accepted == null) opacity-50 @endif">
                     <a class="btn @if ($announcement->category->macro == 'motori') btn-light-orange @elseif ($announcement->category->macro == 'immobili') btn-orange @elseif ($announcement->category->macro == 'market') btn-red @endif text-capitalize fw-semibold text-white position-absolute mt-3 ms-3 shadow"
@@ -64,6 +72,8 @@
                     </div>
                 </div>
             </div>
+                                
+            @endif  
             @empty
             <div class="text-center mt-4 text-dark text-opacity-75"><em>Nessun annuncio trovato...</em></div>
             @endforelse

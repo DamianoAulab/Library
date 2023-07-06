@@ -6,6 +6,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
@@ -26,6 +27,7 @@ class User extends Authenticatable
         'birthday',
         'img',
         'phone',
+        'is_revisor',
     ];
 
     /**
@@ -58,6 +60,6 @@ class User extends Authenticatable
     }
 
     public static function toBeRevisionedCount(){
-        return Announcement::where('is_accepted', null)->count();
+        return Announcement::where('is_accepted', null)->where('user_id', '!=', Auth::user()->id)->count();
     }
 }
