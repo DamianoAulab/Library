@@ -27,6 +27,7 @@ class User extends Authenticatable
         'birthday',
         'img',
         'phone',
+        'is_revisor',
     ];
 
     /**
