@@ -4,11 +4,12 @@ use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use Laravel\Socialite\Facades\Socialite;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\RevisorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AnnouncementController;
+use Laravel\Socialite\Facades\Socialite;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,23 +51,19 @@ Route::get('/richiesta/revisore', [RevisorController::class, 'becomeRevisor'])->
 Route::get('/richiesta/revisore/{user}', [RevisorController::class, 'makeRevisor'])->middleware('auth')->name('make.revisor');
 
 
-//rotta per ricerca annunci
+//Rotta per ricerca annunci
 Route::get('/ricerca/annuncio', [PublicController::class, 'searchAnnouncements'])->name('announcements.search');
 
 
-
-Route::get('/auth/redirect', function () {
-    return Socialite::driver('google')->redirect();
-})->name('socialite.login.google');
+//Rotte accedi con Google, GitHub e Facebook
+// GOOGLE
+Route::get('/auth/google/redirect', function () {return Socialite::driver('google')->redirect();})->name('socialite.login.google');
  
 Route::get('/login/google/callback', function () {
     $googleUser = Socialite::driver('google')->user();
  
-
-
       $user = User::updateOrCreate(
         [
-   
         'name' => $googleUser->name,
         'email' => $googleUser->email,
         'gender' => 'Non binario',
@@ -78,8 +75,50 @@ Route::get('/login/google/callback', function () {
     Auth::login($user);
  
     return redirect('/');
-
-    
 });
+
+
+// GITHUB
+Route::get('/auth/github/redirect', function () {return Socialite::driver('github')->redirect();})->name('socialite.login.github');
+ 
+Route::get('/login/github/callback', function () {
+    $githubUser = Socialite::driver('github')->user();
+ 
+      $user = User::updateOrCreate(
+        [
+        'name' => $githubUser->name,
+        'email' => $githubUser->email,
+        'gender' => 'Non binario',
+        'phone' => ' ' ,
+        'password' => bcrypt(''),
+        ]
+);
+ 
+    Auth::login($user);
+ 
+    return redirect('/');
+});
+
+// FACEBOOK - WORK IN PROGRESS
+// Route::get('/auth/facebook/redirect', function () {return Socialite::driver('facebook')->redirect();})->name('socialite.login.facebook');
+ 
+// Route::get('/login/facebook/callback', function () {
+//     $facebookUser = Socialite::driver('facebook')->user();
+ 
+//       $user = User::updateOrCreate(
+//         [
+//         'name' => $facebookUser->name,
+//         'email' => $facebookUser->email,
+//         'gender' => 'Non binario',
+//         'phone' => ' ' ,
+//         'password' => bcrypt(''),
+//         ]
+// );
+ 
+//     Auth::login($user);
+ 
+//     return redirect('/');
+// });
+
 
     
