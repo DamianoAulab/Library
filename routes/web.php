@@ -86,7 +86,7 @@ Route::get('/login/github/callback', function () {
  
       $user = User::updateOrCreate(
         [
-        'name' => $githubUser->name,
+        'name' => $githubUser->nickname,
         'email' => $githubUser->email,
         'gender' => 'Non binario',
         'phone' => ' ' ,
