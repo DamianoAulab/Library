@@ -6,10 +6,10 @@
         <h1 class="text-center mb-4 pt-md-5 fw-bold">Accedi su Presto.it</h1>
         <div class="row align-items-center flex-column">
             <div class="col-12 col-md-4 text-center mb-2">
-                <a href="{{route('socialite.login.google')}}" class="btn btn-light btn-lg px-2 w-100 text-decoration-none fw-semibold"><img src="\img\google.png" alt="" height="30"> Accedi con Google</a>
+                <a href="{{route('socialite.login.google', ['social' => 'google'])}}" class="btn btn-light btn-lg px-2 w-100 text-decoration-none fw-semibold"><img src="\img\google.png" alt="" height="30"> Accedi con Google</a>
             </div>
             <div class="col-12 col-md-4 text-center mb-4">
-                <a href="{{route('socialite.login.github')}}" class="btn btn-light btn-lg px-2 w-100 text-decoration-none fw-semibold"><img src="\img\github.png" alt="" height="30"> Accedi con Github</a>
+                <a href="{{route('socialite.login.github', ['social' => 'github'])}}" class="btn btn-light btn-lg px-2 w-100 text-decoration-none fw-semibold"><img src="\img\github.png" alt="" height="30"> Accedi con Github</a>
             </div>
             {{-- <div class="col-12 col-md-4 text-center mb-4">
                 <a href="{{route('socialite.login.facebook')}}" class="btn btn-light btn-lg px-2 w-100 text-decoration-none fw-semibold"><img src="\img\facebook.png" alt="" height="30"> Accedi con Facebook</a>

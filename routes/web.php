@@ -57,47 +57,15 @@ Route::get('/ricerca/annuncio', [PublicController::class, 'searchAnnouncements']
 
 //Rotte accedi con Google, GitHub e Facebook
 // GOOGLE
-Route::get('/auth/google/redirect', function () {return Socialite::driver('google')->redirect();})->name('socialite.login.google');
+Route::get('/auth/{social}/redirect', [PublicController::class, 'socialLoginRedirect'])->name('socialite.login.google');
  
-Route::get('/login/google/callback', function () {
-    $googleUser = Socialite::driver('google')->user();
- 
-      $user = User::updateOrCreate(
-        [
-        'name' => $googleUser->name,
-        'email' => $googleUser->email,
-        'gender' => 'Non binario',
-        'phone' => ' ' ,
-        'password' => bcrypt(''),
-        ]
-);
- 
-    Auth::login($user);
- 
-    return redirect()->route('users.edit', ['user' => $user]);
-});
+Route::get('/login/google/callback', [PublicController::class, 'socialCallbackGoogle']);
 
 
 // GITHUB
-Route::get('/auth/github/redirect', function () {return Socialite::driver('github')->redirect();})->name('socialite.login.github');
+Route::get('/auth/{social}/redirect2', [PublicController::class, 'socialLoginRedirect'])->name('socialite.login.github');
  
-Route::get('/login/github/callback', function () {
-    $githubUser = Socialite::driver('github')->user();
- 
-      $user = User::updateOrCreate(
-        [
-        'name' => $githubUser->nickname,
-        'email' => $githubUser->email,
-        'gender' => 'Non binario',
-        'phone' => ' ' ,
-        'password' => bcrypt(''),
-        ]
-);
- 
-    Auth::login($user);
- 
-    return redirect()->route('users.edit', ['user' => $user]);
-});
+Route::get('/login/github/callback', [PublicController::class, 'socialCallbackGithub']);
 
 // FACEBOOK - WORK IN PROGRESS
 // Route::get('/auth/facebook/redirect', function () {return Socialite::driver('facebook')->redirect();})->name('socialite.login.facebook');

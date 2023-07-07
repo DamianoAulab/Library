@@ -7,16 +7,17 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\Models\Announcement;
+use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class PublicController extends Controller
 {
    
 
-  public function searchAnnouncements(Request $request){
-     $announcements= Announcement::search($request->searched)->where('is_accepted', true)->paginate(12);
-     return view('announcements.index', compact('announcements'));
-
-  }
+    public function searchAnnouncements(Request $request){
+        $announcements= Announcement::search($request->searched)->where('is_accepted', true)->paginate(12);
+        return view('announcements.index', compact('announcements'));
+    }
 
 
     public function homepage() {
@@ -42,6 +43,54 @@ class PublicController extends Controller
         $categories = Category::orderBy('name', 'asc')->get();
         $announcements = Announcement::orderBy('created_at', 'desc')->get();
         return view('macro', compact('categories', 'announcements', 'macro'));
+    }
+
+    public function socialLoginRedirect($social) {
+        return Socialite::driver($social)->redirect();
+    }
+    
+    public function socialCallbackGoogle() {
+        $googleUser = Socialite::driver('google')->user();
+
+        $user = User::where('email', $googleUser->email)->first();
+
+        if(!$user) {
+        $user = User::updateOrCreate(
+            [
+            'name' => $googleUser->name,
+            'email' => $googleUser->email,
+            'gender' => 'Non binario',
+            'phone' => ' ' ,
+            'password' => bcrypt(''),
+            ]
+        );
+        }
+
+        Auth::login($user);
+ 
+        return redirect()->route('users.edit', ['user' => $user]);
+    }
+
+    public function socialCallbackGithub() {
+        $githubUser = Socialite::driver('github')->user();
+
+        $user = User::where('email', $githubUser->email)->first();
+
+        if(!$user) {
+        $user = User::updateOrCreate(
+            [
+            'name' => $githubUser->nickname,
+            'email' => $githubUser->email,
+            'gender' => 'Non binario',
+            'phone' => ' ' ,
+            'password' => bcrypt(''),
+            ]
+        );
+        }
+ 
+        Auth::login($user);
+ 
+        return redirect()->route('users.edit', ['user' => $user]);
     }
 
     // // //storage img profilo ??
