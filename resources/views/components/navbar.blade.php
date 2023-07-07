@@ -89,17 +89,6 @@
                                 <i class="bi bi-plus-square"></i> Inserisci Annuncio
                             </a>
                         </li>
-                    @else
-                        <li class="nav-item me-0 me-lg-4 pt-1 mb-4 mb-md-0">
-                            <form action="{{ route('announcements.search') }}" method="GET" class="d-flex">
-                                <div class="input-group">
-                                    <input name="searched" class="form-control" type="search" placeholder="Cerca..."
-                                        aria-label="Cerca">
-                                    <button class="btn btn-red border-0" type="submit"><i class="bi bi-search"></i></button>
-                                </div>
-
-                            </form>
-                        </li>
                     @endif
 
                 @else
@@ -113,6 +102,19 @@
                     </ul>
                 @endauth
 
+                @if (Route::currentRouteName() == 'announcements.index' || Route::currentRouteName() == 'search' || Route::currentRouteName() == 'announcements.search' || Route::currentRouteName() == 'homepage' || Route::currentRouteName() == 'login' || Route::currentRouteName() == 'register' )
+                @else
+                <li class="nav-item me-0 me-lg-4 pt-1 mb-4 mb-md-0">
+                    <form action="{{ route('announcements.search') }}" method="GET" class="d-flex">
+                        <div class="input-group">
+                            <input name="searched" class="form-control" type="search" placeholder="Cerca..."
+                                aria-label="Cerca">
+                            <button class="btn btn-red border-0" type="submit"><i class="bi bi-search"></i></button>
+                        </div>
+
+                    </form>
+                </li>
+            @endif
                 <li class="dropdown me-0 me-lg-4">
                     <a class="nav-link dropdown-toggle text-center d-none d-md-block fw-semibold" href=""
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
