@@ -74,7 +74,7 @@ Route::get('/login/google/callback', function () {
  
     Auth::login($user);
  
-    return redirect('/');
+    return redirect()->route('users.edit', ['user' => $user]);
 });
 
 
@@ -96,7 +96,7 @@ Route::get('/login/github/callback', function () {
  
     Auth::login($user);
  
-    return redirect('/');
+    return redirect()->route('users.edit', ['user' => $user]);
 });
 
 // FACEBOOK - WORK IN PROGRESS
