@@ -34,7 +34,7 @@
                                 @endif
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end d-block d-md-none mb-4">
-                                <li><a class="dropdown-item fw-bold d-flex justify-content-between fs-5 d-none d-md-flex"
+                                <li><a class="dropdown-item fw-semibold d-flex justify-content-between fs-5 d-none d-md-flex"
                                         href="{{ route('users.show', ['user' => Auth::user()->id]) }}">
                                         Profilo <i class="bi bi-person-circle"></i></a></li>
                                 <li>
@@ -69,9 +69,9 @@
                                 <i class="bi bi-plus-square"></i> Annuncio</a>
                         </li>
                         @if (!Auth::user()->is_revisor)
-                            <li class="px-2 mt-2"><a class="btn btn-green w-100 fw-semibold px-0"
-                                    href="{{ route('become.revisor') }}">
-                                    <i class="bi bi-shield-lock"></i> Lavora con Noi</a>
+                            <li class="px-2 mt-2">
+                                <button class="btn btn-green w-100 fw-semibold px-0" data-bs-toggle="modal" data-bs-target="#modalRevisor">
+                                    <i class="bi bi-shield-lock"></i> Lavora con Noi</button>
                             </li>
                         @endif
                         <li class="px-2 mt-2">
@@ -155,3 +155,57 @@
         </div>
     </div>
 </nav>
+
+@auth
+
+{{-- ! MODAL REVISOR --}}
+<div class="modal fade" id="modalRevisor" tabindex="-1" aria-labelledby="modaleAccept" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content border-0 w-110">
+            <div class="modal-header border-0 text-center">
+                <h1 class="modal-title lh-1 fw-bold w-100">COMPILA IL FORM<br><span class="fs-3 fw-light">e diventa revisore di Presto.it!</span></h1>
+            </div>
+            <div class="modal-body">
+                <form action="{{ Route('become.revisor') }}" method="POST" class="row px-3">
+                    @csrf
+                    @method('PATCH')
+                    <div class="form-floating mb-3 col-12 col-md-5 px-0 pe-md-2">
+                        <input type="text" name="name" class="form-control" id="name" value="{{ Auth::user()->name }}" placeholder="Username" readonly>
+                        <label for="name" class="form-label">Username</label>
+                    </div>
+                    <div class="form-floating mb-3 col-12 col-md-7 px-0">
+                        <input type="email" name="email" class="form-control" id="email" value="{{ Auth::user()->email }}" placeholder="Email" readonly>
+                        <label for="email" class="form-label">Email</label>
+                    </div>
+                    <div class="form mb-3 px-0">
+                        <textarea class="form-control" id="description" name="description"
+                            value="description" placeholder="Perchè vuoi diventare Revisore di Presto.it?" rows="5" required></textarea>
+                        @error('description')
+                            <span class="text-danger">
+                                {{ $message }}
+                            </span>
+                        @enderror
+                    </div>
+                    <div>
+                        <h3>Regolamento del Revisore:</h3>
+                        <ul>
+                            <li>Il Revisore deve essere oggettivo;</li>
+                            <li>Il Revisore deve rifiutare l'annuncio ove è presente un linguaggio inappropiato;</li>
+                            <li>Il Revisore deve rifiutare l'annuncio se non rispetta le policy di Presto.it;</li>
+                            <li>Il Revisore deve rifiutare l'annuncio se presenta titolo, prezzo o immagini inappropriate;</li>
+                            <li>Il Revisore deve accettare solo se l'annuncio rispetta tutte le regole sopraindicate.</li>   
+                        </ul> 
+                    </div>
+                    <div class="form-check my-2 ps-4">
+                        <input class="form-check-input" type="checkbox" value="checkRegolamento" id="checkRegolamento" required>
+                        <label class="form-check-label fw-semibold" for="checkRegolamento">Accetto il "Regolamento del Revisore"</label>
+                    </div>
+
+                    <button type="submit" class="btn btn-green px-2 py-0 fs-4 w-100">INVIA</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+    
+@endauth

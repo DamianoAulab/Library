@@ -47,7 +47,7 @@ Route::patch('/rifiuta/annuncio/{announcement}', [RevisorController::class, 'rej
 Route::post('/revisore/anunncio-undo/{announcement}', [RevisorController::class, 'undoAnnouncement'])->middleware('isRevisor')->name('revisor.undo_announcement');
 
 //Rotte richiesta diventare revisore
-Route::get('/richiesta/revisore', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name('become.revisor');
+Route::patch('/richiesta/revisore', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name('become.revisor');
 Route::get('/richiesta/revisore/{user}', [RevisorController::class, 'makeRevisor'])->middleware('auth')->name('make.revisor');
 
 
