@@ -24,7 +24,7 @@ return new class extends Migration
             'name' => 'Admin',
             'email' => 'admin@mail.com',
             'password' => Hash::make('12345678'),
-            'gender' => 'Non binario',
+            'gender' => 'Non specificato',
             'phone' => 1234567890,
         ]);
     }

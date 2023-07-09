@@ -69,9 +69,10 @@
 
                     <div class="form-floating mb-3">
                         <select class="form-select" id="gender" name="gender" required>
-                            <option selected value="Maschio">Maschio</option>
+                            <option value="Maschio">Maschio</option>
                             <option value="Femmina">Femmina</option>
                             <option value="Non binario">Non binario</option>
+                            <option selected value="Non specificato">Non specificato</option>
                         </select>
                         <label for="gender">Genere</label>
                         @error('gender')

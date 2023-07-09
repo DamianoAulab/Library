@@ -8,8 +8,8 @@
                 {{empty(Auth::user()->img) ? '/img/female-placeholder.jpg' : Storage::url(Auth::user()->img)}}
             @elseif (Auth::user()->gender == 'Maschio') 
                 {{empty(Auth::user()->img) ? '/img/male-placeholder.jpeg' : Storage::url(Auth::user()->img)}}
-            @elseif (Auth::user()->gender == 'Non binario')
-                {{empty(Auth::user()->img) ? '/img/non-binary-placeholder.png' : Storage::url(Auth::user()->img)}}
+            @elseif (Auth::user()->gender == 'Non binario' || Auth::user()->gender == 'Non specificato')
+                {{empty(Auth::user()->img) ? '/img/user-placeholder.png' : Storage::url(Auth::user()->img)}}
             @endif">
             </div>
             <div class="col-12 col-md-6 mt-5 mt-md-0 px-0 px-md-2 justify-content-center align-items-beetween">
@@ -22,7 +22,7 @@
                     <p class="mb-1 fs-5 fw-semibold"><i class="bi bi-envelope me-2"></i>{{ $user->email }}</p>
                     <p class="mb-3 fs-5 fw-semibold"><i class="bi bi-telephone me-2"></i>{{ $user->phone }}</p>
 
-                    <p class="mt-2 fs-5 mb-1 fw-semibold"><i class="bi bi-gender-@if (Auth::user()->gender == 'Femmina')female @elseif (Auth::user()->gender == 'Maschio')male @elseif (Auth::user()->gender == 'Non binario')trans @endif me-2"></i>{{ $user->gender }}</p>
+                    <p class="mt-2 fs-5 mb-1 fw-semibold"><i class="bi bi-@if (Auth::user()->gender == 'Femmina')gender-female @elseif (Auth::user()->gender == 'Maschio')gender-male @elseif (Auth::user()->gender == 'Non binario')gender-trans @elseif (Auth::user()->gender == 'Non specificato')circle @endif me-2"></i>{{ $user->gender }}</p>
                     <p class="mb-3 fs-5 fw-semibold"><i class="bi bi-calendar2-heart me-2"></i>{{ isset($user->birthday) ? $user->birthday->format('d-m-Y') : '- - -' }}</p>
 
                     <p class="mt-3 mb-2 text-dark text-opacity-75"><i class="bi bi-tags me-2"></i><em>{{ $user->announcementCount() }} Annunci Online</em></p>

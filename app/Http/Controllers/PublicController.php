@@ -59,7 +59,7 @@ class PublicController extends Controller
             [
             'name' => $googleUser->name,
             'email' => $googleUser->email,
-            'gender' => 'Non binario',
+            'gender' => 'Non specificato',
             'phone' => ' ' ,
             'password' => bcrypt(''),
             ]
@@ -81,7 +81,7 @@ class PublicController extends Controller
             [
             'name' => $githubUser->nickname,
             'email' => $githubUser->email,
-            'gender' => 'Non binario',
+            'gender' => 'Non specificato',
             'phone' => ' ' ,
             'password' => bcrypt(''),
             ]

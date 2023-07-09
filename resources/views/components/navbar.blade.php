@@ -25,8 +25,8 @@
                                     src="@if (Auth::user()->gender == 'Femmina') {{ empty(Auth::user()->img) ? '/img/female-placeholder.jpg' : Storage::url(Auth::user()->img) }}
                             @elseif (Auth::user()->gender == 'Maschio') 
                                 {{ empty(Auth::user()->img) ? '/img/male-placeholder.jpeg' : Storage::url(Auth::user()->img) }}
-                            @elseif (Auth::user()->gender == 'Non binario')
-                                {{ empty(Auth::user()->img) ? '/img/non-binary-placeholder.png' : Storage::url(Auth::user()->img) }} @endif"
+                            @elseif (Auth::user()->gender == 'Non binario' || Auth::user()->gender == 'Non specificato')
+                                {{ empty(Auth::user()->img) ? '/img/user-placeholder.png' : Storage::url(Auth::user()->img) }} @endif"
                                     alt="">
                                 @if (Auth::user()->is_revisor && $announcements_to_check)
                                     <span
@@ -45,8 +45,8 @@
                                             src="@if (Auth::user()->gender == 'Femmina') {{ empty(Auth::user()->img) ? '/img/female-placeholder.jpg' : Storage::url(Auth::user()->img) }}
                             @elseif (Auth::user()->gender == 'Maschio') 
                                 {{ empty(Auth::user()->img) ? '/img/male-placeholder.jpeg' : Storage::url(Auth::user()->img) }}
-                            @elseif (Auth::user()->gender == 'Non binario')
-                                {{ empty(Auth::user()->img) ? '/img/non-binary-placeholder.png' : Storage::url(Auth::user()->img) }} @endif"
+                            @elseif (Auth::user()->gender == 'Non binario' || Auth::user()->gender == 'Non specificato')
+                                {{ empty(Auth::user()->img) ? '/img/user-placeholder.png' : Storage::url(Auth::user()->img) }} @endif"
                                             alt=""></a></li>
                                 <li>
                                     <hr class="dropdown-divider">
