@@ -35,10 +35,16 @@
                         <input type="email" name="email" class="form-control" id="email" value="{{ old('email') }}" placeholder="Email" required>
                         <label for="email" class="form-label">Email</label>
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="password" name="password" class="form-control" id="password" value="{{ old('password') }}" placeholder="Password" required>
-                        <label for="password" class="form-label">Password</label>
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                            <input type="password" name="password" class="form-control" id="passwordInput" value="{{ old('password') }}" placeholder="Password" required>
+                            <label for="password" class="form-label">Password</label>
+                        </div>
+                        <button class="btn btn-light" type="button" id="showPasswordButton">
+                          <i class="bi bi-eye-slash"></i>
+                        </button>
                     </div>
+
 
                     <button type="submit" class="btn btn-red btn-lg px-5 w-100 fw-semibold">Accedi</button>
                 </form>

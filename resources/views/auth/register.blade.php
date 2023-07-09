@@ -48,23 +48,33 @@
                         </span>
                     @enderror
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="password" name="password" class="form-control" id="password" value="{{ old('password') }}" placeholder="Password" required>
-                        <label for="password" class="form-label">Password</label>
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                            <input type="password" name="password" class="form-control" id="passwordInput" value="{{ old('password') }}" placeholder="Password" required>
+                            <label for="password" class="form-label">Password</label>
+                        </div>
+                        <button class="btn btn-light" type="button" id="showPasswordButton">
+                          <i class="bi bi-eye-slash"></i>
+                        </button>
                         @error('password')
                         <span class="text-danger">
                             {{ $message }}
                         </span>
                     @enderror
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" value="{{ old('confirm_password') }}" placeholder="Confirm Password" required>
-                        <label for="password_confirmation" class="form-label">Conferma password</label>
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                            <input type="password" name="password_confirmation" class="form-control" id="passwordConfirmInput" value="{{ old('confirm_password') }}" placeholder="Conferma Password" required>
+                            <label for="password_confirmation" class="form-label">Conferma Password</label>
+                        </div>
+                        <button class="btn btn-light" type="button" id="showConfirmPasswordButton">
+                          <i class="bi bi-eye-slash"></i>
+                        </button>
                         @error('password_confirmation')
-                            <span class="text-danger">
-                                {{ $message }}
-                            </span>
-                        @enderror
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     </div>
 
                     <div class="form-floating mb-3">
