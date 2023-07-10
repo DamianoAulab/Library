@@ -29,4 +29,5 @@ return [
 
     // RICERCA
     'whatAreYouSearching' => 'Cosa cerchi?',
+    'allCategories' => 'Tutte le categorie',
 ];
