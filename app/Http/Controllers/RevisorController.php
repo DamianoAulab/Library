@@ -10,7 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UserRequest;
 use App\Models\Category;
+use Illuminate\Support\Facades\Redis;
 
 class RevisorController extends Controller
 {
@@ -45,8 +47,10 @@ class RevisorController extends Controller
         return redirect()->back()->with('delete', 'Annuncio rifiutato!');
     }
 
-    public function becomeRevisor()
+    public function becomeRevisor(Request $request)
     {
+        Auth::user()->description = $request->input('description');
+        Auth::user()->save();
         Mail::to('admin@presto.it')->send(new BecomeRevisor(Auth::user()));
         return redirect()->back()->with('success', 'Hai chiesto di diventare revisore!');
     }

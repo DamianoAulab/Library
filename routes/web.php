@@ -1,11 +1,14 @@
 <?php
 
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PublicController;
+use App\Http\Controllers\RevisorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AnnouncementController;
-use App\Http\Controllers\RevisorController;
+use Laravel\Socialite\Facades\Socialite;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,9 +47,46 @@ Route::patch('/rifiuta/annuncio/{announcement}', [RevisorController::class, 'rej
 Route::post('/revisore/anunncio-undo/{announcement}', [RevisorController::class, 'undoAnnouncement'])->middleware('isRevisor')->name('revisor.undo_announcement');
 
 //Rotte richiesta diventare revisore
-Route::get('/richiesta/revisore', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name('become.revisor');
+Route::patch('/richiesta/revisore', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name('become.revisor');
 Route::get('/richiesta/revisore/{user}', [RevisorController::class, 'makeRevisor'])->middleware('auth')->name('make.revisor');
 
 
-//rotta per ricerca annunci
+//Rotta per ricerca annunci
 Route::get('/ricerca/annuncio', [PublicController::class, 'searchAnnouncements'])->name('announcements.search');
+
+
+//Rotte accedi con Google, GitHub e Facebook
+// GOOGLE
+Route::get('/auth/{social}/redirect', [PublicController::class, 'socialLoginRedirect'])->name('socialite.login.google');
+ 
+Route::get('/login/google/callback', [PublicController::class, 'socialCallbackGoogle']);
+
+
+// GITHUB
+Route::get('/auth/{social}/redirect2', [PublicController::class, 'socialLoginRedirect'])->name('socialite.login.github');
+ 
+Route::get('/login/github/callback', [PublicController::class, 'socialCallbackGithub']);
+
+// FACEBOOK - WORK IN PROGRESS
+// Route::get('/auth/facebook/redirect', function () {return Socialite::driver('facebook')->redirect();})->name('socialite.login.facebook');
+ 
+// Route::get('/login/facebook/callback', function () {
+//     $facebookUser = Socialite::driver('facebook')->user();
+ 
+//       $user = User::updateOrCreate(
+//         [
+//         'name' => $facebookUser->name,
+//         'email' => $facebookUser->email,
+//         'gender' => 'Non binario',
+//         'phone' => ' ' ,
+//         'password' => bcrypt(''),
+//         ]
+// );
+ 
+//     Auth::login($user);
+ 
+//     return redirect('/');
+// });
+
+
+    

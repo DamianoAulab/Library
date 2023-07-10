@@ -68,7 +68,7 @@
                                         src="@if ($announcement->user->gender == 'Femmina') {{ empty($announcement->user->img) ? '/img/female-placeholder.jpg' : Storage::url($announcement->user->img) }}
                                     @elseif ($announcement->user->gender == 'Maschio') 
                                         {{ empty($announcement->user->img) ? '/img/male-placeholder.jpeg' : Storage::url($announcement->user->img) }}
-                                    @elseif ($announcement->user->gender == 'Non binario')
+                                    @elseif ($announcement->user->gender == 'Non binario' || $announcement->user->gender == 'Non specificato')
                                         {{ empty($announcement->user->img) ? '/img/non-binary-placeholder.png' : Storage::url($announcement->user->img) }} @endif"
                                         alt="">
                                     <span class="fw-bold d-inline-block"> {{ $announcement->user->name }}</span>

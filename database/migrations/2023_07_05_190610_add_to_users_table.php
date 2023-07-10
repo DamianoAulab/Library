@@ -12,6 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->string('description')->nullable();
             $table->decimal('wallet', 8, 2)->default(0,00)->nullable();
         });
     }
@@ -22,6 +23,7 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
+            $table->dropColumn('description');
             $table->dropColumn('wallet');
         });
     }

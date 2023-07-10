@@ -41,8 +41,9 @@
                             <option @if ($user->gender == 'Maschio') selected @endif value="Maschio">Maschio</option>
                             <option @if ($user->gender == 'Femmina') selected @endif value="Femmina">Femmina</option>
                             <option @if ($user->gender == 'Non binario') selected @endif value="Non binario">Non binario</option>
+                            <option @if ($user->gender == 'Non specificato') selected @endif value="Non specificato">Non specificato</option>
                         </select>
-                        <label for="gender">Gender</label>
+                        <label for="gender">Genere</label>
                         @error('gender')
                             <span class="text-danger">
                                 {{ $message }}
@@ -67,8 +68,8 @@
                             {{empty(Auth::user()->img) ? '/img/female-placeholder.jpg' : Storage::url(Auth::user()->img)}}
                         @elseif (Auth::user()->gender == 'Maschio') 
                             {{empty(Auth::user()->img) ? '/img/male-placeholder.jpeg' : Storage::url(Auth::user()->img)}}
-                        @elseif (Auth::user()->gender == 'Non binario')
-                            {{empty(Auth::user()->img) ? '/img/non-binary-placeholder.png' : Storage::url(Auth::user()->img)}}
+                        @elseif (Auth::user()->gender == 'Non binario' || Auth::user()->gender == 'Non specificato')
+                            {{empty(Auth::user()->img) ? '/img/user-placeholder.png' : Storage::url(Auth::user()->img)}}
                         @endif"
                             alt="">
                     </div>

@@ -2,10 +2,22 @@
     <x-slot name="title">Presto.it | Registrati</x-slot>
 
     <div class="container py-md-5">
-        <h1 class="text-center mb-4 fw-bold">Registrati</h1>
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-8">
-                <form class="p-4 p-md-5 shadow rounded" action="{{ route('register') }}" method="POST">
+        <h1 class="text-center mb-4 fw-bold">Registrati su Presto.it</h1>
+        <div class="row align-items-center flex-column">
+            <div class="col-12 col-md-4 text-center mb-2">
+                <a href="{{route('socialite.login.google', ['social' => 'google'])}}" class="btn btn-light btn-lg px-2 w-100 text-decoration-none fw-semibold"><img src="\img\google.png" alt="" height="30"> Accedi con Google</a>
+            </div>
+            <div class="col-12 col-md-4 text-center mb-4">
+                <a href="{{route('socialite.login.github', ['social' => 'github'])}}" class="btn btn-light btn-lg px-2 w-100 text-decoration-none fw-semibold"><img src="\img\github.png" alt="" height="30"> Accedi con Github</a>
+            </div>
+            {{-- <div class="col-12 col-md-4 text-center mb-4">
+                <a href="{{route('socialite.login.facebook')}}" class="btn btn-light btn-lg px-2 w-100 text-decoration-none fw-semibold"><img src="\img\facebook.png" alt="" height="30"> Accedi con Facebook</a>
+            </div> --}}
+            <div class="col-12 col-md-4 mb-4">
+                <div class="d-flex align-items-center text-divider"><span class="mx-4 fs-5 mb-1">oppure</span></div>
+            </div>
+            <div class="col-12 col-md-4">
+                <form class="p-4 shadow rounded" action="{{ route('register') }}" method="POST">
                     @method('POST')
                     @csrf
 
@@ -36,30 +48,41 @@
                         </span>
                     @enderror
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="password" name="password" class="form-control" id="password" value="{{ old('password') }}" placeholder="Password" required>
-                        <label for="password" class="form-label">Password</label>
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                            <input type="password" name="password" class="form-control" id="passwordInput" value="{{ old('password') }}" placeholder="Password" required>
+                            <label for="password" class="form-label">Password</label>
+                        </div>
+                        <button class="btn btn-light" type="button" id="showPasswordButton">
+                          <i class="bi bi-eye-slash"></i>
+                        </button>
                         @error('password')
                         <span class="text-danger">
                             {{ $message }}
                         </span>
                     @enderror
                     </div>
-                    <div class="form-floating mb-3">
-                        <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" value="{{ old('confirm_password') }}" placeholder="Confirm Password" required>
-                        <label for="password_confirmation" class="form-label">Conferma password</label>
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                            <input type="password" name="password_confirmation" class="form-control" id="passwordConfirmInput" value="{{ old('confirm_password') }}" placeholder="Conferma Password" required>
+                            <label for="password_confirmation" class="form-label">Conferma Password</label>
+                        </div>
+                        <button class="btn btn-light" type="button" id="showConfirmPasswordButton">
+                          <i class="bi bi-eye-slash"></i>
+                        </button>
                         @error('password_confirmation')
-                            <span class="text-danger">
-                                {{ $message }}
-                            </span>
-                        @enderror
+                        <span class="text-danger">
+                            {{ $message }}
+                        </span>
+                    @enderror
                     </div>
 
                     <div class="form-floating mb-3">
                         <select class="form-select" id="gender" name="gender" required>
-                            <option selected value="Maschio">Maschio</option>
+                            <option value="Maschio">Maschio</option>
                             <option value="Femmina">Femmina</option>
                             <option value="Non binario">Non binario</option>
+                            <option selected value="Non specificato">Non specificato</option>
                         </select>
                         <label for="gender">Genere</label>
                         @error('gender')
