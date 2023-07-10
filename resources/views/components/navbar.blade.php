@@ -36,7 +36,7 @@
                             <ul class="dropdown-menu dropdown-menu-end d-block d-md-none mb-4">
                                 <li><a class="dropdown-item fw-semibold d-flex justify-content-between fs-5 d-none d-md-flex"
                                         href="{{ route('users.show', ['user' => Auth::user()->id]) }}">
-                                        Profilo <i class="bi bi-person-circle"></i></a></li>
+                                        {{__('ui.profile')}} <i class="bi bi-person-circle"></i></a></li>
                                 <li>
                                 <li><a class="dropdown-item fw-bold d-flex justify-content-between fs-5 d-block d-md-none"
                                         href="{{ route('users.show', ['user' => Auth::user()->id]) }}">
@@ -53,11 +53,11 @@
                                 </li>
                                 <li><a class="dropdown-item fw-semibold"
                                         href="{{ route('users.show', ['user' => Auth::user()->id]) }}/#my-annunci">
-                                        <i class="bi bi-tags me-2"></i>I miei Annunci</a></li>
+                                        <i class="bi bi-tags me-2"></i>{{__('ui.myAnnouncements')}}</a></li>
                         </li>
                         @if (Auth::user()->is_revisor)
                             <li><a class="dropdown-item fw-semibold" href="{{ route('revisor.index') }}">
-                                    <i class="bi bi-shield-lock me-2"></i>Zona Revisore
+                                    <i class="bi bi-shield-lock me-2"></i>{{__('ui.revisorZone')}}
                                     @if ($announcements_to_check > 0)
                                         <span class="badge btn-green">{{ $announcements_to_check }}</span>
                                     @endif
@@ -66,19 +66,19 @@
                         @endif
                         <li class="px-2 mt-2"><a class="btn btn-light-orange w-100 fw-semibold"
                                 href="{{ route('announcements.create') }}">
-                                <i class="bi bi-plus-square"></i> Annuncio</a>
+                                <i class="bi bi-plus-square"></i> {{__('ui.announcement')}}</a>
                         </li>
                         @if (!Auth::user()->is_revisor)
                             <li class="px-2 mt-2">
                                 <button class="btn btn-green w-100 fw-semibold px-0" data-bs-toggle="modal" data-bs-target="#modalRevisor">
-                                    <i class="bi bi-shield-lock"></i> Lavora con Noi</button>
+                                    <i class="bi bi-shield-lock"></i> {{__('ui.workWithUs')}}</button>
                             </li>
                         @endif
                         <li class="px-2 mt-2">
                             <form action="{{ route('logout') }}" method="POST">
                                 @csrf
                                 <button class="btn btn-red w-100 fw-bold"
-                                    onclick="event.preventDefault(); this.closest('form').submit();">Esci</button>
+                                    onclick="event.preventDefault(); this.closest('form').submit();">{{__('ui.logout')}}</button>
                             </form>
                         </li>
                     </ul>
@@ -86,7 +86,7 @@
                     @if (Route::currentRouteName() == 'announcements.index' || Route::currentRouteName() == 'search' || Route::currentRouteName() == 'announcements.search' || Route::currentRouteName() == 'homepage')
                         <li class="nav-item me-0 me-lg-4">
                             <a class="nav-link text-center d-none d-md-block fw-semibold" href="{{ route('announcements.create') }}">
-                                <i class="bi bi-plus-square"></i> Inserisci Annuncio
+                                <i class="bi bi-plus-square"></i> {{__('ui.addAnnouncement')}}
                             </a>
                         </li>
                     @endif
@@ -94,10 +94,10 @@
                 @else
                     <ul class="navbar-nav justify-content-evenly flex-row mb-4 mb-md-0">
                         <li class="nav-item mt-1">
-                            <a href="{{ route('login') }}" class="btn btn-light text-black px-4 fw-semibold">Accedi</a>
+                            <a href="{{ route('login') }}" class="btn btn-light text-black px-4 fw-semibold">{{__('ui.login')}}</a>
                         </li>
                         <li class="nav-item mt-1 ms-md-3">
-                            <a href="{{ route('register') }}" class="btn btn-red px-4 fw-semibold">Registrati</a>
+                            <a href="{{ route('register') }}" class="btn btn-red px-4 fw-semibold">{{__('ui.register')}}</a>
                         </li>
                     </ul>
                 @endauth
@@ -107,7 +107,7 @@
                 <li class="nav-item me-0 me-lg-4 pt-1 mb-4 mb-md-0">
                     <form action="{{ route('announcements.search') }}" method="GET" class="d-flex">
                         <div class="input-group">
-                            <input name="searched" class="form-control" type="search" placeholder="Cerca..."
+                            <input name="searched" class="form-control" type="search" placeholder="{{__('ui.search')}}..."
                                 aria-label="Cerca">
                             <button class="btn btn-red border-0" type="submit"><i class="bi bi-search"></i></button>
                         </div>
@@ -118,48 +118,50 @@
                 <li class="dropdown me-0 me-lg-4">
                     <a class="nav-link dropdown-toggle text-center d-none d-md-block fw-semibold" href=""
                         role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Categorie
+                        {{__('ui.categories')}}
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end d-block d-md-none px-2 text-center">
                         <li><a class="btn btn-light-orange w-100 fw-bold fs-5"
-                                href="{{ route('macro', ['macro' => 'motori']) }}">Motori</a></li>
+                                href="{{ route('macro', ['macro' => 'motori']) }}">{{__('ui.motors')}}</a></li>
                         @foreach ($categories as $category)
                             @if ($category->macro == 'motori')
                                 <li><a class="dropdown-item capitalize fw-semibold"
-                                        href="{{ route('categories.show', ['category' => $category->id]) }}">{{ $category->name }}</a>
+                                        href="{{ route('categories.show', ['category' => $category->id]) }}">@if (Lang::locale() == 'it') {{$category->name_it}} @elseif (Lang::locale() == 'eng') {{$category->name_en}} @elseif (Lang::locale() == 'es') {{$category->name_es}} @endif</a>
                                 </li>
                             @endif
                         @endforeach
                         <li class="mt-3"><a class="btn btn-orange w-100 fw-bold fs-5"
-                                href="{{ route('macro', ['macro' => 'immobili']) }}">Immobili</a></li>
+                                href="{{ route('macro', ['macro' => 'immobili']) }}">{{__('ui.properties')}}</a></li>
                         @foreach ($categories as $category)
                             @if ($category->macro == 'immobili')
                                 <li><a class="dropdown-item capitalize fw-semibold"
-                                        href="{{ route('categories.show', ['category' => $category->id]) }}">{{ $category->name }}</a>
+                                        href="{{ route('categories.show', ['category' => $category->id]) }}">@if (Lang::locale() == 'it') {{$category->name_it}} @elseif (Lang::locale() == 'eng') {{$category->name_en}} @elseif (Lang::locale() == 'es') {{$category->name_es}} @endif</a>
                                 </li>
                             @endif
                         @endforeach
                         <li class="mt-3"><a class="btn btn-red w-100 fw-bold fs-5"
-                                href="{{ route('macro', ['macro' => 'market']) }}">Market</a></li>
+                                href="{{ route('macro', ['macro' => 'market']) }}">{{__('ui.market')}}</a></li>
                         @foreach ($categories as $category)
                             @if ($category->macro == 'market')
                                 <li><a class="dropdown-item capitalize fw-semibold"
-                                        href="{{ route('categories.show', ['category' => $category->id]) }}">{{ $category->name }}</a>
+                                        href="{{ route('categories.show', ['category' => $category->id]) }}">@if (Lang::locale() == 'it') {{$category->name_it}} @elseif (Lang::locale() == 'eng') {{$category->name_en}} @elseif (Lang::locale() == 'es') {{$category->name_es}} @endif</a>
                                 </li>
                             @endif
                         @endforeach
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <x-_locale lang='it' nation='it'/>
-                </li>
-                <li class="nav-item">
-                    <x-_locale lang='eng' nation='gb'/>
-                </li>
-                <li class="nav-item">
-                    <x-_locale lang='es' nation='es'/>
-                </li>
+                <ul class="navbar-nav flex-row justify-content-center me-0 me-lg-4">
+                    <li class="nav-item">
+                        <x-_locale lang='it' nation='it'/>
+                    </li>
+                    <li class="nav-item mx-2 mx-lg-0">
+                        <x-_locale lang='eng' nation='gb'/>
+                    </li>
+                    <li class="nav-item">
+                        <x-_locale lang='es' nation='es'/>
+                    </li>
                 </ul>
+            </ul>
             </div>
         </div>
     </div>

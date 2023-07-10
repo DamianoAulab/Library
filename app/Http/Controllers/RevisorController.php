@@ -20,7 +20,7 @@ class RevisorController extends Controller
     {
         $announcement_to_check = Announcement::where('is_accepted', null)->where('user_id', '!=', Auth::user()->id)->first();
 
-        $categories = Category::orderBy('name', 'asc')->get();
+        $categories = Category::orderBy('name_it', 'asc')->get();
         $announcements = Announcement::orderBy('created_at', 'desc')->where('is_accepted', true)->take(4)->get();
 
         if ($announcement_to_check == null) {

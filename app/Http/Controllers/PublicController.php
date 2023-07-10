@@ -22,7 +22,7 @@ class PublicController extends Controller
 
 
     public function homepage() {
-        $categories = Category::orderBy('name', 'asc')->get();
+        $categories = Category::orderBy('name_it', 'asc')->get();
         $announcements = Announcement::orderBy('created_at', 'desc')->where('is_accepted', true)->take(4)->get();
         return view('homepage', compact('categories', 'announcements'));
     }
@@ -41,7 +41,7 @@ class PublicController extends Controller
     }
 
     public function macro($macro) {
-        $categories = Category::orderBy('name', 'asc')->get();
+        $categories = Category::orderBy('name_it', 'asc')->get();
         $announcements = Announcement::orderBy('created_at', 'desc')->get();
         return view('macro', compact('categories', 'announcements', 'macro'));
     }

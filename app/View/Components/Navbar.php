@@ -16,7 +16,7 @@ class Navbar extends Component
 
     public function __construct()
     {
-        $this->categories = Category::orderBy('name', 'asc')->get();
+        $this->categories = Category::orderBy('name_it', 'asc')->get();
         if (Auth::user() != null) {
             $this->announcements_to_check = Announcement::where('is_accepted', null)->where('user_id', '!=', Auth::user()->id)->count();
         }
