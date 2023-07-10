@@ -2,6 +2,7 @@
 @import 'bootstrap-icons';
 @import './helper.css';
 @import './404.css';
+@import '../../node_modules/flag-icon-css/css/flag-icons.min.css';
 
 
 body {

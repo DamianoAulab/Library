@@ -4,11 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Announcement;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
-use App\Models\Announcement;
 use Illuminate\Support\Facades\Auth;
 use Laravel\Socialite\Facades\Socialite;
+
 
 class PublicController extends Controller
 {
@@ -112,4 +113,10 @@ class PublicController extends Controller
 
     //     return redirect()->route('homepage')->with('success', 'Sei un utente!');
     // }
+
+    public function setLanguage($lang)
+    {
+        session()->put('locale', $lang);
+        return redirect()->back();
+    }
 }
