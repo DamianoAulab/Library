@@ -11,8 +11,7 @@ return [
         'logout' => 'Logout',
     
         'addAnnouncement' => 'Add Announcement',
-        'search' => 'Search',
-    
+
         'profile' => 'Profile',
         'myAnnouncements' => 'My Announcements',
         'workWithUs' => 'Work with us',
@@ -30,4 +29,24 @@ return [
         // RICERCA
         'whatAreYouSearching' => 'What you search?',
         'allCategories' => 'All categories',
+        'search' => 'Search',
+
+        // ANNUNCI
+        'createAnnouncement' => 'Create announcement',
+        'title' => 'Title',
+        'selectCategory' => 'Select Category',
+        'description' => 'Description',
+        'price' => 'Price',
+        'addImage' => 'Add image',
+        
+        'editAnnouncement' => 'Edit announcement',
+        'toInsert' => 'to insert',
+        'update' => 'Update',
+
+        'listAnnouncement' => 'Announcement List',
+
+        'publishedOn' => 'Published on',
+        'onlineAnnouncements' => 'Online Announcements',
+        'contact' => 'Contact',
+
 ];

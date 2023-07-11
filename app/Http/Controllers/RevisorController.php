@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Artisan;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRequest;
 use App\Models\Category;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Redis;
 
 class RevisorController extends Controller
@@ -20,7 +21,9 @@ class RevisorController extends Controller
     {
         $announcement_to_check = Announcement::where('is_accepted', null)->where('user_id', '!=', Auth::user()->id)->first();
 
-        $categories = Category::orderBy('name_it', 'asc')->get();
+        if (Lang::locale() == 'it') {$categories = Category::orderBy('name_it', 'asc')->get();} 
+        elseif (Lang::locale() == 'eng') {$categories = Category::orderBy('name_en', 'asc')->get();} 
+        elseif (Lang::locale() == 'es') {$categories = Category::orderBy('name_es', 'asc')->get();}
         $announcements = Announcement::orderBy('created_at', 'desc')->where('is_accepted', true)->take(4)->get();
 
         if ($announcement_to_check == null) {

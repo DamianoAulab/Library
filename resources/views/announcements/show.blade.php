@@ -49,15 +49,15 @@
                     <a class="btn @if ($announcement->category->macro == 'motori') btn-light-orange @elseif ($announcement->category->macro == 'immobili') btn-orange @elseif ($announcement->category->macro == 'market') btn-red @endif fit-content text-capitalize fw-semibold text-white shadow"
                         href="{{ route('categories.show', ['category' => $announcement->category_id]) }}">
 
-                        {{ $announcement->category->name }}</a>
+                        @if (Lang::locale() == 'it') {{$announcement->category->name_it}} @elseif (Lang::locale() == 'eng') {{$announcement->category->name_en}} @elseif (Lang::locale() == 'es') {{$announcement->category->name_es}} @endif</a>
 
-                    <p class="mb-0 fw-semibold fs-5 mt-3 mt-md-5">Prezzo</p>
+                    <p class="mb-0 fw-semibold fs-5 mt-3 mt-md-5">{{__('ui.price')}}</p>
                     <p class="mb-0 fw-bold fs-2" style="color: var(--grey); margin-top: -0.5rem;">€
                         {{ number_format($announcement->price, 2, ',', ' ') }}</p>
                 </div>
 
                 <div>
-                    <p class="mb-0 fw-light mb-3">Pubblicato il {{ $announcement->created_at->format('d-m-Y') }}</p>
+                    <p class="mb-0 fw-light mb-3">{{__('ui.publishedOn')}} {{ $announcement->created_at->format('d-m-Y') }}</p>
 
                     <div class="card border-0 shadow px-4 py-3">
                         <div class="row">
@@ -74,11 +74,11 @@
                                     <span class="fw-bold d-inline-block"> {{ $announcement->user->name }}</span>
                                 </p>
                                 <p class="fs-5 ms-3 mb-3 mb-md-0"><span class="fw-bold fs-4 me-1">
-                                        {{ $announcement->user->announcementCount() }} </span> Annunci Online</p>
+                                        {{ $announcement->user->announcementCount() }} </span> {{__('ui.onlineAnnouncements')}}</p>
                             </div>
                             <div class="col-12 col-md-6 d-flex align-items-center justify-content-end">
                                 <a class="btn btn-lg btn-primary shadow fw-semibold w-100"
-                                    href="tel:{{ $announcement->user->phone }}">Contatta <i
+                                    href="tel:{{ $announcement->user->phone }}">{{__('ui.contact')}} <i
                                         class="bi bi-telephone"></i></a>
                             </div>
                         </div>
@@ -87,11 +87,11 @@
             </div>
         </div>
     </div>
-    <h2 class="text-center fw-bold mt-4 mb-0 fs-1">Descrizione</h2>
+    <h2 class="text-center fw-bold mt-4 mb-0 fs-1">{{__('ui.description')}}</h2>
     <p class="text-center px-md-5 mx-md-5 my-3">{{ $announcement->description }}</p>
 
 
-    <h2 class="text-center fw-bold mt-5 mb-0 fs-2">Ultimi Annunci</h2>
+    <h2 class="text-center fw-bold mt-5 mb-0 fs-2">{{__('ui.lastAnnouncements')}}</h2>
 
     <div class="row g-4 mt-1">
         @forelse ($announcements as $announcement)
@@ -100,7 +100,7 @@
                     <div class="card border-0 shadow h-100">
                         <a class="btn @if ($announcement->category->macro == 'motori') btn-light-orange @elseif ($announcement->category->macro == 'immobili') btn-orange @elseif ($announcement->category->macro == 'market') btn-red @endif text-capitalize fw-semibold text-white position-absolute mt-3 ms-3 shadow"
                             href="{{ route('categories.show', ['category' => $announcement->category_id]) }}">
-                            {{ $announcement->category->name }}</a>
+                            @if (Lang::locale() == 'it') {{$announcement->category->name_it}} @elseif (Lang::locale() == 'eng') {{$announcement->category->name_en}} @elseif (Lang::locale() == 'es') {{$announcement->category->name_es}} @endif</a>
                         @if (Auth::user() !== null && Auth::user()->id == $announcement->user_id)
                             <a class="btn btn-dark text-white position-absolute top-0 end-0 mt-3 me-3 shadow opacity-50 px-2 py-1"
                                 href="{{ route('announcements.edit', ['announcement' => $announcement]) }}"><i

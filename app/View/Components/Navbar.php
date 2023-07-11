@@ -8,6 +8,7 @@ use App\Models\Category;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 
 class Navbar extends Component
 {
@@ -16,7 +17,10 @@ class Navbar extends Component
 
     public function __construct()
     {
-        $this->categories = Category::orderBy('name_it', 'asc')->get();
+        if (Lang::locale() == 'it') {$this->categories = Category::orderBy('name_it', 'asc')->get();} 
+        elseif (Lang::locale() == 'eng') {$this->categories = Category::orderBy('name_en', 'asc')->get();} 
+        elseif (Lang::locale() == 'es') {$this->categories = Category::orderBy('name_es', 'asc')->get();}
+        
         if (Auth::user() != null) {
             $this->announcements_to_check = Announcement::where('is_accepted', null)->where('user_id', '!=', Auth::user()->id)->count();
         }

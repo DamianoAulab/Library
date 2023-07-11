@@ -11,7 +11,6 @@ return [
         'logout' => 'Logout',
     
         'addAnnouncement' => 'Introduce Anuncio',
-        'search' => 'Busca',
     
         'profile' => 'Cuenta',
         'myAnnouncements' => 'Mis Anuncios',
@@ -30,4 +29,24 @@ return [
         // RICERCA
         'whatAreYouSearching' => '¿Qué estás buscando?',
         'allCategories' => 'Todos las categorías',
+        'search' => 'Busca',
+
+        // ANNUNCI
+        'createAnnouncement' => 'Crear anuncio',
+        'title' => 'Título',
+        'selectCategory' => 'Selecciona una Categoría',
+        'description' => 'Descripción',
+        'price' => 'Precio',
+        'addImage' => 'Insertar una imagen',
+        
+        'editAnnouncement' => 'Editar anuncio',
+        'toInsert' => 'para insertar',
+        'update' => 'Actualizar',
+
+        'listAnnouncement' => 'Lista de Anuncios',
+
+        'publishedOn' => 'Publicado en',
+        'onlineAnnouncements' => 'Anuncios en línea',
+        'contact' => 'Contacto',
+
 ];

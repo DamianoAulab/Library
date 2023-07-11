@@ -8,6 +8,7 @@ use App\Models\Announcement;
 use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Lang;
 use Laravel\Socialite\Facades\Socialite;
 
 
@@ -22,7 +23,9 @@ class PublicController extends Controller
 
 
     public function homepage() {
-        $categories = Category::orderBy('name_it', 'asc')->get();
+        if (Lang::locale() == 'it') {$categories = Category::orderBy('name_it', 'asc')->get();} 
+        elseif (Lang::locale() == 'eng') {$categories = Category::orderBy('name_en', 'asc')->get();} 
+        elseif (Lang::locale() == 'es') {$categories = Category::orderBy('name_es', 'asc')->get();}
         $announcements = Announcement::orderBy('created_at', 'desc')->where('is_accepted', true)->take(4)->get();
         return view('homepage', compact('categories', 'announcements'));
     }
@@ -41,7 +44,9 @@ class PublicController extends Controller
     }
 
     public function macro($macro) {
-        $categories = Category::orderBy('name_it', 'asc')->get();
+        if (Lang::locale() == 'it') {$categories = Category::orderBy('name_it', 'asc')->get();} 
+        elseif (Lang::locale() == 'eng') {$categories = Category::orderBy('name_en', 'asc')->get();} 
+        elseif (Lang::locale() == 'es') {$categories = Category::orderBy('name_es', 'asc')->get();}
         $announcements = Announcement::orderBy('created_at', 'desc')->get();
         return view('macro', compact('categories', 'announcements', 'macro'));
     }
