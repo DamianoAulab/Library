@@ -66,4 +66,16 @@ return [
         'birthday' => 'Fecha de nacimiento',
         'yesAccount' => '¿Ya tienes una cuenta?',
 
+        // REVISORE
+        'noAnnouncementToCheck' => 'No hay anuncios para revisar...',
+        'accept' => 'ACEPTAR',
+        'reject' => 'RECHAZAR',
+        'areYouSureAccept' => "¿Estás seguro de que quieres ACEPTAR este anuncio?",
+        'areYouSureReject' => "¿Está seguro de que desea RECHAZAR este anuncio?",
+
+        // UTENTE
+        'editProfile' => 'Editar Cuenta',
+        'actualImage' => 'Imagen Actual',
+        'uploadImage' => 'Subir nueva foto de cuenta',
+
 ];

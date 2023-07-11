@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Presto.it | Zona Revisore</title>
+    <title>Presto.it | {{__('ui.revisorZone')}}</title>
 
     <link rel="icon" type="image/x-icon" href="\img\presto.it_favicon.ico">
 
@@ -20,7 +20,7 @@
         <x-session />
 
         @if (!$announcement_to_check)
-            <div class="text-center mt-4 text-dark text-opacity-75 fs-2"><em>Nessun annuncio da revisionare...</em></div>
+            <div class="text-center mt-4 text-dark text-opacity-75 fs-2"><em>{{__('ui.noAnnouncementToCheck')}}</em></div>
         @else
             <div class="row g-5 mt-md-2 mb-5">
                 <div class="col-12 col-md-6">
@@ -63,15 +63,15 @@
                             <a class="btn @if ($announcement_to_check->category->macro == 'motori') btn-light-orange @elseif ($announcement_to_check->category->macro == 'immobili') btn-orange @elseif ($announcement_to_check->category->macro == 'market') btn-red @endif fit-content text-capitalize fw-semibold text-white shadow"
                                 href="{{ route('categories.show', ['category' => $announcement_to_check->category_id]) }}">
 
-                                {{ $announcement_to_check->category->name }}</a>
+                                @if (Lang::locale() == 'it') {{$announcement_to_check->category->name_it}} @elseif (Lang::locale() == 'eng') {{$announcement_to_check->category->name_en}} @elseif (Lang::locale() == 'es') {{$announcement_to_check->category->name_es}} @endif</a>
 
-                            <p class="mb-0 fw-semibold fs-5 mt-3 mt-md-5">Prezzo</p>
+                            <p class="mb-0 fw-semibold fs-5 mt-3 mt-md-5">{{__('ui.price')}}</p>
                             <p class="mb-0 fw-bold fs-2" style="color: var(--grey); margin-top: -0.5rem;">€
                                 {{ number_format($announcement_to_check->price, 2, ',', ' ') }}</p>
                         </div>
 
                         <div>
-                            <p class="mb-0 fw-light mb-3">Pubblicato il
+                            <p class="mb-0 fw-light mb-3">{{__('ui.publishedOn')}}
                                 {{ $announcement_to_check->created_at->format('d-m-Y') }}</p>
 
                             <div class="card border-0 shadow px-4 py-3">
@@ -90,13 +90,12 @@
                                                 {{ $announcement_to_check->user->name }}</span>
                                         </p>
                                         <p class="fs-5 ms-3 mb-3 mb-md-0"><span class="fw-bold fs-4 me-1">
-                                                {{ $announcement_to_check->user->announcementCount() }} </span> Annunci
-                                            Online</p>
+                                                {{ $announcement_to_check->user->announcementCount() }} </span> {{__('ui.onlineAnnouncements')}} </p>
                                     </div>
                                     <div class="col-12 col-md-7 d-flex align-items-center justify-content-end flex-wrap">
                                         <div class="col-12 col-md-6 px-1 pb-2 pb-md-0">
                                             <a class="btn btn-lg btn-primary shadow fw-semibold w-100 mx-1"
-                                            href="tel:{{ $announcement_to_check->user->phone }}">Contatta <i
+                                            href="tel:{{ $announcement_to_check->user->phone }}">{{__('ui.contact')}} <i
                                                 class="bi bi-telephone"></i></a>
                                         </div>
                                         <div class="col-12 col-md-6 px-1">
@@ -111,13 +110,13 @@
                     </div>
                 </div>
             </div>
-            <h2 class="text-center fw-bold mt-4 mb-0 fs-1">Descrizione</h2>
+            <h2 class="text-center fw-bold mt-4 mb-0 fs-1">{{__('ui.description')}}</h2>
             <p class="text-center px-md-5 mx-md-5 my-3">{{ $announcement_to_check->description }}</p>
 
             <div class="row my-5 align-items-center">
                 <div class="col-12 col-md-5 text-center">
                     <button class="btn btn-lg btn-green w-75 fw-semibold shadow fs-1" data-bs-toggle="modal"
-                        data-bs-target="#modalAccept"><i class="bi bi-patch-check"></i> ACCETTA</button>
+                        data-bs-target="#modalAccept"><i class="bi bi-patch-check"></i> {{__('ui.accept')}}</button>
                 </div>
                 <div class="col-12 col-md-2 text-center">
                     <form action="{{ Route('revisor.undo_announcement', ['announcement' => ' '])}}" method="POST">
@@ -128,7 +127,7 @@
                 </div>
                 <div class="col-12 col-md-5 mt-2 mt-md-0 text-center">
                     <button class="btn btn-lg btn-red w-75 fw-semibold shadow fs-1" data-bs-toggle="modal"
-                        data-bs-target="#modalReject"><i class="bi bi-x-octagon"></i> RIFIUTA</button>
+                        data-bs-target="#modalReject"><i class="bi bi-x-octagon"></i> {{__('ui.reject')}}</button>
                 </div>
             </div>
         @endif
@@ -142,7 +141,7 @@
         <div class="modal-dialog">
             <div class="modal-content border-0 w-110">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5">Sei sicuro di voler <b>ACCETTARE</b> questo annuncio?</h1>
+                    <h1 class="modal-title fs-5">{{__('ui.areYouSureAccept')}}</h1>
                     <form action="{{ Route('revisor.accept_announcement', ['announcement' => $announcement_to_check->id])}}" method="POST">
                     @csrf
                     @method('PATCH')
@@ -159,7 +158,7 @@
         <div class="modal-dialog">
             <div class="modal-content border-0 w-110">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5">Sei sicuro di voler <b>RIFIUTARE</b> questo annuncio?</h1>
+                    <h1 class="modal-title fs-5">{{__('ui.areYouSureReject')}}</h1>
                     <form action="{{route('revisor.reject_announcement', ['announcement' => $announcement_to_check->id])}}" method="POST">
                     @csrf
                     @method('PATCH')

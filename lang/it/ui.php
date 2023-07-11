@@ -66,4 +66,15 @@ return [
     'birthday' => 'Data di nascita',
     'yesAccount' => 'Hai già un account?',
 
+    // REVISORE
+    'noAnnouncementToCheck' => 'Nessun annuncio da revisionare...',
+    'accept' => 'ACCETTA',
+    'reject' => 'RIFIUTA',
+    'areYouSureAccept' => "Sei sicuro di voler ACCETTARE questo annuncio?",
+    'areYouSureReject' => "Sei sicuro di voler RIFIUTARE questo annuncio?",
+
+    // UTENTE
+    'editProfile' => 'Modifica Profilo',
+    'actualImage' => 'Immagine Attuale',
+    'uploadImage' => 'Carica Nuova Immagine Profilo',
 ];

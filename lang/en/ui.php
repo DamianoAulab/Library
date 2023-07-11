@@ -66,4 +66,16 @@ return [
         'birthday' => 'Date of birth',
         'yesAccount' => 'Do you already have an account?',
 
+        // REVISORE
+        'noAnnouncementToCheck' => 'No announcement to review...',
+        'accept' => 'ACCEPT',
+        'reject' => 'REJECT',
+        'areYouSureAccept' => "Are you sure you want to ACCEPT this announcement?",
+        'areYouSureReject' => "Are you sure you want to REJECT this announcement?",
+
+        // UTENTE
+        'editProfile' => 'Edit Profile',
+        'actualImage' => 'Current Image',
+        'uploadImage' => 'Upload New Profile Picture',
+
 ];
