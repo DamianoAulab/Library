@@ -45,6 +45,7 @@
                     @enderror
                 </div>
                 <div class="mb-3">
+                    <label for="img" class="form-label">{{__('ui.addImages')}}</label>
                     <input wire:model="temporary_images" type="file" name="images" multiple
                         class="form-control shadow @error('temporay_images.*') is-invalid"@enderror placeholder="img" />
                     @error('temporary_images.*')
@@ -52,17 +53,17 @@
                     @enderror
                 </div>
                 @if (!empty($images))
-                    <div class="row">
+                    <div class="row mb-4">
                         <div class="col-12">
-                            <p>Photo preview</p>
-                            <div class="row border border-4 border-info rounded shadow py-4">
+                            <p>{{__('ui.previewImages')}}</p>
+                            <div class="row rounded shadow py-4 mx-1">
                                 @foreach ($images as $key => $image)
-                                    <div class="col my-3">
+                                    <div class="col px-0">
                                         <div class="img-preview mx-auto shadow rounded"
-                                            style="background-image: url({{ $image->temporaryUrl() }})"></div>
+                                            style="background-image: url({{ $image->temporaryUrl() }});"></div>
                                         <button type="button"
-                                            class="btn btn-danger shadow d-block text-center mt-2 mx-auto"
-                                            wire:click="removeImage({{ $key }})">Cancella
+                                            class="btn btn-red shadow d-block text-center mt-2 mx-auto"
+                                            wire:click="removeImage({{ $key }})">{{__('ui.delete')}}
                                     </div>
                                 @endforeach
                             </div>
