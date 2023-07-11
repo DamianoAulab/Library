@@ -12,7 +12,8 @@ class AnnouncementCreate extends Component
 {
     use WithFileUploads;
     
-    public $title, $price, $description, $img, $category_id;
+    public $title, $price, $description, $category_id, $temporary_images,  $images=[];
+    public $announcement;
     
 
     
@@ -20,35 +21,59 @@ class AnnouncementCreate extends Component
         'title' => 'required|max:100|min:5',
         'price' => 'required|numeric',
         'description' => 'required',
-        'img' => 'image|max:1024|nullable',
+        'images.*' => 'image|max:1024',
+        'temporary_images.*' => 'image|max:1024',
     ];
 
     protected $messages = [
         'required' => 'Il campo :attribute è richiesto',
         'max' => 'Il campo :attribute è troppo lungo',
         'min' => 'Il campo :attribute è troppo corto',
+        'image' => 'Il campo :attribute deve essere un \'immagine',
+        'temporary_images.*.max' => 'L\'immagine deve essere massimo di 1mb',
+        'images.*.max' => 'L\'immagine deve essere massimo di 1mb',
+
         
 
     ];
 
-    
+    public function updatedTemporaryImages() {
+        
+        if ($this->validate([
+            'temporary_images.*' => 'image|max:1024',
+        ])) {
+        foreach ($this->temporary_images as $image) {
+            $this->images[] = $image;
+        }
+      }
+    }
+
+    public function removeImage($key) {
+        if (in_array($key, array_keys($this->images))) {
+            unset($this->images[$key]);
+        }
+    }
 
     public function store(){
 
         $this->validate();
 
-        $category = Category::find($this->category_id);
-
-         $category->announcements()->create([
+        $this->announcement = Category::find($this->category_id)->announcements()->create([
             'title' => $this->title,
             'price' => $this->price,
             'description' => $this->description,
-            'img' => $this->img,
             'user_id' => Auth::user()->id,
+            'images' => $this->images,
+            'temporary_images' => $this->temporary_images,
         ]);
 
+        if (count($this->images)) {
+            foreach ($this->images as $image) {
+                $this->announcement->images()->create(['path' => $image->store('images/announcements', 'public')]);
+            }
+        }
 
-        $this->reset('title', 'description', 'price', 'img', 'category_id');
+        $this->cleanForm();
         session()->flash('success', 'Annuncio creato! Sarà pubblicato dopo la revisione');
         return redirect()->route('announcements.create');
     }
@@ -57,6 +82,15 @@ class AnnouncementCreate extends Component
         $this->validateOnly($propertyName);
     }
 
+    public function cleanForm() {
+        $this->title = '';
+        $this->description = '';
+        $this->price = '';
+        $this->category_id = '';
+        $this->images = [];
+        $this->temporary_images = [];
+        
+    }
 
     public function render()
     {

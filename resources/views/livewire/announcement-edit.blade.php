@@ -43,14 +43,6 @@
                         <span class="error text-danger">{{ $message }}</span>
                     @enderror
                 </div>
-                <div class="mb-3">
-                  <label for="img" class="form-label">{{__('ui.addImage')}}</label>
-                    <input class="form-control" id="img" wire:model="announcement.img" type="file" placeholder="img">
-                    @error('img')
-                        <span class="error text-danger">{{ $message }}</span>
-                    @enderror
-                </div>
-
                 <button type="submit" class="btn btn-red btn-lg px-5 w-100 fw-semibold">{{__('ui.update')}}</button>
             </form>
         </div>
