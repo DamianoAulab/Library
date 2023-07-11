@@ -39,3 +39,10 @@ body {
   background-color: silver;
   flex-grow: 1;
 } 
+
+.img-preview {
+    height: 300px;
+    width: 300px;
+    background-position: center;
+    background-size: cover;
+}

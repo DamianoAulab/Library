@@ -37,7 +37,9 @@ return [
         'selectCategory' => 'Selecciona una Categoría',
         'description' => 'Descripción',
         'price' => 'Precio',
-        'addImage' => 'Insertar una imagen',
+        'addImages' => 'Insertar una o más imágenes',
+        'previewImages' => 'Imágenes de vista previa',
+        'delete' => 'Cancelar',
         
         'editAnnouncement' => 'Editar anuncio',
         'toInsert' => 'para insertar',

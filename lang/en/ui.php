@@ -37,7 +37,10 @@ return [
         'selectCategory' => 'Select Category',
         'description' => 'Description',
         'price' => 'Price',
-        'addImage' => 'Add image',
+        'addImages' => 'Insert one or more images',
+        'previewImages' => 'Preview Images',
+        'delete' => 'Delete',
+
         
         'editAnnouncement' => 'Edit announcement',
         'toInsert' => 'to insert',

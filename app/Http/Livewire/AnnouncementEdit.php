@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class AnnouncementEdit extends Component
 {   
 
-    public $title, $price, $description, $category_id;
+    public $title, $price, $description, $category_id, $images=[], $temporary_images;
 
     public Announcement $announcement;
 
@@ -18,6 +18,8 @@ class AnnouncementEdit extends Component
         'announcement.title' => 'required|max:100',
         'announcement.price' => 'required|numeric',
         'announcement.description' => 'required',
+        'announcement.images' => 'image|max:1024',
+        'announcement.temporary_images' => 'image|max:1024',
     ];
 
     public function update() {
