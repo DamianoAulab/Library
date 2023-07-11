@@ -49,4 +49,21 @@ return [
         'onlineAnnouncements' => 'Anuncios en línea',
         'contact' => 'Contacto',
 
+        // AUTH
+        'loginOn' => 'Login en',
+        'loginWith' => 'Login con',
+        'or' => 'o',
+        'noAccount' => '¿Aún no tienes una cuenta?',
+        
+        'registerOn' => 'Regístrate en',
+        'phone' => 'Teléfono',
+        'confirm' => 'Confirma',
+        'gender' => 'Genero',
+        'male' => 'Masculino',
+        'female' => 'Femenino',
+        'noBinary' => 'No binario',
+        'notSpecified' => 'No especificado',
+        'birthday' => 'Fecha de nacimiento',
+        'yesAccount' => '¿Ya tienes una cuenta?',
+
 ];

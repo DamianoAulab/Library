@@ -1,21 +1,21 @@
 <x-main>
-    <x-slot name="title">Presto.it | Accedi</x-slot>
+    <x-slot name="title">Presto.it | {{__('ui.login')}}</x-slot>
 
 
     <div class="container py-4">
-        <h1 class="text-center mb-4 pt-md-5 fw-bold">Accedi su Presto.it</h1>
+        <h1 class="text-center mb-4 pt-md-5 fw-bold">{{__('ui.loginOn')}} Presto.it</h1>
         <div class="row align-items-center flex-column">
             <div class="col-12 col-md-4 text-center mb-2">
-                <a href="{{route('socialite.login.google', ['social' => 'google'])}}" class="btn btn-light btn-lg px-2 w-100 text-decoration-none fw-semibold"><img src="\img\google.png" alt="" height="30"> Accedi con Google</a>
+                <a href="{{route('socialite.login.google', ['social' => 'google'])}}" class="btn btn-light btn-lg px-2 w-100 text-decoration-none fw-semibold"><img src="\img\google.png" alt="" height="30"> {{__('ui.loginWith')}} Google</a>
             </div>
             <div class="col-12 col-md-4 text-center mb-4">
-                <a href="{{route('socialite.login.github', ['social' => 'github'])}}" class="btn btn-light btn-lg px-2 w-100 text-decoration-none fw-semibold"><img src="\img\github.png" alt="" height="30"> Accedi con Github</a>
+                <a href="{{route('socialite.login.github', ['social' => 'github'])}}" class="btn btn-light btn-lg px-2 w-100 text-decoration-none fw-semibold"><img src="\img\github.png" alt="" height="30"> {{__('ui.loginWith')}} Github</a>
             </div>
             {{-- <div class="col-12 col-md-4 text-center mb-4">
                 <a href="{{route('socialite.login.facebook')}}" class="btn btn-light btn-lg px-2 w-100 text-decoration-none fw-semibold"><img src="\img\facebook.png" alt="" height="30"> Accedi con Facebook</a>
             </div> --}}
             <div class="col-12 col-md-4 mb-4">
-                <div class="d-flex align-items-center text-divider"><span class="mx-4 fs-5 mb-1">oppure</span></div>
+                <div class="d-flex align-items-center text-divider"><span class="mx-4 fs-5 mb-1">{{__('ui.or')}}</span></div>
             </div>
             <div class="col-12 col-md-4">
 
@@ -46,10 +46,10 @@
                     </div>
 
 
-                    <button type="submit" class="btn btn-red btn-lg px-5 w-100 fw-semibold">Accedi</button>
+                    <button type="submit" class="btn btn-red btn-lg px-5 w-100 fw-semibold">{{__('ui.login')}}</button>
                 </form>
-                <p class="text-center mt-2">Non hai ancora un account? 
-                    <a href="{{route('register')}}" class="text-decoration-none fw-semibold" style="color: var(--red)">Registrati</a>
+                <p class="text-center mt-2">{{__('ui.noAccount')}} 
+                    <a href="{{route('register')}}" class="text-decoration-none fw-semibold" style="color: var(--red)">{{__('ui.register')}}</a>
                 </p>
             </div>
         </div>

@@ -49,4 +49,21 @@ return [
         'onlineAnnouncements' => 'Online Announcements',
         'contact' => 'Contact',
 
+        // AUTH
+        'loginOn' => 'Login on',
+        'loginWith' => 'Login with',
+        'or' => 'or',
+        'noAccount' => 'Don\'t have an account yet?',
+
+        'registerOn' => 'Register on',
+        'phone' => 'Phone',
+        'confirm' => 'Confirm',
+        'gender' => 'Gender',
+        'male' => 'Male',
+        'female' => 'Female',
+        'noBinary' => 'Non binary',
+        'notSpecified' => 'Not specified',
+        'birthday' => 'Date of birth',
+        'yesAccount' => 'Do you already have an account?',
+
 ];
