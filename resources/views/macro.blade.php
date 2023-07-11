@@ -11,7 +11,8 @@
             @if ($category->macro == $macro)
                 <div class="col-12 col-md-auto mb-2">
                     <a href="{{ route('categories.show', ['category' => $category->id]) }}"
-                        class="btn @if ($macro == 'motori') btn-outline-light-orange @elseif ($macro == 'immobili') btn-outline-orange @elseif ($macro == 'market') btn-outline-red @endif  fw-bold text-white shadow capitalize w-100">{{ $category->name }}</a>
+                        class="btn @if ($macro == 'motori') btn-outline-light-orange @elseif ($macro == 'immobili') btn-outline-orange @elseif ($macro == 'market') btn-outline-red @endif  fw-bold text-white shadow capitalize w-100">
+                        @if (Lang::locale() == 'it') {{$category->name_it}} @elseif (Lang::locale() == 'eng') {{$category->name_en}} @elseif (Lang::locale() == 'es') {{$category->name_es}} @endif</a>
                 </div>
             @endif
         @endforeach
@@ -26,7 +27,7 @@
                     <div class="card border-0 shadow h-100">
                         <a class="btn @if ($announcement->category->macro == 'motori') btn-light-orange @elseif ($announcement->category->macro == 'immobili') btn-orange @elseif ($announcement->category->macro == 'market') btn-red @endif text-capitalize fw-semibold text-white position-absolute mt-3 ms-3 shadow"
                             href="{{ route('categories.show', ['category' => $announcement->category->id]) }}">
-                            {{ $announcement->category->name }}</a>
+                            @if (Lang::locale() == 'it') {{$announcement->category->name_it}} @elseif (Lang::locale() == 'eng') {{$announcement->category->name_en}} @elseif (Lang::locale() == 'es') {{$announcement->category->name_es}} @endif</a>
                         @if (Auth::user() !== null && Auth::user()->id == $announcement->user_id)
                             <a class="btn btn-dark text-white position-absolute top-0 end-0 mt-3 me-3 shadow opacity-50 px-2 py-1"
                                 href="{{ route('announcements.edit', ['announcement' => $announcement]) }}"><i
@@ -48,7 +49,7 @@
 
 
         @empty
-            <div class="text-center mt-4 text-dark text-opacity-75"><em>Nessun annuncio trovato...</em></div>
+            <div class="text-center mt-4 text-dark text-opacity-75"><em>{{__('ui.noAnnouncement')}}</em></div>
 
         @endforelse
 
