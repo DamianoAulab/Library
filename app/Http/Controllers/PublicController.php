@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
-use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Lang;
 use Laravel\Socialite\Facades\Socialite;
