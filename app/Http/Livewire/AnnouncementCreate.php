@@ -51,6 +51,7 @@ class AnnouncementCreate extends Component
     public function removeImage($key) {
         if (in_array($key, array_keys($this->images))) {
             unset($this->images[$key]);
+            
         }
     }
 
@@ -76,6 +77,7 @@ class AnnouncementCreate extends Component
         $this->cleanForm();
         session()->flash('success', 'Annuncio creato! Sarà pubblicato dopo la revisione');
         return redirect()->route('announcements.create');
+        
     }
 
     public function updated($propertyName) {
