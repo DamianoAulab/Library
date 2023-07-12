@@ -41,7 +41,7 @@
                         <p class="text-danger mt-2">{{ $message }}</p>
                     @enderror
                 </div>
-                @if (!empty($images))
+                @if (!empty($images) || (!empty($imagesFromDb)))
                     <div class="row mb-4">
                         <div class="col-12">
                             <p>Immagini in Anteprima</p>
@@ -55,6 +55,18 @@
                                             wire:click="removeImage({{ $key }})">Cancella
                                     </div>
                                 @endforeach
+                                @if (!empty($imagesFromDb))
+                                @foreach ($imagesFromDb as $key => $image)
+                                <div class="col px-0">
+                                    <div class="img-preview mx-auto shadow rounded"
+                                        style="background-image: url({{ $image->getUrl() }});"></div>
+                                    <button type="button"
+                                        class="btn btn-red shadow d-block text-center mt-2 mx-auto"
+                                        wire:click="removeImageFromDb({{ $key }})">Cancella
+                                </div>
+                                @endforeach
+
+                                    @endif
                             </div>
                         </div>
                     </div>
