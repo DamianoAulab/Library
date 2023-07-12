@@ -25,8 +25,8 @@ class AnnouncementEdit extends Component
         'announcement.title' => 'required|max:100',
         'announcement.price' => 'required|numeric',
         'announcement.description' => 'required',
-        'announcement.images' => 'image|max:3072',
-        'announcement.temporary_images' => 'image|max:3072',
+        'images.*' => 'image|max:3072',
+        'temporary_images.*' => 'image|max:3072',
     ];
 
     public function mount() {
@@ -34,9 +34,9 @@ class AnnouncementEdit extends Component
     }
 
     public function update() {
-        if (count($this->imagesFromDb)) {
+        if (count($this->images)) {
             
-            foreach ($this->imagesFromDb as $image) {
+            foreach ($this->images as $image) {
                 $newFileName = "announcements/{$this->announcement->id}";
                 $newImage = $this->announcement->images()->create(['path' => $image->store($newFileName, 'public')]);
 
@@ -77,7 +77,6 @@ class AnnouncementEdit extends Component
     }
 
     public function removeImageFromDb($key) {
-        // dd($this->imagesFromDb->hasAny($key));
         if ($this->imagesFromDb->hasAny($key)) {
             $this->imagesFromDb->get($key)->delete();
             $this->imagesFromDb->forget($key);
