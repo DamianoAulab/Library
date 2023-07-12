@@ -6,31 +6,20 @@
     <div class="row g-5 mt-md-2 mb-5">
         <div class="col-12 col-md-6">
             <div class="card border-0 shadow">
-                <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-indicators">
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                            class="active" aria-current="true" aria-label="Slide 1"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                            aria-label="Slide 2"></button>
-                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                            aria-label="Slide 3"></button>
-                    </div>
+                <div id="showCarousel" class="carousel slide" data-bs-ride="carousel">
+
                     <div class="carousel-inner rounded">
-                        <div class="carousel-item active" data-bs-interval="5000">
-                            <img src="https://unsplash.it/1000" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://unsplash.it/1200" class="d-block w-100" alt="...">
-                        </div>
-                        <div class="carousel-item">
-                            <img src="https://unsplash.it/1500" class="d-block w-100" alt="...">
-                        </div>
+                        @foreach ($announcement->images as $image)
+                            <div class="carousel-item @if ($loop->first)active @endif" @if ($loop->first)data-bs-interval="10000" @endif>
+                                <img src="{{$image->getUrl(600,600)}}" class="d-block w-100" alt="">
+                            </div>
+                        @endforeach
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                    <button class="carousel-control-prev" type="button" data-bs-target="#showCarousel"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                     </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                    <button class="carousel-control-next" type="button" data-bs-target="#showCarousel"
                         data-bs-slide="next">
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                     </button>
@@ -106,7 +95,7 @@
                                 href="{{ route('announcements.edit', ['announcement' => $announcement]) }}"><i
                                     class="bi bi-pencil"></i></a>
                         @endif
-                        <img src="{{!$announcement->images()->get()->isEmpty() ? Storage::url($announcement->images()->first()->path) : '/img/presto.it_placeholder.jpg'}}" alt=""
+                        <img src="{{!$announcement->images()->get()->isEmpty() ? $announcement->images()->first()->getUrl(600,600) : '/img/presto.it_placeholder.jpg'}}" alt=""
                             class="card-img-top object-fit-cover position-center" height="180rem">
                         <div class="card-body">
                             <h5 class="fs-3 fw-bold mb-5">{{ $announcement->title }}</h5>

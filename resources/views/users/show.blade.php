@@ -61,7 +61,7 @@
                         <a class="btn btn-dark text-white position-absolute top-0 end-15 mt-3 me-3 shadow opacity-75 px-2 py-1" href="{{ route('announcements.edit', ['announcement' => $announcement]) }}"><i class="bi bi-pencil"></i></a>
                         <form action="{{ route('announcements.destroy', ['announcement' => $announcement]) }}" method="POST"> @csrf @method('DELETE')<button class="btn btn-red text-white position-absolute top-0 end-0 mt-3 me-3 shadow px-2 py-1"><i class="bi bi-trash"></i></button></form>
                     @endif
-                    <img src="{{!$announcement->images()->get()->isEmpty() ? Storage::url($announcement->images()->first()->path) : '/img/presto.it_placeholder.jpg'}}" alt="" class="card-img-top object-fit-cover position-center" height="180rem">
+                    <img src="{{!$announcement->images()->get()->isEmpty() ? $announcement->images()->first()->getUrl(600,600) : '/img/presto.it_placeholder.jpg'}}" alt="" class="card-img-top object-fit-cover position-center" height="180rem">
                     <div class="card-body">
                         <h5 class="fs-3 fw-bold mb-5">{{ $announcement->title }}</h5>
                         <p class=" position-absolute bottom-0 fs-4 fw-semibold" style="color: var(--grey);">€ {{ number_format($announcement->price, 2, ',', ' ') }}</p>
