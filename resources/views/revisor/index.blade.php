@@ -25,31 +25,32 @@
             <div class="row g-5 mt-md-2 mb-5">
                 <div class="col-12 col-md-6">
                     <div class="card border-0 shadow">
-                        <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
-                            <div class="carousel-indicators">
-                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
-                                    class="active" aria-current="true" aria-label="Slide 1"></button>
-                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
-                                    aria-label="Slide 2"></button>
-                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
-                                    aria-label="Slide 3"></button>
-                            </div>
+                        <div id="showCarousel" class="carousel slide" data-bs-ride="carousel">
+
+                        @if ($announcement_to_check->image)
                             <div class="carousel-inner rounded">
-                                <div class="carousel-item active" data-bs-interval="5000">
-                                    <img src="https://unsplash.it/1000" class="d-block w-100" alt="...">
+                                @foreach ($announcement_to_check->images as $image)
+                                    <div class="carousel-item @if ($loop->first)active @endif" @if ($loop->first)data-bs-interval="10000" @endif>
+                                        <img src="{{$image->getUrl(600,600)}}" class="d-block w-100" alt="">
+                                    </div>
+                                @endforeach
+                            </div>
+                        @else
+                            <div class="carousel-inner rounded">
+                                <div class="carousel-item active" data-bs-interval="10000">
+                                    <img src="/img/presto.it_placeholder_center.jpg" class="d-block w-100" alt="">
                                 </div>
                                 <div class="carousel-item">
-                                    <img src="https://unsplash.it/1200" class="d-block w-100" alt="...">
-                                </div>
-                                <div class="carousel-item">
-                                    <img src="https://unsplash.it/1500" class="d-block w-100" alt="...">
+                                    <img src="/img/presto.it_placeholder_center.jpg" class="d-block w-100" alt="">
                                 </div>
                             </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample"
+                        @endif
+                           
+                            <button class="carousel-control-prev" type="button" data-bs-target="#showCarousel"
                                 data-bs-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
                             </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExample"
+                            <button class="carousel-control-next" type="button" data-bs-target="#showCarousel"
                                 data-bs-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                             </button>
@@ -114,18 +115,11 @@
             <p class="text-center px-md-5 mx-md-5 my-3">{{ $announcement_to_check->description }}</p>
 
             <div class="row my-5 align-items-center">
-                <div class="col-12 col-md-5 text-center">
+                <div class="col-12 col-md-6 text-center">
                     <button class="btn btn-lg btn-green w-75 fw-semibold shadow fs-1" data-bs-toggle="modal"
                         data-bs-target="#modalAccept"><i class="bi bi-patch-check"></i> {{__('ui.accept')}}</button>
                 </div>
-                <div class="col-12 col-md-2 text-center">
-                    <form action="{{ Route('revisor.undo_announcement', ['announcement' => ' '])}}" method="POST">
-                        @csrf
-                        @method('POST')
-                        <button class="btn btn-lg btn-secondary fw-semibold shadow fs-3"><i class="bi bi-arrow-counterclockwise"></i></button>
-                    </form>
-                </div>
-                <div class="col-12 col-md-5 mt-2 mt-md-0 text-center">
+                <div class="col-12 col-md-6 mt-2 mt-md-0 text-center">
                     <button class="btn btn-lg btn-red w-75 fw-semibold shadow fs-1" data-bs-toggle="modal"
                         data-bs-target="#modalReject"><i class="bi bi-x-octagon"></i> {{__('ui.reject')}}</button>
                 </div>
@@ -139,7 +133,7 @@
     {{-- ! MODAL ACCEPT --}}
     <div class="modal fade" id="modalAccept" tabindex="-1" aria-labelledby="modaleAccept" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content border-0 w-110">
+            <div class="modal-content border-0 w-125">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5">{{__('ui.areYouSureAccept')}}</h1>
                     <form action="{{ Route('revisor.accept_announcement', ['announcement' => $announcement_to_check->id])}}" method="POST">
@@ -156,7 +150,7 @@
     {{-- ! MODAL REJECT --}}
     <div class="modal fade" id="modalReject" tabindex="-1" aria-labelledby="modalReject" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content border-0 w-110">
+            <div class="modal-content border-0 w-125">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5">{{__('ui.areYouSureReject')}}</h1>
                     <form action="{{route('revisor.reject_announcement', ['announcement' => $announcement_to_check->id])}}" method="POST">

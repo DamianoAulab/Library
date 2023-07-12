@@ -74,6 +74,8 @@ return [
     'reject' => 'RIFIUTA',
     'areYouSureAccept' => "Sei sicuro di voler ACCETTARE questo annuncio?",
     'areYouSureReject' => "Sei sicuro di voler RIFIUTARE questo annuncio?",
+    'lastCheck' => 'Vuoi annullare l\'ultima revisione?',
+    'cancel' => 'Annulla',
 
     // UTENTE
     'editProfile' => 'Modifica Profilo',

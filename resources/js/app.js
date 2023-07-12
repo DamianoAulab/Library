@@ -3,6 +3,8 @@ import 'bootstrap';
 let sessionSuccess = document.getElementById("sessionSuccess");
 let sessionEdit = document.getElementById("sessionEdit");
 let sessionDelete = document.getElementById("sessionDelete");
+let sessionRevisorSuccess = document.getElementById("sessionRevisorSuccess");
+let sessionRevisorDelete = document.getElementById("sessionRevisorDelete");
 
 // ! Nascondi il div dopo 3 secondi
 setTimeout(function() {
@@ -15,6 +17,14 @@ setTimeout(function() {
 
 setTimeout(function() {
     sessionDelete.style.display = 'none';
+}, 3000);
+
+setTimeout(function() {
+  sessionRevisorSuccess.style.display = 'none';
+}, 3000);
+
+setTimeout(function() {
+  sessionRevisorDelete.style.display = 'none';
 }, 3000);
 
 

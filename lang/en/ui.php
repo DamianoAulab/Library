@@ -75,6 +75,8 @@ return [
         'reject' => 'REJECT',
         'areYouSureAccept' => "Are you sure you want to ACCEPT this announcement?",
         'areYouSureReject' => "Are you sure you want to REJECT this announcement?",
+        'lastCheck' => 'Do you want to undo the last revision?',
+        'cancel' => 'Cancel',
 
         // UTENTE
         'editProfile' => 'Edit Profile',

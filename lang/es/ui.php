@@ -74,6 +74,8 @@ return [
         'reject' => 'RECHAZAR',
         'areYouSureAccept' => "¿Estás seguro de que quieres ACEPTAR este anuncio?",
         'areYouSureReject' => "¿Está seguro de que desea RECHAZAR este anuncio?",
+        'lastCheck' => '¿Quieres deshacer la última revisión?',
+        'cancel' => 'Cancelar',
 
         // UTENTE
         'editProfile' => 'Editar Cuenta',
