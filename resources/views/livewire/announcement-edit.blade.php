@@ -4,15 +4,6 @@
         <div class="col-12 col-md-8">
             <form class="p-4 p-md-5 shadow rounded" wire:submit.prevent="update" enctype="multipart/form-data">
                 @csrf
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" id="title" wire:model="announcement.title" placeholder="{{__('ui.title')}}">
                     <label for="title" class="form-label">{{__('ui.title')}}</label>
@@ -43,6 +34,41 @@
                         <span class="error text-danger">{{ $message }}</span>
                     @enderror
                 </div>
+                <div class="mb-3">
+                    <input wire:model="temporary_images" type="file" name="images" multiple
+                        class="form-control shadow @error('temporay_images.*') is-invalid"@enderror placeholder="img" />
+                    @error('temporary_images.*')
+                        <p class="text-danger mt-2">{{ $message }}</p>
+                    @enderror
+                </div>
+                @if (!empty($images))
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <p>Immagini in Anteprima</p>
+                            <div class="row rounded shadow py-4 mx-1">
+                                @foreach ($images as $key => $image)
+                                    <div class="col px-0">
+                                        <div class="img-preview mx-auto shadow rounded"
+                                            style="background-image: url({{ $image }});"></div>
+                                        <button type="button"
+                                            class="btn btn-red shadow d-block text-center mt-2 mx-auto"
+                                            wire:click="removeImage({{ $key }})">Cancella
+                                    </div>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                @endif
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                
                 <button type="submit" class="btn btn-red btn-lg px-5 w-100 fw-semibold">{{__('ui.update')}}</button>
             </form>
         </div>

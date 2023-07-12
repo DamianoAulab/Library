@@ -19,7 +19,7 @@
                     @if (Auth::user() !== null && Auth::user()->id == $announcement->user_id)
                         <a class="btn btn-dark text-white position-absolute top-0 end-0 mt-3 me-3 shadow opacity-50 px-2 py-1" href="{{ route('announcements.edit', ['announcement' => $announcement]) }}"><i class="bi bi-pencil"></i></a>
                     @endif
-                    <img src="https://unsplash.it/500" alt="" class="card-img-top object-fit-cover position-center" height="180rem">
+                    <img src="{{!$announcement->images()->get()->isEmpty() ? $announcement->images()->first()->getUrl(600,600) : '/img/presto.it_placeholder.jpg'}}" alt="" class="card-img-top object-fit-cover position-center" height="180rem">
                     <div class="card-body">
                         <h5 class="fs-3 fw-bold mb-5">{{ $announcement->title }}</h5>
                         <p class=" position-absolute bottom-0 fs-4 fw-semibold" style="color: var(--grey);">€ {{ number_format($announcement->price, 2, ',', ' ') }}</p>

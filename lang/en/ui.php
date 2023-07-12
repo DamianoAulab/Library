@@ -37,7 +37,10 @@ return [
         'selectCategory' => 'Select Category',
         'description' => 'Description',
         'price' => 'Price',
-        'addImage' => 'Add image',
+        'addImages' => 'Insert one or more images',
+        'previewImages' => 'Preview Images',
+        'delete' => 'Delete',
+
         
         'editAnnouncement' => 'Edit announcement',
         'toInsert' => 'to insert',
@@ -72,6 +75,8 @@ return [
         'reject' => 'REJECT',
         'areYouSureAccept' => "Are you sure you want to ACCEPT this announcement?",
         'areYouSureReject' => "Are you sure you want to REJECT this announcement?",
+        'lastCheck' => 'Do you want to undo the last revision?',
+        'cancel' => 'Cancel',
 
         // UTENTE
         'editProfile' => 'Edit Profile',

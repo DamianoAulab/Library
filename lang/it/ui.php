@@ -37,7 +37,9 @@ return [
     'selectCategory' => 'Seleziona Categoria',
     'description' => 'Descrizione',
     'price' => 'Prezzo',
-    'addImage' => 'Inserisci un\'immagine',
+    'addImages' => 'Inserisci una o più immagini',
+    'previewImages' => 'Immagini in Anteprima',
+    'delete' => 'Cancella',
 
     'editAnnouncement' => 'Modifica annuncio',
     'toInsert' => 'da inserire',
@@ -72,6 +74,8 @@ return [
     'reject' => 'RIFIUTA',
     'areYouSureAccept' => "Sei sicuro di voler ACCETTARE questo annuncio?",
     'areYouSureReject' => "Sei sicuro di voler RIFIUTARE questo annuncio?",
+    'lastCheck' => 'Vuoi annullare l\'ultima revisione?',
+    'cancel' => 'Annulla',
 
     // UTENTE
     'editProfile' => 'Modifica Profilo',

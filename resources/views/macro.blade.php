@@ -33,7 +33,7 @@
                                 href="{{ route('announcements.edit', ['announcement' => $announcement]) }}"><i
                                     class="bi bi-pencil"></i></a>
                         @endif
-                        <img src="https://unsplash.it/500" alt=""
+                        <img src="{{!$announcement->images()->get()->isEmpty() ? $announcement->images()->first()->getUrl(600,600) : '/img/presto.it_placeholder.jpg'}}" alt=""
                             class="card-img-top object-fit-cover position-center" height="180rem">
                         <div class="card-body">
                             <h5 class="fs-3 fw-bold mb-5">{{ $announcement->title }}</h5>
