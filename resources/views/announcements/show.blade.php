@@ -8,13 +8,24 @@
             <div class="card border-0 shadow">
                 <div id="showCarousel" class="carousel slide" data-bs-ride="carousel">
 
+                    @if ($announcement->image)
+                        <div class="carousel-inner rounded">
+                            @foreach ($announcement->images as $image)
+                                <div class="carousel-item @if ($loop->first)active @endif" @if ($loop->first)data-bs-interval="10000" @endif>
+                                    <img src="{{$image->getUrl(600,600)}}" class="d-block w-100" alt="">
+                                </div>
+                            @endforeach
+                        </div>
+                    @else
                     <div class="carousel-inner rounded">
-                        @foreach ($announcement->images as $image)
-                            <div class="carousel-item @if ($loop->first)active @endif" @if ($loop->first)data-bs-interval="10000" @endif>
-                                <img src="{{$image->getUrl(600,600)}}" class="d-block w-100" alt="">
-                            </div>
-                        @endforeach
+                        <div class="carousel-item active" data-bs-interval="10000">
+                            <img src="/img/presto.it_placeholder_center.jpg" class="d-block w-100" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="/img/presto.it_placeholder_center.jpg" class="d-block w-100" alt="">
+                        </div>
                     </div>
+                @endif
                     <button class="carousel-control-prev" type="button" data-bs-target="#showCarousel"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
