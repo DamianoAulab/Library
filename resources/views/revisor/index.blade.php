@@ -115,18 +115,11 @@
             <p class="text-center px-md-5 mx-md-5 my-3">{{ $announcement_to_check->description }}</p>
 
             <div class="row my-5 align-items-center">
-                <div class="col-12 col-md-5 text-center">
+                <div class="col-12 col-md-6 text-center">
                     <button class="btn btn-lg btn-green w-75 fw-semibold shadow fs-1" data-bs-toggle="modal"
                         data-bs-target="#modalAccept"><i class="bi bi-patch-check"></i> {{__('ui.accept')}}</button>
                 </div>
-                <div class="col-12 col-md-2 text-center">
-                    <form action="{{ Route('revisor.undo_announcement', ['announcement' => ' '])}}" method="POST">
-                        @csrf
-                        @method('POST')
-                        <button class="btn btn-lg btn-secondary fw-semibold shadow fs-3"><i class="bi bi-arrow-counterclockwise"></i></button>
-                    </form>
-                </div>
-                <div class="col-12 col-md-5 mt-2 mt-md-0 text-center">
+                <div class="col-12 col-md-6 mt-2 mt-md-0 text-center">
                     <button class="btn btn-lg btn-red w-75 fw-semibold shadow fs-1" data-bs-toggle="modal"
                         data-bs-target="#modalReject"><i class="bi bi-x-octagon"></i> {{__('ui.reject')}}</button>
                 </div>
@@ -140,7 +133,7 @@
     {{-- ! MODAL ACCEPT --}}
     <div class="modal fade" id="modalAccept" tabindex="-1" aria-labelledby="modaleAccept" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content border-0 w-110">
+            <div class="modal-content border-0 w-125">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5">{{__('ui.areYouSureAccept')}}</h1>
                     <form action="{{ Route('revisor.accept_announcement', ['announcement' => $announcement_to_check->id])}}" method="POST">
@@ -157,7 +150,7 @@
     {{-- ! MODAL REJECT --}}
     <div class="modal fade" id="modalReject" tabindex="-1" aria-labelledby="modalReject" aria-hidden="true">
         <div class="modal-dialog">
-            <div class="modal-content border-0 w-110">
+            <div class="modal-content border-0 w-125">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5">{{__('ui.areYouSureReject')}}</h1>
                     <form action="{{route('revisor.reject_announcement', ['announcement' => $announcement_to_check->id])}}" method="POST">

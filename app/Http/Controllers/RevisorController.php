@@ -39,7 +39,7 @@ class RevisorController extends Controller
         Auth::user()->wallet += 0.05;
         Auth::user()->save();
         $announcement->setAccepted(true);
-        return redirect()->back()->with('success', 'Annuncio accettato!');
+        return redirect()->back()->with('revisorSuccess', 'Annuncio accettato!');
     }
 
     public function rejectAnnouncement(Announcement $announcement)
@@ -47,7 +47,7 @@ class RevisorController extends Controller
         Auth::user()->wallet += 0.05;
         Auth::user()->save();
         $announcement->setAccepted(false);
-        return redirect()->back()->with('delete', 'Annuncio rifiutato!');
+        return redirect()->back()->with('revisorDelete', 'Annuncio rifiutato!');
     }
 
     public function becomeRevisor(Request $request)
