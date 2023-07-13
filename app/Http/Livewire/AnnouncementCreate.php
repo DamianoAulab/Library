@@ -24,8 +24,8 @@ class AnnouncementCreate extends Component
         'title' => 'required|max:100|min:5',
         'price' => 'required|numeric',
         'description' => 'required',
-        'images.*' => 'image|max:1024',
-        'temporary_images.*' => 'image|max:1024',
+        'images.*' => 'image|max:5120',
+        'temporary_images.*' => 'image|max:5120',
     ];
 
     protected $messages = [
@@ -33,8 +33,8 @@ class AnnouncementCreate extends Component
         'max' => 'Il campo :attribute è troppo lungo',
         'min' => 'Il campo :attribute è troppo corto',
         'image' => 'Il campo :attribute deve essere un \'immagine',
-        'temporary_images.*.max' => 'L\'immagine deve essere massimo di 1mb',
-        'images.*.max' => 'L\'immagine deve essere massimo di 1mb',
+        'temporary_images.*.max' => 'L\'immagine deve essere massimo di 5mb',
+        'images.*.max' => 'L\'immagine deve essere massimo di 5mb',
 
         
 
@@ -43,7 +43,7 @@ class AnnouncementCreate extends Component
     public function updatedTemporaryImages() {
         
         if ($this->validate([
-            'temporary_images.*' => 'image|max:1024',
+            'temporary_images.*' => 'image|max:5120',
         ])) {
         foreach ($this->temporary_images as $image) {
             $this->images[] = $image;
@@ -54,6 +54,7 @@ class AnnouncementCreate extends Component
     public function removeImage($key) {
         if (in_array($key, array_keys($this->images))) {
             unset($this->images[$key]);
+            
         }
     }
 
@@ -80,10 +81,11 @@ class AnnouncementCreate extends Component
             }
             File::deleteDirectory(storage_path('/app/livewire-tmp'));
         }
-
+       
         $this->cleanForm();
         session()->flash('success', 'Annuncio creato! Sarà pubblicato dopo la revisione');
         return redirect()->route('announcements.create');
+        
     }
 
     public function updated($propertyName) {

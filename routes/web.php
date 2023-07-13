@@ -51,6 +51,10 @@ Route::patch('/richiesta/revisore', [RevisorController::class, 'becomeRevisor'])
 Route::get('/richiesta/revisore/{user}', [RevisorController::class, 'makeRevisor'])->middleware('auth')->name('make.revisor');
 
 
+// Rotta admin
+Route::get('/admin/dashboard', function () {return view('admin.dashboard');})->middleware('auth')->name('admin.dashboard');
+
+
 //Rotta per ricerca annunci
 Route::get('/ricerca/annuncio', [PublicController::class, 'searchAnnouncements'])->name('announcements.search');
 

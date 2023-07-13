@@ -27,7 +27,7 @@ return [
         'searchInMarket' => 'Search in Market',
     
         // RICERCA
-        'whatAreYouSearching' => 'What you search?',
+        'whatAreYouSearching' => 'What are you looking for?',
         'allCategories' => 'All categories',
         'search' => 'Search',
 
@@ -40,10 +40,8 @@ return [
         'addImages' => 'Insert one or more images',
         'previewImages' => 'Preview Images',
         'delete' => 'Delete',
-
         
         'editAnnouncement' => 'Edit announcement',
-        'toInsert' => 'to insert',
         'update' => 'Update',
 
         'listAnnouncement' => 'Announcement List',
