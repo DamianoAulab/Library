@@ -50,17 +50,19 @@
                     <td class="text-center">{{$announcement->user->name}}</td>
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            {{-- Si vede quando è revisionato --}}
-                            <a href=""
-                                class="btn btn-primary me-md-2"><i class="bi bi-search"></i></a>
+                            @if (isset($announcement->is_accepted)) 
+                            <a href="{{route('announcements.show', ['announcement' => $announcement->id])}}"
+                            class="btn btn-primary me-md-2"><i class="bi bi-search"></i></a>
+                            @endif
 
-                            <a href=""
+                                
+                            <a href="{{route('announcements.edit', ['announcement' => $announcement])}}"
                                 class="btn btn-warning me-md-2"><i class="bi bi-pencil-square"></i></a>
 
-                            <form action="" method="POST">
+                            <form action="{{route('announcements.destroy', ['announcement' => $announcement])}}" method="POST">
                                 @method('DELETE')
                                 @csrf
-                                <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i></button>
+                                <button type="submit" class="btn btn-danger text-white"><i class="bi bi-trash"></i></button>
                             </form>
 
                         </div>

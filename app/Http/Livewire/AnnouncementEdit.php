@@ -12,6 +12,7 @@ use Livewire\WithFileUploads;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Route;
 
 
 class AnnouncementEdit extends Component
@@ -23,7 +24,7 @@ class AnnouncementEdit extends Component
 
     protected $rules = [
         'announcement.title' => 'required|max:100',
-        'announcement.price' => 'required|numeric',
+        'announcement.price' => 'required|numeric|max_digits:10',
         'announcement.description' => 'required',
         'images.*' => 'image|max:5120',
         'temporary_images.*' => 'image|max:5120',
@@ -49,7 +50,12 @@ class AnnouncementEdit extends Component
         $this->announcement->setAccepted(null);
 
         session()->flash('edit', 'Annuncio modificato! Sarà pubblicato dopo la revisione!');
+        if (Auth::user()->is_admin) {
+            return redirect()->route('admin.dashboard');
+        } else {
+
         return redirect()->route('users.show', ['user' => Auth::user()->id]);
+        }
     }
 
     public function updatedTemporaryImages() {

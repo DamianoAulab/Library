@@ -22,7 +22,7 @@ class AnnouncementCreate extends Component
     
     protected $rules = [
         'title' => 'required|max:100|min:5',
-        'price' => 'required|numeric',
+        'price' => 'required|numeric|max_digits:10',
         'description' => 'required',
         'images.*' => 'image|max:5120',
         'temporary_images.*' => 'image|max:5120',
@@ -35,6 +35,7 @@ class AnnouncementCreate extends Component
         'image' => 'Il campo :attribute deve essere un \'immagine',
         'temporary_images.*.max' => 'L\'immagine deve essere massimo di 5mb',
         'images.*.max' => 'L\'immagine deve essere massimo di 5mb',
+        'price.max_digits' => 'Il prezzo non deve contenere più di 10 cifre'
 
         
 

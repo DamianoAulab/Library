@@ -53,9 +53,10 @@ Route::get('/richiesta/revisore/{user}', [RevisorController::class, 'makeRevisor
 
 
 // Rotta admin
-Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->middleware('auth')->name('admin.dashboard');
-Route::patch('/admin/dashboard/visibile/{announcement}', [AdminController::class, 'beVisible'])->middleware('auth')->name('admin.visible');
-Route::patch('/admin/dashboard/nascondi/{announcement}', [AdminController::class, 'beHidden'])->middleware('auth')->name('admin.hidden');
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->middleware('auth', 'isAdmin')->name('admin.dashboard');
+Route::patch('/admin/dashboard/visibile/{announcement}', [AdminController::class, 'beVisible'])->middleware('auth', 'isAdmin')->name('admin.visible');
+Route::patch('/admin/dashboard/nascondi/{announcement}', [AdminController::class, 'beHidden'])->middleware('auth', 'isAdmin')->name('admin.hidden');
+
 
 
 //Rotta per ricerca annunci

@@ -38,10 +38,11 @@ class AnnouncementController extends Controller
      * Display the specified resource.
      */
     public function show(Announcement $announcement)
-    {
+    {   
+
         $announcements = Announcement::orderBy('created_at', 'desc')->where('is_accepted', true)->take(4)->get();
         $users = User::all();
-        if($announcement->is_accepted){
+        if($announcement->is_accepted || Auth::user()->is_admin){
             $announcement = $announcement;
         }
         else {
@@ -55,7 +56,7 @@ class AnnouncementController extends Controller
      */
     public function edit(Announcement $announcement)
     {
-        if($announcement->user_id == Auth::user()->id ){
+        if($announcement->user_id == Auth::user()->id || Auth::user()->is_admin){
             $announcement = $announcement;
         }
         else {
@@ -77,7 +78,7 @@ class AnnouncementController extends Controller
      */
     public function destroy(Announcement $announcement)
     {
-        if($announcement->user_id == Auth::user()->id ){
+        if($announcement->user_id == Auth::user()->id || Auth::user()->is_admin){
             $announcement->delete(); 
         }
         else {

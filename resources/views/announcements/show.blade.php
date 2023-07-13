@@ -10,6 +10,7 @@
 
                     @if ($announcement->images)
                         <div class="carousel-inner rounded">
+                            
                             @foreach ($announcement->images as $image)
                                 <div class="carousel-item @if ($loop->first)active @endif" @if ($loop->first)data-bs-interval="10000" @endif>
                                     <img src="{{$image->getUrl(600,600)}}" class="d-block w-100" alt="">

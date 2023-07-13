@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
-class IsRevisor
+class IsAdmin
 {
     /**
      * Handle an incoming request.
@@ -16,9 +16,11 @@ class IsRevisor
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if(Auth::check() && Auth::user()->is_revisor){
+        if(Auth::check() && Auth::user()->is_admin){
             return $next($request);
         }
-       return redirect('/')->with('delete', 'Solo i revisori posso accedere a questa pagina');
+
+        return redirect('/')->with('delete', 'Solo gli admin possono accedere a questa pagina');
+        
     }
 }
