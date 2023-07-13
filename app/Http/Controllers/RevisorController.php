@@ -19,7 +19,12 @@ class RevisorController extends Controller
 {
     public function index()
     {
-        $announcement_to_check = Announcement::where('is_accepted', null)->where('user_id', '!=', Auth::user()->id)->first();
+        if(Auth::user()->is_admin){
+            $announcement_to_check = Announcement::where('is_accepted', null)->first();
+        }
+        else{
+            $announcement_to_check = Announcement::where('is_accepted', null)->where('user_id', '!=', Auth::user()->id)->first();
+        }
 
         if (Lang::locale() == 'it') {$categories = Category::orderBy('name_it', 'asc')->get();} 
         elseif (Lang::locale() == 'eng') {$categories = Category::orderBy('name_en', 'asc')->get();} 

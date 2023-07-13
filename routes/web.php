@@ -8,6 +8,7 @@ use App\Http\Controllers\PublicController;
 use App\Http\Controllers\RevisorController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\AdminController;
 use Laravel\Socialite\Facades\Socialite;
 
 /*
@@ -52,7 +53,9 @@ Route::get('/richiesta/revisore/{user}', [RevisorController::class, 'makeRevisor
 
 
 // Rotta admin
-Route::get('/admin/dashboard', function () {return view('admin.dashboard');})->middleware('auth')->name('admin.dashboard');
+Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->middleware('auth')->name('admin.dashboard');
+Route::patch('/admin/dashboard/visibile/{announcement}', [AdminController::class, 'beVisible'])->middleware('auth')->name('admin.visible');
+Route::patch('/admin/dashboard/nascondi/{announcement}', [AdminController::class, 'beHidden'])->middleware('auth')->name('admin.hidden');
 
 
 //Rotta per ricerca annunci
