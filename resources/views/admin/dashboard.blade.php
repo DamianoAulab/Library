@@ -1,10 +1,10 @@
 <x-main>
-    <x-slot name="title">Presto.it | Admin Dashboard</x-slot>
+    <x-slot name="title">Presto.it | {{__('ui.adminDashboard')}}</x-slot>
 
-    <h1 class="text-center mb-5 fw-bold">ADMIN DASHBOARD</h1>
+    <h1 class="text-center mb-5 fw-bold text-uppercase">{{__('ui.adminDashboard')}}</h1>
 
 
-    <h3 class="text-center mb-3">Tutti gli Annunci</h3>
+    <h3 class="text-center mb-3">{{__('ui.allAnnouncements')}}</h3>
 
     <div class="container-fluid">
         <table class="table border mt-2">
@@ -14,7 +14,7 @@
                     <th scope="col" class="text-center col-1 text-light bg-black">VISIBILITÀ</th>
                     <th scope="col" class="text-center col-1 text-light bg-black">IMG</th>
                     <th scope="col" class="text-center col-1 text-light bg-black">CATEGORIA</th>
-                    <th scope="col" class="col-3 text-light bg-black">TITOLO</th>
+                    <th scope="col" class="text-center col-3 text-light bg-black">TITOLO</th>
                     <th scope="col" class="text-center col-1 text-light bg-black">AUTORE</th>
                     <th scope="col" class="col-4 text-light bg-black"></th>
                 </tr>
@@ -22,7 +22,7 @@
             <tbody>
                 @forelse ($announcements as $announcement)
                 <tr class="align-middle">
-                    <th scope="row" class="text-center">{{$loop->iteration}}</th>
+                    <th scope="row" class="text-center">{{$announcement->id}}</th>
                     <th class="text-center">
                         @if($announcement->is_accepted)
                         <form action="{{ Route('admin.hidden', ['announcement' => $announcement])}}" method="POST">
@@ -46,7 +46,7 @@
                     <td class="text-center text-uppercase fw-bold">
                         @if (Lang::locale() == 'it') {{$announcement->category->name_it}} @elseif (Lang::locale() == 'eng') {{$announcement->category->name_en}} @elseif (Lang::locale() == 'es') {{$announcement->category->name_es}} @endif
                     </td>
-                    <td>{{$announcement->title}}</td>
+                    <td class="text-center">{{$announcement->title}}</td>
                     <td class="text-center">{{$announcement->user->name}}</td>
                     <td>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">

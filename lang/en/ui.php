@@ -16,6 +16,7 @@ return [
         'myAnnouncements' => 'My Announcements',
         'workWithUs' => 'Work with us',
         'revisorZone' => 'Revisor Zone',
+        'adminZone' => 'Dashboard Admin',
         'announcement' => 'Announcement',
 
         // HOME
@@ -75,6 +76,10 @@ return [
         'areYouSureReject' => "Are you sure you want to REJECT this announcement?",
         'lastCheck' => 'Do you want to undo the last revision?',
         'cancel' => 'Cancel',
+
+        // ADMIN
+        'adminDashboard' => 'Admin Dashboard',
+        'allAnnouncements' => 'All Announcements',
 
         // UTENTE
         'editProfile' => 'Edit Profile',

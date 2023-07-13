@@ -64,6 +64,12 @@
                                 </a></li>
                             </li>
                         @endif
+                        @if (Auth::user()->is_admin)
+                            <li><a class="dropdown-item fw-semibold" href="{{ route('admin.dashboard') }}">
+                                    <i class="bi bi-clipboard-data me-2"></i>{{__('ui.adminZone')}}
+                                </a></li>
+                            </li>
+                        @endif
                         <li class="px-2 mt-2"><a class="btn btn-light-orange w-100 fw-semibold"
                                 href="{{ route('announcements.create') }}">
                                 <i class="bi bi-plus-square"></i> {{__('ui.announcement')}}</a>

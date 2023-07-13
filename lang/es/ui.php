@@ -16,6 +16,7 @@ return [
         'myAnnouncements' => 'Mis Anuncios',
         'workWithUs' => 'Trabaja con nosotros',
         'revisorZone' => 'Aréa Revisor',
+        'adminZone' => 'Dashboard Admin',
         'announcement' => 'Anuncio',
 
         // HOME
@@ -75,6 +76,10 @@ return [
         'areYouSureReject' => "¿Está seguro de que desea RECHAZAR este anuncio?",
         'lastCheck' => '¿Quieres deshacer la última revisión?',
         'cancel' => 'Cancelar',
+
+        // ADMIN
+        'adminDashboard' => 'Admin Dashboard',
+        'allAnnouncements' => 'Todos los Anuncios',
 
         // UTENTE
         'editProfile' => 'Editar Cuenta',

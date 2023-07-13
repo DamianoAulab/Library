@@ -22,7 +22,7 @@ class AnnouncementCreate extends Component
     
     protected $rules = [
         'title' => 'required|max:100|min:5',
-        'price' => 'required|numeric|max_digits:10',
+        'price' => 'required|numeric',
         'description' => 'required',
         'images.*' => 'image|max:5120',
         'temporary_images.*' => 'image|max:5120',
@@ -60,6 +60,9 @@ class AnnouncementCreate extends Component
     }
 
     public function store(){
+        if($this->price >= 999999999) {
+            return redirect()->back()->with('delete', 'Il prezzo non deve contenere più di 10 cifre');
+        }
 
         $this->validate();
 
