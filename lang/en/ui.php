@@ -40,10 +40,8 @@ return [
         'addImages' => 'Insert one or more images',
         'previewImages' => 'Preview Images',
         'delete' => 'Delete',
-
         
         'editAnnouncement' => 'Edit announcement',
-        'toInsert' => 'to insert',
         'update' => 'Update',
 
         'listAnnouncement' => 'Announcement List',

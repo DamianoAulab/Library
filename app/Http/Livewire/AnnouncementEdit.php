@@ -25,8 +25,8 @@ class AnnouncementEdit extends Component
         'announcement.title' => 'required|max:100',
         'announcement.price' => 'required|numeric',
         'announcement.description' => 'required',
-        'images.*' => 'image|max:3072',
-        'temporary_images.*' => 'image|max:3072',
+        'images.*' => 'image|max:5120',
+        'temporary_images.*' => 'image|max:5120',
     ];
 
     public function mount() {
@@ -55,7 +55,7 @@ class AnnouncementEdit extends Component
     public function updatedTemporaryImages() {
         
         if ($this->validate([
-            'temporary_images.*' => 'image|max:3072',
+            'temporary_images.*' => 'image|max:5120',
         ])) {
         foreach ($this->temporary_images as $image) {
             $this->images[] = $image;

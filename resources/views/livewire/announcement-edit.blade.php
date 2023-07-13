@@ -13,9 +13,8 @@
                 </div>
                 <select class="form-select mb-3 capitalize" aria-label="Default select example" id="category_id"
                 wire:model="category_id">
-                <option selected> {{__('ui.toInsert')}} </option>
                 @foreach ($categories as $category)
-                    <option value="{{ $category->id }}" class="capitalize">
+                    <option value="{{ $category->id }}" @if ($category->id == $announcement->category->id) selected @endif class="capitalize">
                         @if (Lang::locale() == 'it') {{$category->name_it}} @elseif (Lang::locale() == 'eng') {{$category->name_en}} @elseif (Lang::locale() == 'es') {{$category->name_es}} @endif
                     </option>
                 @endforeach
@@ -49,7 +48,7 @@
                                 @foreach ($images as $key => $image)
                                     <div class="col px-0">
                                         <div class="img-preview mx-auto shadow rounded"
-                                            style="background-image: url({{ $image }});"></div>
+                                            style="background-image: url({{ $image->temporaryUrl() }});"></div>
                                         <button type="button"
                                             class="btn btn-red shadow d-block text-center mt-2 mx-auto"
                                             wire:click="removeImage({{ $key }})">Cancella
@@ -61,7 +60,7 @@
                                     <div class="img-preview mx-auto shadow rounded"
                                         style="background-image: url({{ $image->getUrl() }});"></div>
                                     <button type="button"
-                                        class="btn btn-red shadow d-block text-center mt-2 mx-auto"
+                                        class="btn btn-red shadow d-block text-center mt-2 mb-3 mx-auto"
                                         wire:click="removeImageFromDb({{ $key }})">Cancella
                                 </div>
                                 @endforeach

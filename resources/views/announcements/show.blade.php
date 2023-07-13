@@ -8,7 +8,7 @@
             <div class="card border-0 shadow">
                 <div id="showCarousel" class="carousel slide" data-bs-ride="carousel">
 
-                    @if ($announcement->image)
+                    @if ($announcement->images)
                         <div class="carousel-inner rounded">
                             @foreach ($announcement->images as $image)
                                 <div class="carousel-item @if ($loop->first)active @endif" @if ($loop->first)data-bs-interval="10000" @endif>

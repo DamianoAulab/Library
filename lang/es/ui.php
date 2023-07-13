@@ -42,7 +42,6 @@ return [
         'delete' => 'Cancelar',
         
         'editAnnouncement' => 'Editar anuncio',
-        'toInsert' => 'para insertar',
         'update' => 'Actualizar',
 
         'listAnnouncement' => 'Lista de Anuncios',

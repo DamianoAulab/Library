@@ -24,8 +24,8 @@ class AnnouncementCreate extends Component
         'title' => 'required|max:100|min:5',
         'price' => 'required|numeric',
         'description' => 'required',
-        'images.*' => 'image|max:3072',
-        'temporary_images.*' => 'image|max:3072',
+        'images.*' => 'image|max:5120',
+        'temporary_images.*' => 'image|max:5120',
     ];
 
     protected $messages = [
@@ -33,8 +33,8 @@ class AnnouncementCreate extends Component
         'max' => 'Il campo :attribute è troppo lungo',
         'min' => 'Il campo :attribute è troppo corto',
         'image' => 'Il campo :attribute deve essere un \'immagine',
-        'temporary_images.*.max' => 'L\'immagine deve essere massimo di 3mb',
-        'images.*.max' => 'L\'immagine deve essere massimo di 3mb',
+        'temporary_images.*.max' => 'L\'immagine deve essere massimo di 5mb',
+        'images.*.max' => 'L\'immagine deve essere massimo di 5mb',
 
         
 
@@ -43,7 +43,7 @@ class AnnouncementCreate extends Component
     public function updatedTemporaryImages() {
         
         if ($this->validate([
-            'temporary_images.*' => 'image|max:3072',
+            'temporary_images.*' => 'image|max:5120',
         ])) {
         foreach ($this->temporary_images as $image) {
             $this->images[] = $image;
