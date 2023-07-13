@@ -27,7 +27,7 @@ return [
         'searchInMarket' => 'Search in Market',
     
         // RICERCA
-        'whatAreYouSearching' => 'What you search?',
+        'whatAreYouSearching' => 'What are you looking for?',
         'allCategories' => 'All categories',
         'search' => 'Search',
 
