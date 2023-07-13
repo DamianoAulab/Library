@@ -129,6 +129,11 @@
     max-width: 4vh;
 }
 
+.max-vh-5 {
+    max-height: 5vh;
+    max-width: 5vh;
+}
+
 .w-125 {
     width: 125%;
 }
