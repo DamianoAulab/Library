@@ -40,6 +40,10 @@
                         </div>
                     @endif
 
+                    @if (Auth::user()->is_admin)
+                        <a href="{{ route('admin.dashboard') }}" class="btn btn-lg btn-red w-100 fw-semibold shadow fs-3 py-3 mt-3"><i class="bi bi-clipboard-data"></i> {{__('ui.adminZone')}}</a>                      
+                    @endif
+
                 </div>
             </div>
         </div>

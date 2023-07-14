@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Announcement;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CategoryController extends Controller
 {
@@ -61,6 +62,12 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+        if(Auth::user()->is_admin){
+            $category->delete(); 
+        }
+        else {
+            abort(404);
+        }
+        return redirect()->back()->with('delete', 'Categoria eliminata!');
     }
 }

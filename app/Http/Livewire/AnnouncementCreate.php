@@ -35,6 +35,7 @@ class AnnouncementCreate extends Component
         'image' => 'Il campo :attribute deve essere un \'immagine',
         'temporary_images.*.max' => 'L\'immagine deve essere massimo di 5mb',
         'images.*.max' => 'L\'immagine deve essere massimo di 5mb',
+        'price.max_digits' => 'Il prezzo non deve contenere più di 10 cifre'
 
         
 
@@ -59,6 +60,9 @@ class AnnouncementCreate extends Component
     }
 
     public function store(){
+        if($this->price >= 999999999) {
+            return redirect()->back()->with('delete', 'Il prezzo non deve contenere più di 10 cifre');
+        }
 
         $this->validate();
 

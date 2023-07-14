@@ -16,6 +16,7 @@ return [
     'myAnnouncements' => 'I miei Annunci',
     'workWithUs' => 'Lavora con Noi',
     'revisorZone' => 'Zona Revisore',
+    'adminZone' => 'Dashboard Admin',
     'announcement' => 'Annuncio',
 
     // HOME
@@ -75,6 +76,13 @@ return [
     'areYouSureReject' => "Sei sicuro di voler RIFIUTARE questo annuncio?",
     'lastCheck' => 'Vuoi annullare l\'ultima revisione?',
     'cancel' => 'Annulla',
+
+    // ADMIN
+    'adminDashboard' => 'Admin Dashboard',
+    'allAnnouncements' => 'Annunci',
+    'allUsers' => 'Utenti',
+    'noCategories' => 'Nessuna categoria trovata...',
+    'noUsers' => 'Nessun utente trovato...',
 
     // UTENTE
     'editProfile' => 'Modifica Profilo',

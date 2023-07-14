@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Lang;
 class AdminController extends Controller
 {
     public function dashboard(){
-        $announcements = Announcement::orderBy('created_at', 'desc')->get();
+        $announcements = Announcement::orderBy('updated_at', 'desc')->get();
         if (Lang::locale() == 'it') {$categories = Category::orderBy('name_it', 'asc')->get();} 
         elseif (Lang::locale() == 'eng') {$categories = Category::orderBy('name_en', 'asc')->get();} 
         elseif (Lang::locale() == 'es') {$categories = Category::orderBy('name_es', 'asc')->get();}

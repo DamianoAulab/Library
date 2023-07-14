@@ -69,10 +69,16 @@ class PublicController extends Controller
             'password' => bcrypt(''),
             ]
         );
-        }
 
         Auth::login($user);
+
+        }
+        else {
+            Auth::login($user);
  
+            return redirect('/');
+        }
+
         return redirect()->route('users.edit', ['user' => $user]);
     }
 
