@@ -81,6 +81,8 @@ return [
     'adminDashboard' => 'Admin Dashboard',
     'allAnnouncements' => 'Annunci',
     'allUsers' => 'Utenti',
+    'noCategories' => 'Nessuna categoria trovata...',
+    'noUsers' => 'Nessun utente trovato...',
 
     // UTENTE
     'editProfile' => 'Modifica Profilo',

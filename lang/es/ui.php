@@ -79,7 +79,10 @@ return [
 
         // ADMIN
         'adminDashboard' => 'Admin Dashboard',
-        'allAnnouncements' => 'Todos los Anuncios',
+        'allAnnouncements' => 'Anuncios',
+        'allUsers' => 'Utenti',
+        'noCategories' => 'No se encontraron categorías...',
+        'noUsers' => 'No se encontraron usuarios...',
 
         // UTENTE
         'editProfile' => 'Editar Cuenta',

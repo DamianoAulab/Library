@@ -120,7 +120,7 @@
                         </td>
                     </tr>
                     @empty
-                    <td colspan="12" class="text-center mt-4 text-dark text-opacity-75"><em>{{__('ui.noAnnouncement')}}</em></td>
+                    <td colspan="12" class="text-center mt-4 text-dark text-opacity-75"><em>{{__('ui.noCategories')}}</em></td>
                     @endforelse
                 </tbody>
             </table>
@@ -187,7 +187,7 @@
                         </td>
                     </tr>
                     @empty
-                    <td colspan="12" class="text-center mt-4 text-dark text-opacity-75"><em>{{__('ui.noAnnouncement')}}</em></td>
+                    <td colspan="12" class="text-center mt-4 text-dark text-opacity-75"><em>{{__('ui.noUsers')}}</em></td>
                     @endforelse
                 </tbody>
             </table>
