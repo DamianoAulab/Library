@@ -84,6 +84,6 @@ class AnnouncementController extends Controller
         else {
             abort(404);
         }
-        return redirect()->back()->with('delete', 'Annuncio eliminato');
+        return redirect()->back()->with('delete', 'Annuncio eliminato!');
     }
 }

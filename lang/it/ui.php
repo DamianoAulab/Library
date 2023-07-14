@@ -79,7 +79,8 @@ return [
 
     // ADMIN
     'adminDashboard' => 'Admin Dashboard',
-    'allAnnouncements' => 'Tutti gli Annunci',
+    'allAnnouncements' => 'Annunci',
+    'allUsers' => 'Utenti',
 
     // UTENTE
     'editProfile' => 'Modifica Profilo',

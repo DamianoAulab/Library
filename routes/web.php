@@ -27,14 +27,16 @@ Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 Route::get('/macrocategoria/{macro}', [PublicController::class, 'macro'])->name('macro');
 Route::post('/annunci/cerca', [PublicController::class, 'search'])->name('search');
 
-//Rotte categorie
+//Rotte annunci
 Route::get('/lista-annunci', [AnnouncementController::class, 'index'])->name('announcements.index');
 Route::get('/annunci/crea', [AnnouncementController::class, 'create'])->middleware('auth')->name('announcements.create');
 Route::get('/annunci/{announcement}/modifica', [AnnouncementController::class, 'edit'])->middleware('auth')->name('announcements.edit');
 Route::get('/annunci/{announcement}/dettagli', [AnnouncementController::class, 'show'])->name('announcements.show');
 Route::delete('annunci/{announcement}', [AnnouncementController::class, 'destroy'])->middleware('auth')->name('announcements.destroy');
 
+// Rotte categorie
 Route::get('/categorie/{category}', [CategoryController::class, 'show'])->name('categories.show');
+Route::delete('/elimina-categoria/{category}', [CategoryController::class, 'destroy'])->middleware('isAdmin')->name('categories.destroy');
 
 //Rotte profilo
 Route::get('/profilo/{user}', [UserController::class, 'show'])->name('users.show');
