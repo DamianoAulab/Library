@@ -37,8 +37,6 @@ class AnnouncementCreate extends Component
         'images.*.max' => 'L\'immagine deve essere massimo di 5mb',
         'price.max_digits' => 'Il prezzo non deve contenere più di 10 cifre'
 
-        
-
     ];
 
     public function updatedTemporaryImages() {

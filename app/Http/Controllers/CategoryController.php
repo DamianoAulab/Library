@@ -70,4 +70,8 @@ class CategoryController extends Controller
         }
         return redirect()->back()->with('delete', 'Categoria eliminata!');
     }
+
+    public function add(){
+        return view('categories.add');
+    }
 }

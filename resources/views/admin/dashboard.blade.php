@@ -95,7 +95,7 @@
                         <th scope="col" class="text-center col-1 text-light bg-black">#</th>
                         <th scope="col" class="text-center col-3 text-light bg-black">MACRO</th>
                         <th scope="col" class="text-center col-4 text-light bg-black">CATEGORIA</th>
-                        <th scope="col" class="col-4 bg-black text-end"><a href=""
+                        <th scope="col" class="col-4 bg-black text-end"><a href="{{route('categories.add')}}"
                             class="text-white text-decoration-none fw-semibold me-md-2"><i class="bi bi-plus-square me-2"></i>AGGIUNGI CATEGORIA</a></th>
                     </tr>
                 </thead>

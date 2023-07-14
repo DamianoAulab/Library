@@ -22,6 +22,7 @@ use Laravel\Socialite\Facades\Socialite;
 |
 */
 
+
 //Rotte generali
 Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 Route::get('/macrocategoria/{macro}', [PublicController::class, 'macro'])->name('macro');
@@ -35,8 +36,10 @@ Route::get('/annunci/{announcement}/dettagli', [AnnouncementController::class, '
 Route::delete('annunci/{announcement}', [AnnouncementController::class, 'destroy'])->middleware('auth')->name('announcements.destroy');
 
 // Rotte categorie
+
 Route::get('/categorie/{category}', [CategoryController::class, 'show'])->name('categories.show');
 Route::delete('/elimina-categoria/{category}', [CategoryController::class, 'destroy'])->middleware('isAdmin')->name('categories.destroy');
+Route::get('/aggiungi/categorie', [CategoryController::class, 'add'])->middleware('isAdmin')->name('categories.add');
 
 //Rotte profilo
 Route::get('/profilo/{user}', [UserController::class, 'show'])->name('users.show');
