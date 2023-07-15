@@ -167,7 +167,7 @@
 
                                 @if ($user->is_revisor)
                                         <a href="{{route('dismiss.revisor', compact('user'))}}"
-                                        class="btn btn-outline-danger me-md-2 fw-semibold"><i class="bi bi-x-octagon me-2"></i>Licenzia Revisore</a>
+                                        class="btn btn-outline-danger me-md-2 fw-semibold"><i class="bi bi-x-octagon me-2"></i>Licenzia</a>
                                 @elseif (!$user->is_revisor)
                                         <a href="{{route('make.revisor', compact('user'))}}"
                                         class="btn btn-outline-green me-md-2 fw-semibold"><i class="bi bi-shield-lock me-2"></i>Rendi Revisore</a>
