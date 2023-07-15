@@ -161,7 +161,7 @@
                         <td class="text-center">{{$user->phone}}</td>
                         <td class="text-center">{{ isset($user->birthday) ? $user->birthday->format('d-m-Y') : '- - -' }}</td>
                         <td class="text-center">
-                            @if ($user->email == "admin@mail.com" || $user->id == Auth::user()->id)
+                            @if ($user->email == "admin@mail.com" || $user->id == Auth::user()->id || $user->is_admin)
                                 
                             @else
 
