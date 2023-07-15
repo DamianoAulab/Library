@@ -32,7 +32,7 @@
                     @if (Auth::user()->is_revisor)
                         <div class="row">
                             <div class="col-12 col-md-8">
-                                <a href="{{ route('revisor.index') }}" class="btn btn-lg btn-green w-100 fw-semibold shadow fs-3 py-3 mt-3"><i class="bi bi-shield-lock"></i> {{__('ui.revisorZone')}} @if ($user->toBeRevisionedCount() > 0) <span class="badge btn-red">{{ $user->toBeRevisionedCount() }}</span> @endif</a>
+                                <a href="{{ route('revisor.index') }}" class="btn btn-lg btn-green w-100 fw-semibold shadow fs-3 py-3 mt-3"><i class="bi bi-clipboard-data"></i> {{__('ui.revisorZone')}} @if ($user->toBeRevisionedCount() > 0) <span class="badge btn-red">{{ $user->toBeRevisionedCount() }}</span> @endif</a>
                             </div>
                             <div class="col-12 col-md-4">
                                 <div class="bg-primary text-center rounded text-white w-100 fw-semibold shadow fs-3 py-3 mt-3"><i class="bi bi-piggy-bank me-2 fs-3"></i>{{ number_format($user->wallet, 2, ',', ' ') }}€</div>      
@@ -41,7 +41,7 @@
                     @endif
 
                     @if (Auth::user()->is_admin)
-                        <a href="{{ route('admin.dashboard') }}" class="btn btn-lg btn-red w-100 fw-semibold shadow fs-3 py-3 mt-3"><i class="bi bi-clipboard-data"></i> {{__('ui.adminZone')}}</a>                      
+                        <a href="{{ route('admin.dashboard') }}" class="btn btn-lg btn-red w-100 fw-semibold shadow fs-3 py-3 mt-3"><i class="bi bi-shield-lock"></i> {{__('ui.adminZone')}}</a>                      
                     @endif
 
                 </div>

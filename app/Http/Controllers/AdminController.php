@@ -15,7 +15,7 @@ class AdminController extends Controller
         if (Lang::locale() == 'it') {$categories = Category::orderBy('name_it', 'asc')->get();} 
         elseif (Lang::locale() == 'eng') {$categories = Category::orderBy('name_en', 'asc')->get();} 
         elseif (Lang::locale() == 'es') {$categories = Category::orderBy('name_es', 'asc')->get();}
-        $users = User::all();
+        $users = User::orderBy('name', 'asc')->get();
 
         return view('admin.dashboard', compact('announcements', 'categories', 'users'));
     }

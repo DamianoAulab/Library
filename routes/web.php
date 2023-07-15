@@ -39,7 +39,8 @@ Route::delete('annunci/{announcement}', [AnnouncementController::class, 'destroy
 
 Route::get('/categorie/{category}', [CategoryController::class, 'show'])->name('categories.show');
 Route::delete('/elimina-categoria/{category}', [CategoryController::class, 'destroy'])->middleware('isAdmin')->name('categories.destroy');
-Route::get('/aggiungi/categorie', [CategoryController::class, 'add'])->middleware('isAdmin')->name('categories.add');
+Route::get('/aggiungi/categoria', [CategoryController::class, 'add'])->middleware('isAdmin')->name('categories.add');
+Route::get('/modifica/{category}/categoria', [CategoryController::class, 'edit'])->middleware('isAdmin')->name('categories.edit');
 
 //Rotte profilo
 Route::get('/profilo/{user}', [UserController::class, 'show'])->name('users.show');
@@ -54,15 +55,13 @@ Route::post('/revisore/anunncio-undo/{announcement}', [RevisorController::class,
 
 //Rotte richiesta diventare revisore
 Route::patch('/richiesta/revisore', [RevisorController::class, 'becomeRevisor'])->middleware('auth')->name('become.revisor');
-Route::get('/richiesta/revisore/{user}', [RevisorController::class, 'makeRevisor'])->middleware('auth')->name('make.revisor');
-
+Route::get('/richiesta/revisore/{user}', [RevisorController::class, 'makeRevisor'])->middleware('auth', 'isAdmin')->name('make.revisor');
+Route::get('/licenzia/revisore/{user}', [RevisorController::class, 'dismissRevisor'])->middleware('auth', 'isAdmin')->name('dismiss.revisor');
 
 // Rotta admin
 Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->middleware('auth', 'isAdmin')->name('admin.dashboard');
 Route::patch('/admin/dashboard/visibile/{announcement}', [AdminController::class, 'beVisible'])->middleware('auth', 'isAdmin')->name('admin.visible');
 Route::patch('/admin/dashboard/nascondi/{announcement}', [AdminController::class, 'beHidden'])->middleware('auth', 'isAdmin')->name('admin.hidden');
-
-
 
 //Rotta per ricerca annunci
 Route::get('/ricerca/annuncio', [PublicController::class, 'searchAnnouncements'])->name('announcements.search');
