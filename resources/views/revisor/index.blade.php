@@ -52,20 +52,21 @@
                     <div class="card border-0 shadow px-5 py-3 mb-4">
                         <h4 class="fw-bold">Revisione Immagini</h4>
                         <ul class="list-group text-start">
-                            <li class="list-group-item border-0"><i class="bi bi-circle-fill text-success me-2"></i>Adatto ai minori</li>
-                            <li class="list-group-item border-0"><i class="bi bi-circle-fill text-success me-2"></i>Immagine reale/originale</li>
-                            <li class="list-group-item border-0"><i class="bi bi-circle-fill text-success me-2"></i>Non è riconducibile all'ambito medico</li>
-                            <li class="list-group-item border-0"><i class="bi bi-circle-fill text-success me-2"></i>Non è presente violenza</li>
-                            <li class="list-group-item border-0"><i class="bi bi-circle-fill text-success me-2"></i>Non è presente contenuto ammiccante</li>
+                            <li class="list-group-item border-0"><i class="{{$image->adult}} me-2"></i>Adatto ai minori</li>
+                            <li class="list-group-item border-0"><i class="{{$image->spoof}} me-2"></i>Immagine reale/originale</li>
+                            <li class="list-group-item border-0"><i class="{{$image->medical}} me-2"></i>Non è riconducibile all'ambito medico</li>
+                            <li class="list-group-item border-0"><i class="{{$image->violence}} me-2"></i>Non è presente violenza</li>
+                            <li class="list-group-item border-0"><i class="{{$image->racy}} me-2"></i>Non è presente contenuto ammiccante</li>
                         </ul>
                     </div>
                     <div class="card border-0 shadow px-4 py-3 text-center">
                         <h4 class="fw-bold mb-3"># Tags #</h4>
                         <div class="d-flex-inline justify-content-center">
-                            <span class="badge bg-secondary bg-opacity-75 fw-normal fs-5 fit-content">vestito</span>
-                            <span class="badge bg-secondary bg-opacity-75 fw-normal fs-5 fit-content">matrimonio</span>    
-                            <span class="badge bg-secondary bg-opacity-75 fw-normal fs-5 fit-content">festa</span>    
-                            <span class="badge bg-secondary bg-opacity-75 fw-normal fs-5 fit-content">elegante</span>    
+                            @if ($image->labels)
+                            @foreach($image->labels as $label)
+                            <span class="badge bg-secondary bg-opacity-75 fw-normal fs-5 fit-content mb-2">{{$label}}</span>
+                            @endforeach
+                            @endif   
                         </div>
                     </div>
                 </div>

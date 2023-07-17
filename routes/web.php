@@ -103,3 +103,4 @@ Route::get('/login/github/callback', [PublicController::class, 'socialCallbackGi
 
 //Rotta cambio lingua
 Route::post('/lingua/{lang}', [PublicController::class, 'setLanguage'])->name('set_language_locale');
+
