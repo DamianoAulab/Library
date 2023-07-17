@@ -57,7 +57,7 @@
                         </li>
                         @if (Auth::user()->is_revisor)
                             <li><a class="dropdown-item fw-semibold" href="{{ route('revisor.index') }}">
-                                    <i class="bi bi-shield-lock me-2"></i>{{__('ui.revisorZone')}}
+                                    <i class="bi bi-clipboard-data me-2"></i>{{__('ui.revisorZone')}}
                                     @if ($announcements_to_check > 0)
                                         <span class="badge btn-green">{{ $announcements_to_check }}</span>
                                     @endif
@@ -66,7 +66,7 @@
                         @endif
                         @if (Auth::user()->is_admin)
                             <li><a class="dropdown-item fw-semibold" href="{{ route('admin.dashboard') }}">
-                                    <i class="bi bi-clipboard-data me-2"></i>{{__('ui.adminZone')}}
+                                    <i class="bi bi-shield-lock me-2"></i>{{__('ui.adminZone')}}
                                 </a></li>
                             </li>
                         @endif
@@ -77,7 +77,7 @@
                         @if (!Auth::user()->is_revisor)
                             <li class="px-2 mt-2">
                                 <button class="btn btn-green w-100 fw-semibold px-0" data-bs-toggle="modal" data-bs-target="#modalRevisor">
-                                    <i class="bi bi-shield-lock"></i> {{__('ui.workWithUs')}}</button>
+                                    <i class="bi bi-clipboard-data"></i> {{__('ui.workWithUs')}}</button>
                             </li>
                         @endif
                         <li class="px-2 mt-2">

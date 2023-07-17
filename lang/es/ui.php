@@ -50,6 +50,16 @@ return [
         'publishedOn' => 'Publicado en',
         'onlineAnnouncements' => 'Anuncios en línea',
         'contact' => 'Contacto',
+        
+        // CATEGORIE
+        'createCategory' => 'Crear categoría',
+        'addCategory' => 'Introduce Categoría',
+        'category_it' => 'Categoría en Italiano',
+        'category_en' => 'Categoría en Inglés',
+        'category_es' => 'Categoría en Español',
+        'selectMacro' => 'Seleccionar Macros',
+        
+        'editCategory' => 'Editar categoría',
 
         // AUTH
         'loginOn' => 'Login en',

@@ -51,6 +51,16 @@ return [
     'onlineAnnouncements' => 'Annunci Online',
     'contact' => 'Contatta',
 
+    // CATEGORIE
+    'createCategory' => 'Crea categoria',
+    'addCategory' => 'Aggiungi Categoria',
+    'category_it' => 'Categoria in Italiano',
+    'category_en' => 'Categoria in Inglese',
+    'category_es' => 'Categoria in Spagnolo',
+    'selectMacro' => 'Seleziona Macro',
+
+    'editCategory' => 'Modifica categoria',
+
     // AUTH
     'loginOn' => 'Accedi su',
     'loginWith' => 'Accedi con',
