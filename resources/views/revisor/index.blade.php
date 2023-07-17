@@ -49,6 +49,29 @@
                     </div>
                 </div>
                 <div class="col-12 col-md-6">
+                    <div class="card border-0 shadow px-5 py-3 mb-4">
+                        <h4 class="fw-bold">Revisione Immagini</h4>
+                        <ul class="list-group text-start">
+                            <li class="list-group-item border-0"><i class="bi bi-circle-fill text-success me-2"></i>Adatto ai minori</li>
+                            <li class="list-group-item border-0"><i class="bi bi-circle-fill text-success me-2"></i>Immagine reale/originale</li>
+                            <li class="list-group-item border-0"><i class="bi bi-circle-fill text-success me-2"></i>Non è riconducibile all'ambito medico</li>
+                            <li class="list-group-item border-0"><i class="bi bi-circle-fill text-success me-2"></i>Non è presente violenza</li>
+                            <li class="list-group-item border-0"><i class="bi bi-circle-fill text-success me-2"></i>Non è presente contenuto ammiccante</li>
+                        </ul>
+                    </div>
+                    <div class="card border-0 shadow px-4 py-3 text-center">
+                        <h4 class="fw-bold mb-3"># Tags #</h4>
+                        <div class="d-flex-inline justify-content-center">
+                            <span class="badge bg-secondary bg-opacity-75 fw-normal fs-5 fit-content">vestito</span>
+                            <span class="badge bg-secondary bg-opacity-75 fw-normal fs-5 fit-content">matrimonio</span>    
+                            <span class="badge bg-secondary bg-opacity-75 fw-normal fs-5 fit-content">festa</span>    
+                            <span class="badge bg-secondary bg-opacity-75 fw-normal fs-5 fit-content">elegante</span>    
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-5 mb-5">
+                <div class="col-12 col-md-6">
                     <div class="card border-0 d-flex h-100 justify-content-between bg-transparent">
                         <div>
                             <h2 class="fw-bold fs-1 w-75 mb-3">{{ $announcement_to_check->title }}</h2>
@@ -65,56 +88,58 @@
                         <div>
                             <p class="mb-0 fw-light mb-3">{{__('ui.publishedOn')}}
                                 {{ $announcement_to_check->created_at->format('d-m-Y') }}</p>
-
-                            <div class="card border-0 shadow px-4 py-3">
-                                <div class="row">
-                                    <div class="col-12 col-md-5">
-                                        <p class="fs-4 fw-semibold mb-1"><img
-                                                class="card-img max-vh-4 mx-2 rounded-circle w-auto"
-                                                style="clip-path: circle(50%)"
-                                                src="@if ($announcement_to_check->user->gender == 'Femmina') {{ empty($announcement_to_check->user->img) ? '/img/female-placeholder.jpg' : Storage::url($announcement_to_check->user->img) }}
-                                            @elseif ($announcement_to_check->user->gender == 'Maschio') 
-                                                {{ empty($announcement_to_check->user->img) ? '/img/male-placeholder.jpeg' : Storage::url(Auth::user()->img) }}
-                                            @elseif ($announcement_to_check->user->gender == 'Non binario' || $announcement_to_check->user->gender == 'Non specificato')
-                                                {{ empty($announcement_to_check->user->img) ? '/img/user-placeholder.png' : Storage::url($announcement_to_check->user->img) }} @endif"
-                                                alt="">
-                                            <span class="fw-bold d-inline-block">
-                                                {{ $announcement_to_check->user->name }}</span>
-                                        </p>
-                                        <p class="fs-5 ms-3 mb-3 mb-md-0"><span class="fw-bold fs-4 me-1">
-                                                {{ $announcement_to_check->user->announcementCount() }} </span> {{__('ui.onlineAnnouncements')}} </p>
-                                    </div>
-                                    <div class="col-12 col-md-7 d-flex align-items-center justify-content-end flex-wrap">
-                                        <div class="col-12 col-md-6 px-1 pb-2 pb-md-0">
-                                            <a class="btn btn-lg btn-primary shadow fw-semibold w-100 mx-1"
-                                            href="tel:{{ $announcement_to_check->user->phone }}">{{__('ui.contact')}} <i
-                                                class="bi bi-telephone"></i></a>
-                                        </div>
-                                        <div class="col-12 col-md-6 px-1">
-                                            <a class="btn btn-lg btn-primary shadow fw-semibold w-100 mx-1"
-                                            href="mailto:{{ $announcement_to_check->user->email }}">Email <i
-                                                class="bi bi-envelope"></i></a>
-                                        </div>
-                                    </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <div class="card border-0 shadow px-4 py-3">
+                        <div class="row">
+                            <div class="col-12 col-md-5">
+                                <p class="fs-4 fw-semibold mb-1"><img
+                                        class="card-img max-vh-4 mx-2 rounded-circle w-auto"
+                                        style="clip-path: circle(50%)"
+                                        src="@if ($announcement_to_check->user->gender == 'Femmina') {{ empty($announcement_to_check->user->img) ? '/img/female-placeholder.jpg' : Storage::url($announcement_to_check->user->img) }}
+                                    @elseif ($announcement_to_check->user->gender == 'Maschio') 
+                                        {{ empty($announcement_to_check->user->img) ? '/img/male-placeholder.jpeg' : Storage::url(Auth::user()->img) }}
+                                    @elseif ($announcement_to_check->user->gender == 'Non binario' || $announcement_to_check->user->gender == 'Non specificato')
+                                        {{ empty($announcement_to_check->user->img) ? '/img/user-placeholder.png' : Storage::url($announcement_to_check->user->img) }} @endif"
+                                        alt="">
+                                    <span class="fw-bold d-inline-block">
+                                        {{ $announcement_to_check->user->name }}</span>
+                                </p>
+                                <p class="fs-5 ms-3 mb-3 mb-md-0"><span class="fw-bold fs-4 me-1">
+                                        {{ $announcement_to_check->user->announcementCount() }} </span> {{__('ui.onlineAnnouncements')}} </p>
+                            </div>
+                            <div class="col-12 col-md-7 d-flex align-items-center justify-content-end flex-wrap">
+                                <div class="col-12 col-md-6 px-1 pb-2 pb-md-0">
+                                    <a class="btn btn-lg btn-primary shadow fw-semibold w-100 mx-1"
+                                    href="tel:{{ $announcement_to_check->user->phone }}">{{__('ui.contact')}} <i
+                                        class="bi bi-telephone"></i></a>
+                                </div>
+                                <div class="col-12 col-md-6 px-1">
+                                    <a class="btn btn-lg btn-primary shadow fw-semibold w-100 mx-1"
+                                    href="mailto:{{ $announcement_to_check->user->email }}">Email <i
+                                        class="bi bi-envelope"></i></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-            <h2 class="text-center fw-bold mt-4 mb-0 fs-1">{{__('ui.description')}}</h2>
-            <p class="text-center px-md-5 mx-md-5 my-3">{{ $announcement_to_check->description }}</p>
 
-            <div class="row my-5 align-items-center">
-                <div class="col-12 col-md-6 text-center">
-                    <button class="btn btn-lg btn-green w-75 fw-semibold shadow fs-1" data-bs-toggle="modal"
-                        data-bs-target="#modalAccept"><i class="bi bi-patch-check"></i> {{__('ui.accept')}}</button>
-                </div>
-                <div class="col-12 col-md-6 mt-2 mt-md-0 text-center">
-                    <button class="btn btn-lg btn-red w-75 fw-semibold shadow fs-1" data-bs-toggle="modal"
-                        data-bs-target="#modalReject"><i class="bi bi-x-octagon"></i> {{__('ui.reject')}}</button>
+                    <h2 class="text-center fw-bold mt-5 mb-0 fs-1">{{__('ui.description')}}</h2>
+                    <p class="text-center px-md-5 mx-md-5 my-3">{{ $announcement_to_check->description }}</p>
                 </div>
             </div>
+        
+                <div class="row my-5 align-items-center">
+                    <div class="col-12 col-md-6 text-center">
+                        <button class="btn btn-lg btn-green w-75 fw-semibold shadow fs-1" data-bs-toggle="modal"
+                            data-bs-target="#modalAccept"><i class="bi bi-patch-check"></i> {{__('ui.accept')}}</button>
+                    </div>
+                    <div class="col-12 col-md-6 mt-2 mt-md-0 text-center">
+                        <button class="btn btn-lg btn-red w-75 fw-semibold shadow fs-1" data-bs-toggle="modal"
+                            data-bs-target="#modalReject"><i class="bi bi-x-octagon"></i> {{__('ui.reject')}}</button>
+                    </div>
+                </div>        
         @endif
 
     </div>
