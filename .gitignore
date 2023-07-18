@@ -20,3 +20,4 @@ yarn-error.log
 /storage/announcements.index-shm
 /storage/announcements.index-wal
 /storage/announcements.index
+google_credentials.json
