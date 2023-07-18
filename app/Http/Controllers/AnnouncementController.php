@@ -38,7 +38,7 @@ class AnnouncementController extends Controller
      * Display the specified resource.
      */
     public function show(Announcement $announcement)
-    {   
+    {
 
         $announcements = Announcement::orderBy('created_at', 'desc')->where('is_accepted', true)->take(4)->get();
         $users = User::all();
@@ -79,11 +79,21 @@ class AnnouncementController extends Controller
     public function destroy(Announcement $announcement)
     {
         if($announcement->user_id == Auth::user()->id || Auth::user()->is_admin){
-            $announcement->delete(); 
+            $announcement->delete();
         }
         else {
             abort(404);
         }
         return redirect()->back()->with('delete', 'Annuncio eliminato!');
+    }
+
+    public function likeAnnouncement(Announcement $announcement) {
+        $announcement->users()->attach(Auth::user()->id);
+        return redirect()->back()->with('success', 'Annuncio aggiunto ai tuoi preferiti!');
+    }
+
+    public function dislikeAnnouncement(Announcement $announcement) {
+        $announcement->users()->detach(Auth::user()->id);
+        return redirect()->back()->with('delete', 'Annuncio rimosso dai tuoi preferiti!');
     }
 }

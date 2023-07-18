@@ -22,7 +22,12 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        if(Auth::user()->is_admin){
+            return view('categories.add');
+        }
+        else {
+            abort(404);
+        }
     }
 
     /**
@@ -46,7 +51,13 @@ class CategoryController extends Controller
      */
     public function edit(Category $category)
     {
-        //
+        if(Auth::user()->is_admin){
+            $category = $category;
+        }
+        else {
+            abort(404);
+        }
+        return view('categories.edit', compact('category'));
     }
 
     /**

@@ -69,7 +69,7 @@
                                 <form action="{{route('announcements.destroy', ['announcement' => $announcement])}}" method="POST">
                                     @method('DELETE')
                                     @csrf
-                                    <button type="submit" class="btn btn-danger text-white"><i class="bi bi-trash"></i></button>
+                                    <button type="submit" class="btn btn-red text-white"><i class="bi bi-trash"></i></button>
                                 </form>
 
                             </div>
@@ -81,7 +81,6 @@
                 </tbody>
             </table>
 
-            <x-session />
 
         </div>
     </div>
@@ -107,13 +106,13 @@
                         <td class="text-center"><button class="btn @if ($category->macro == 'motori') btn-light-orange @elseif ($category->macro == 'immobili') btn-orange @elseif ($category->macro == 'market') btn-red @endif text-white text-uppercase fw-bold"> @if (Lang::locale() == 'it') {{$category->name_it}} @elseif (Lang::locale() == 'eng') {{$category->name_en}} @elseif (Lang::locale() == 'es') {{$category->name_es}} @endif </button></td>
                         <td>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">                                
-                                <a href=""
+                                <a href="{{route('categories.edit', ['category' => $category])}}"
                                     class="btn btn-warning me-md-2"><i class="bi bi-pencil-square"></i></a>
 
                                 <form action="{{route('categories.destroy', ['category' => $category])}}" method="POST">
                                     @method('DELETE')
                                     @csrf
-                                    <button type="submit" class="btn btn-danger text-white"><i class="bi bi-trash"></i></button>
+                                    <button type="submit" class="btn btn-red text-white"><i class="bi bi-trash"></i></button>
                                 </form>
 
                             </div>
@@ -124,8 +123,6 @@
                     @endforelse
                 </tbody>
             </table>
-
-            <x-session />
 
         </div>
     </div>
@@ -142,9 +139,8 @@
                         <th scope="col" class="text-center col-2 text-light bg-black">EMAIL</th>
                         <th scope="col" class="text-center col-1 text-light bg-black">TELEFONO</th>
                         <th scope="col" class="text-center col-2 text-light bg-black">DATA DI NASCITA</th>
-                        <th scope="col" class="text-center col-1 text-light bg-black">REVISORE</th>
-                        <th scope="col" class="col-2 bg-black text-end"><a href=""
-                            class="text-white text-decoration-none fw-semibold me-md-2"><i class="bi bi-plus-square me-2"></i>AGGIUNGI UTENTE</a></th>
+                        <th scope="col" class="text-center col-2 text-light bg-black">STATO REVISORE</th>
+                        <th scope="col" class="col-1 bg-black text-end"></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -160,27 +156,32 @@
                             {{empty($user->img) ? '/img/user-placeholder.png' : Storage::url($user->img)}}
                         @endif"
                             alt=""></td>
-                        <td class="text-center fw-bold">{{$user->name}}</td>
+                        <td class="text-center fw-bold">@if ($user->is_admin) <i class="bi bi-shield-lock-fill text-danger me-1"></i> @elseif ($user->is_revisor) <i class="bi bi-clipboard-data-fill text-success me-1"></i> @endif {{$user->name}} </td>
                         <td class="text-center">{{$user->email}}</td>
                         <td class="text-center">{{$user->phone}}</td>
                         <td class="text-center">{{ isset($user->birthday) ? $user->birthday->format('d-m-Y') : '- - -' }}</td>
                         <td class="text-center">
-                            @if ($user->is_revisor)
-                            <i class="bi bi-check fs-3 text-success"></i>
-                            @elseif (!$user->is_revisor)
-                            <i class="bi bi-x fs-3 text-danger"></i>
+                            @if ($user->email == "admin@mail.com" || $user->id == Auth::user()->id || $user->is_admin)
+                                
+                            @else
+
+                                @if ($user->is_revisor)
+                                        <a href="{{route('dismiss.revisor', compact('user'))}}"
+                                        class="btn btn-outline-danger me-md-2 fw-semibold"><i class="bi bi-x-octagon me-2"></i>Licenzia</a>
+                                @elseif (!$user->is_revisor)
+                                        <a href="{{route('make.revisor', compact('user'))}}"
+                                        class="btn btn-outline-green me-md-2 fw-semibold"><i class="bi bi-shield-lock me-2"></i>Rendi Revisore</a>
+                                @endif
+                                                        
                             @endif
                         </td>
                         <td>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-
-                                <a href=""
-                                    class="btn btn-warning me-md-2"><i class="bi bi-pencil-square"></i></a>
-
+                            
                                 <form action="" method="POST">
                                     @method('DELETE')
                                     @csrf
-                                    <button type="submit" class="btn btn-danger text-white"><i class="bi bi-trash"></i></button>
+                                    <button type="submit" class="btn btn-red text-white"><i class="bi bi-trash"></i></button>
                                 </form>
 
                             </div>
@@ -191,10 +192,10 @@
                     @endforelse
                 </tbody>
             </table>
-
-            <x-session />
-
         </div>
     </div>
+
+    <x-session />
+
 
 </x-main>

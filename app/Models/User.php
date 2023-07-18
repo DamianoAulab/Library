@@ -56,6 +56,10 @@ class User extends Authenticatable
         return $this->hasMany(Announcement::class);
     }
 
+    public function announcements_liked() {
+        return $this->belongsToMany(Announcement::class);
+    }
+
     public function announcementCount() {
         return Announcement::where('user_id', $this->id)->where('is_accepted', true)->count();
     }

@@ -66,7 +66,16 @@ class RevisorController extends Controller
     public function makeRevisor(User $user)
     {
         Artisan::call('presto:makeUserRevisor', ["email"=>$user->email]);
-        return redirect('/')->with('success', 'L\'utente è diventato revisore!');
+
+        return redirect()->route('admin.dashboard')->with('success', 'L\'utente è diventato revisore!');
+    }
+
+    public function dismissRevisor(User $user)
+    {
+        $user->is_revisor = false;
+        $user->save();
+
+        return redirect()->route('admin.dashboard')->with('delete', 'L\'utente è stato licenziato!');
     }
 
     public function undoAnnouncement(Announcement $announcement_to_undo) {

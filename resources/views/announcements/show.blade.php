@@ -38,6 +38,11 @@
                         href="{{ route('announcements.edit', ['announcement' => $announcement]) }}"><i
                             class="bi bi-pencil"></i></a>
                 @endif
+                @if (Auth::user() !== null && Auth::user()->id !== $announcement->user_id)
+                    @if ($announcement->users->contains(Auth::user()->id))
+                        <i class="bi bi-suit-heart-fill fs-3 text-danger position-absolute top-0 end-0 mt-0 me-0"></i>
+                    @endif
+                @endif
                 <div>
                     <h2 class="fw-bold fs-1 w-75 mb-3">{{ $announcement->title }}</h2>
                     <a class="btn @if ($announcement->category->macro == 'motori') btn-light-orange @elseif ($announcement->category->macro == 'immobili') btn-orange @elseif ($announcement->category->macro == 'market') btn-red @endif fit-content text-capitalize fw-semibold text-white shadow"
@@ -99,6 +104,13 @@
                             <a class="btn btn-dark text-white position-absolute top-0 end-0 mt-3 me-3 shadow opacity-50 px-2 py-1"
                                 href="{{ route('announcements.edit', ['announcement' => $announcement]) }}"><i
                                     class="bi bi-pencil"></i></a>
+                        @endif
+                        @if (Auth::user() !== null && Auth::user()->id !== $announcement->user_id)
+                            @if ($announcement->users->contains(Auth::user()->id))
+                                <form action="{{ route('announcements.dislike', ['announcement' => $announcement->id]) }}" method="POST"> @csrf @method('PATCH')<button class="btn btn-red text-white position-absolute top-0 end-0 mt-3 me-3 shadow opacity-75 px-2 py-1"><i class="bi bi-suit-heart-fill"></i></button></form>
+                            @else
+                                <form action="{{ route('announcements.like', ['announcement' => $announcement->id]) }}" method="POST"> @csrf @method('PATCH')<button class="btn btn-dark text-white position-absolute top-0 end-0 mt-3 me-3 shadow opacity-75 px-2 py-1"><i class="bi bi-suit-heart-fill"></i></button></form>
+                            @endif
                         @endif
                         <img src="{{!$announcement->images()->get()->isEmpty() ? $announcement->images()->first()->getUrl(600,600) : '/img/presto.it_placeholder.jpg'}}" alt=""
                             class="card-img-top object-fit-cover position-center" height="180rem">

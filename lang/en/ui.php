@@ -13,6 +13,7 @@ return [
         'addAnnouncement' => 'Add Announcement',
 
         'profile' => 'Profile',
+        'likeAnnouncements' => 'Favorite Announcements',
         'myAnnouncements' => 'My Announcements',
         'workWithUs' => 'Work with us',
         'revisorZone' => 'Revisor Zone',
@@ -22,6 +23,7 @@ return [
         // HOME
         'lastAnnouncements' => 'Last Announcements',
         'noAnnouncement' => 'No announcement found...',
+        'noLikeAnnouncement' => 'No favorite announcement found...',
 
         'searchInMotors' => 'Search in Motors',
         'searchInProperties' => 'Search in Properties',
@@ -50,6 +52,16 @@ return [
         'publishedOn' => 'Published on',
         'onlineAnnouncements' => 'Online Announcements',
         'contact' => 'Contact',
+        
+        // CATEGORIE
+        'createCategory' => 'Create category',
+        'addCategory' => 'Add Category',
+        'category_it' => 'Category in Italian',
+        'category_en' => 'Category in English',
+        'category_es' => 'Category in Spanish',
+        'selectMacro' => 'Select Macro',
+        
+        'editCategory' => 'Edit category',
 
         // AUTH
         'loginOn' => 'Login on',

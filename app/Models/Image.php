@@ -7,7 +7,11 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Image extends Model
-{
+{   
+    protected $casts = [
+        'labels'=>'array'
+    ];
+    
     protected $fillable = ['path', 'announcement_id'];
     use HasFactory;
 
