@@ -51,9 +51,10 @@
                 <div class="col-12 col-md-6 px-0">
                     <div id="showCarousel2" class="carousel carousel-dark slide h-100" data-bs-ride="carousel">
                         <div class="carousel-indicators">
-                            <button type="button" data-bs-target="#showCarousel2" data-bs-slide-to="0" class="active" aria-current="true"></button>
-                            <button type="button" data-bs-target="#showCarousel2" data-bs-slide-to="1"></button>
-                            <button type="button" data-bs-target="#showCarousel2" data-bs-slide-to="2"></button>
+                            @foreach ($announcement_to_check->images as $image)
+                                <button type="button" data-bs-target="#showCarousel2" data-bs-slide-to="{{$loop->iteration - 1}}" @if($loop->first)class="active" aria-current="true"@endif></button>
+                            @endforeach
+
                           </div>
                         <div class="carousel-inner rounded">
                             @foreach ($announcement_to_check->images as $image)
