@@ -86,4 +86,14 @@ class AnnouncementController extends Controller
         }
         return redirect()->back()->with('delete', 'Annuncio eliminato!');
     }
+
+    public function likeAnnouncement(Announcement $announcement) {
+        $announcement->users()->attach(Auth::user()->id);
+        return redirect()->back()->with('success', 'Annuncio aggiunto ai tuoi preferiti!');
+    }
+
+    public function dislikeAnnouncement(Announcement $announcement) {
+        $announcement->users()->detach(Auth::user()->id);
+        return redirect()->back()->with('delete', 'Annuncio rimosso dai tuoi preferiti!');
+    }
 }

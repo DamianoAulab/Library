@@ -28,6 +28,7 @@ Route::get('/', [PublicController::class, 'homepage'])->name('homepage');
 Route::get('/macrocategoria/{macro}', [PublicController::class, 'macro'])->name('macro');
 Route::post('/annunci/cerca', [PublicController::class, 'search'])->name('search');
 
+
 //Rotte annunci
 Route::get('/lista-annunci', [AnnouncementController::class, 'index'])->name('announcements.index');
 Route::get('/annunci/crea', [AnnouncementController::class, 'create'])->middleware('auth')->name('announcements.create');
@@ -35,8 +36,10 @@ Route::get('/annunci/{announcement}/modifica', [AnnouncementController::class, '
 Route::get('/annunci/{announcement}/dettagli', [AnnouncementController::class, 'show'])->name('announcements.show');
 Route::delete('annunci/{announcement}', [AnnouncementController::class, 'destroy'])->middleware('auth')->name('announcements.destroy');
 
-// Rotte categorie
+Route::patch('/like/annuncio/{announcement}', [AnnouncementController::class, 'likeAnnouncement'])->middleware('auth')->name('announcements.like');
+Route::patch('/dislike/annuncio/{announcement}', [AnnouncementController::class, 'dislikeAnnouncement'])->middleware('auth')->name('announcements.dislike');
 
+// Rotte categorie
 Route::get('/categorie/{category}', [CategoryController::class, 'show'])->name('categories.show');
 Route::delete('/elimina-categoria/{category}', [CategoryController::class, 'destroy'])->middleware('isAdmin')->name('categories.destroy');
 Route::get('/aggiungi/categoria', [CategoryController::class, 'add'])->middleware('isAdmin')->name('categories.add');

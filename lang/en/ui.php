@@ -13,6 +13,7 @@ return [
         'addAnnouncement' => 'Add Announcement',
 
         'profile' => 'Profile',
+        'likeAnnouncements' => 'Favorite Announcements',
         'myAnnouncements' => 'My Announcements',
         'workWithUs' => 'Work with us',
         'revisorZone' => 'Revisor Zone',
@@ -22,6 +23,7 @@ return [
         // HOME
         'lastAnnouncements' => 'Last Announcements',
         'noAnnouncement' => 'No announcement found...',
+        'noLikeAnnouncement' => 'No favorite announcement found...',
 
         'searchInMotors' => 'Search in Motors',
         'searchInProperties' => 'Search in Properties',

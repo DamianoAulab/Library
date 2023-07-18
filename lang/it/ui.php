@@ -13,6 +13,7 @@ return [
     'addAnnouncement' => 'Inserisci Annuncio',
 
     'profile' => 'Profilo',
+    'likeAnnouncements' => 'Annunci Preferiti',
     'myAnnouncements' => 'I miei Annunci',
     'workWithUs' => 'Lavora con Noi',
     'revisorZone' => 'Zona Revisore',
@@ -22,6 +23,7 @@ return [
     // HOME
     'lastAnnouncements' => 'Ultimi Annunci',
     'noAnnouncement' => 'Nessun annuncio trovato...',
+    'noLikeAnnouncement' => 'Nessun annuncio preferito trovato...',
 
     'searchInMotors' => 'Cerca in Motori',
     'searchInProperties' => 'Cerca in Immobili',

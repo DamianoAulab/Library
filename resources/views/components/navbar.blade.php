@@ -52,9 +52,13 @@
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li><a class="dropdown-item fw-semibold"
+                                    href="{{ route('users.show', ['user' => Auth::user()->id]) }}/#like-annunci">
+                                    <i class="bi bi-suit-heart me-2"></i>{{__('ui.likeAnnouncements')}}</a></li>
+                                </li>
+                                <li><a class="dropdown-item fw-semibold"
                                         href="{{ route('users.show', ['user' => Auth::user()->id]) }}/#my-annunci">
                                         <i class="bi bi-tags me-2"></i>{{__('ui.myAnnouncements')}}</a></li>
-                        </li>
+                                </li>
                         @if (Auth::user()->is_revisor)
                             <li><a class="dropdown-item fw-semibold" href="{{ route('revisor.index') }}">
                                     <i class="bi bi-clipboard-data me-2"></i>{{__('ui.revisorZone')}}
