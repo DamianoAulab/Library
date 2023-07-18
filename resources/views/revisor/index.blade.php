@@ -22,8 +22,8 @@
         @if (!$announcement_to_check)
             <div class="text-center mt-4 text-dark text-opacity-75 fs-2"><em>{{__('ui.noAnnouncementToCheck')}}</em></div>
         @else
-            <div class="row g-5 mt-md-2 mb-5">
-                <div class="col-12 col-md-6">
+            <div class="row g-4 mt-md-2 mb-5">
+                <div class="col-12 col-md-6 pe-4    ">
                     <div class="card border-0 shadow">
                         @if (count($announcement_to_check->images) > 0)
                         <div id="showCarousel" class="carousel slide" data-bs-ride="carousel">
@@ -48,26 +48,39 @@
                         @endif
                     </div>
                 </div>
-                <div class="col-12 col-md-6">
-                    <div class="card border-0 shadow px-5 py-3 mb-4">
-                        <h4 class="fw-bold">Revisione Immagini</h4>
-                        <ul class="list-group text-start">
-                            <li class="list-group-item border-0"><i class="{{$image->adult}} me-2"></i>Adatto ai minori</li>
-                            <li class="list-group-item border-0"><i class="{{$image->spoof}} me-2"></i>Immagine reale/originale</li>
-                            <li class="list-group-item border-0"><i class="{{$image->medical}} me-2"></i>Non è riconducibile all'ambito medico</li>
-                            <li class="list-group-item border-0"><i class="{{$image->violence}} me-2"></i>Non è presente violenza</li>
-                            <li class="list-group-item border-0"><i class="{{$image->racy}} me-2"></i>Non è presente contenuto ammiccante</li>
-                        </ul>
-                    </div>
-                    <div class="card border-0 shadow px-4 py-3 text-center">
-                        <h4 class="fw-bold mb-3"># Tags #</h4>
-                        <div class="d-flex-inline justify-content-center">
-                            @if ($image->labels)
-                            @foreach($image->labels as $label)
-                            <span class="badge bg-secondary bg-opacity-75 fw-normal fs-5 fit-content mb-2">{{$label}}</span>
+                <div class="col-12 col-md-6 px-0">
+                    <div id="showCarousel2" class="carousel carousel-dark slide h-100" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#showCarousel2" data-bs-slide-to="0" class="active" aria-current="true"></button>
+                            <button type="button" data-bs-target="#showCarousel2" data-bs-slide-to="1"></button>
+                            <button type="button" data-bs-target="#showCarousel2" data-bs-slide-to="2"></button>
+                          </div>
+                        <div class="carousel-inner rounded">
+                            @foreach ($announcement_to_check->images as $image)
+                                <div class="carousel-item @if ($loop->first)active @endif" @if ($loop->first)data-bs-interval="10000" @endif>
+                                    <div class="card border-0 shadow mb-5 px-5 py-3 mb-4">
+                                        <h4 class="fw-bold">Revisione Immagine n°{{$loop->iteration}}</h4>
+                                        <ul class="list-group text-start">
+                                            <li class="list-group-item border-0"><i class="{{$image->adult}} me-2"></i>Adatto ai minori</li>
+                                            <li class="list-group-item border-0"><i class="{{$image->spoof}} me-2"></i>Immagine reale/originale</li>
+                                            <li class="list-group-item border-0"><i class="{{$image->medical}} me-2"></i>Non è riconducibile all'ambito medico</li>
+                                            <li class="list-group-item border-0"><i class="{{$image->violence}} me-2"></i>Non è presente violenza</li>
+                                            <li class="list-group-item border-0"><i class="{{$image->racy}} me-2"></i>Non è presente contenuto ammiccante</li>
+                                        </ul>
+                                    </div>
+                                    <div class="card border-0 shadow mt-5 px-4 py-3 text-center">
+                                        <h4 class="fw-bold mb-3"># Tags #</h4>
+                                        <div class="d-flex-inline justify-content-center">
+                                            @if ($image->labels)
+                                                @foreach($image->labels as $label)
+                                                <span class="badge bg-secondary bg-opacity-75 fw-normal fs-5 fit-content mb-2">{{$label}}</span>
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
                             @endforeach
-                            @endif   
-                        </div>
+                        </div>                      
                     </div>
                 </div>
             </div>
