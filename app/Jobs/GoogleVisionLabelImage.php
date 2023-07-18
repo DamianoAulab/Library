@@ -36,7 +36,7 @@ class GoogleVisionLabelImage implements ShouldQueue
 
         $image = file_get_contents(storage_path('app/public/' . $i->path));
 
-        //imposta la variabile di ambiente GOOGLE_APPLICATION_CREDENTIALS al path del credentials file (credenziali private di Aulab, pacchetto da pagare)
+        //imposta la variabile di ambiente GOOGLE_APPLICATION_CREDENTIALS al path del credentials file
         putenv('GOOGLE_APPLICATION_CREDENTIALS=' . base_path('google_credentials.json'));
 
         $imageAnnotator = new ImageAnnotatorClient();

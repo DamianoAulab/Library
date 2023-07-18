@@ -29,15 +29,21 @@ class AddWatermark implements ShouldQueue
      */
     public function handle(): void
     {
-        $i = Image::find($this->announcement_image_id);
-        if(!$i){return;}
+        $image = Image::find($this->announcement_image_id);
 
-        $srcPath = storage_path('app/public/'.$i->path);
+        if(!$image){
+            return;
+        }
+
+        $temp = explode('/', $image->path);
+        $temp[2] = 'crop_600x600_'.$temp[2];
+        $path = implode('/', $temp);
+        
+        $srcPath = storage_path('app/public/'.$path);
         $image = file_get_contents($srcPath);
         $image = SpatieImage::load($srcPath);
-	
-        $image->watermark(base_path('resources/img/smile.png'))
-            ->watermarkPosition('bottom-right');
+
+        $image->watermark(base_path('public/img/presto.it_watermark.png'));
 
         $image->save($srcPath);
 
