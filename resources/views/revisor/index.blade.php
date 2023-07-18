@@ -115,7 +115,7 @@
                                         style="clip-path: circle(50%)"
                                         src="@if ($announcement_to_check->user->gender == 'Femmina') {{ empty($announcement_to_check->user->img) ? '/img/female-placeholder.jpg' : Storage::url($announcement_to_check->user->img) }}
                                     @elseif ($announcement_to_check->user->gender == 'Maschio') 
-                                        {{ empty($announcement_to_check->user->img) ? '/img/male-placeholder.jpeg' : Storage::url(Auth::user()->img) }}
+                                        {{ empty($announcement_to_check->user->img) ? '/img/male-placeholder.jpeg' : Storage::url($announcement_to_check->user->img) }}
                                     @elseif ($announcement_to_check->user->gender == 'Non binario' || $announcement_to_check->user->gender == 'Non specificato')
                                         {{ empty($announcement_to_check->user->img) ? '/img/user-placeholder.png' : Storage::url($announcement_to_check->user->img) }} @endif"
                                         alt="">
