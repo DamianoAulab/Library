@@ -46,3 +46,35 @@ body {
     background-position: center;
     background-size: cover;
 }
+
+
+/* ! PAGINATION */
+.page-link {
+    background-color: white !important;
+    color: black !important;
+    font-weight: 500;
+}
+
+.page-link:hover {
+    background-color: var(--light-orange) !important;
+    opacity: 50%;
+    border-color: var(--light-orange) !important;
+    color: white !important;
+}
+
+.page-link:focus {
+    box-shadow: none !important;
+}
+
+.disabled > .page-link {
+    background-color: whitesmoke !important;
+    opacity: 80%;
+}
+
+.active > .page-link {
+    background-color: var(--red) !important;
+    opacity: 90%;
+    border-color: var(--red) !important;
+    color: white !important;
+    font-weight: bold;
+}

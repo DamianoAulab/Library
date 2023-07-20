@@ -73,6 +73,9 @@
 
         @endforelse
 
+        <div class="d-flex justify-content-center">
+            {{$announcements->links()}}
+        </div>
     </div>
 
 </x-main>

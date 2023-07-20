@@ -33,13 +33,13 @@ class PublicController extends Controller
     {
         $announcement_search = '';
         if($request->search_category != 'Tutte le categorie') {
-            $announcement_search = Announcement::orderBy('created_at', 'desc')->where('title', 'like', '%'.$request->search_announcement.'%')->where('category_id', $request->search_category)->get();
+            $announcement_search = Announcement::orderBy('created_at', 'desc')->where('title', 'like', '%'.$request->search_announcement.'%')->where('category_id', $request->search_category)->paginate();
         }
         else {
-            $announcement_search = Announcement::orderBy('created_at', 'desc')->where('title', 'like', '%'.$request->search_announcement.'%')->get();
+            $announcement_search = Announcement::orderBy('created_at', 'desc')->where('title', 'like', '%'.$request->search_announcement.'%')->paginate();
         }
         
-        return view('announcements.index', ['announcements' => $announcement_search]);
+        return redirect()->route('announcements.index', ['announcements' => $announcement_search]);
     }
 
     public function macro($macro) {
